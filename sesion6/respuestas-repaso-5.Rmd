@@ -1,0 +1,134 @@
+---
+title: "respuestas-repaso-5"
+author: "Samuel Calderon"
+date: "09/02/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Cargar data
+
+```{r}
+library(readxl)
+
+poblaciones <- read_excel("data/poblacion_1995_2013.xlsx")
+```
+
+```{r}
+poblaciones2 <- poblaciones %>% 
+    pivot_longer(where(is.numeric),
+                 names_to = "año",
+                 values_to = "poblacion")
+```
+
+
+## ¿Cuáles fueron los 5 países con mayor población en 1999?
+
+```{r}
+poblaciones %>% 
+    pivot_longer(c(`1995`, `1996`, `1997`, `1998`, `1999`, `2000`, `2001`, `2002`, `2003`, `2004`,
+                   `2005`, `2006`, `2007`, `2008`, `2009`, `2010`, `2011`, `2012`, `2013`),
+                 names_to = "año",
+                 values_to = "poblacion") %>% 
+    filter(año == "1999") %>% 
+    arrange(desc(poblacion)) %>% 
+    filter(row_number() <= 5)
+```
+
+## ¿Cuáles fueron los 5 países con menor población en 2005?
+
+```{r}
+poblaciones %>% 
+    pivot_longer(c(`1995`, `1996`, `1997`, `1998`, `1999`, `2000`, `2001`, `2002`, `2003`, `2004`,
+                   `2005`, `2006`, `2007`, `2008`, `2009`, `2010`, `2011`, `2012`, `2013`),
+                 names_to = "año",
+                 values_to = "poblacion") %>% 
+    filter(año == "2005") %>% 
+    arrange(poblacion) %>% 
+    filter(row_number() <= 5)
+```
+
+## Tomando el orden de mayor a menor cantidad de población, ¿en qué posición se encontraba Perú el 2007?
+
+```{r}
+poblaciones %>% 
+    pivot_longer(c(`1995`, `1996`, `1997`, `1998`, `1999`, `2000`, `2001`, `2002`, `2003`, `2004`,
+                   `2005`, `2006`, `2007`, `2008`, `2009`, `2010`, `2011`, `2012`, `2013`),
+                 names_to = "año",
+                 values_to = "poblacion") %>% 
+    filter(año == "2007") %>% 
+    arrange(desc(poblacion)) %>% 
+    mutate(posicion = row_number()) %>% 
+    filter(country == "Peru")
+```
+
+
+## solucion 3
+
+```{r}
+poblaciones2 %>% 
+    filter(año == "2007") %>% 
+    arrange(desc(poblacion)) %>% 
+    mutate(posicion = row_number()) %>% 
+    filter(country == "Peru")
+```
+
+
+# solucion para Chile
+
+```{r}
+poblaciones2 %>% 
+    filter(año == "2007") %>% 
+    arrange(desc(poblacion)) %>% 
+    mutate(posicion = row_number()) %>% 
+    filter(country == "Chile")
+```
+
+# Colombia
+
+```{r}
+poblaciones2 %>% 
+    filter(año == "2007") %>% 
+    arrange(desc(poblacion)) %>% 
+    mutate(posicion = row_number()) %>% 
+    filter(country == "Colombia")
+```
+
+# Mi función
+
+```{r}
+posicion_2007 <- function(pais_elegido = "Peru") {
+    poblaciones2 %>% 
+    filter(año == "2007") %>% 
+    arrange(desc(poblacion)) %>% 
+    mutate(posicion = row_number()) %>% 
+    filter(country == pais_elegido)
+}
+```
+
+```{r}
+posicion_2007("Colombia")
+```
+```{r}
+posicion_2007("Chile")
+```
+```{r}
+posicion_2007()
+```
+```{r}
+poblaciones2
+```
+
+
+## Alternativa de pivoteo
+
+```{r}
+poblaciones %>% 
+    pivot_longer(where(is.numeric),
+                 names_to = "año",
+                 values_to = "poblacion")
+```
+

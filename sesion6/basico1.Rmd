@@ -1,0 +1,611 @@
+---
+title: "Operadores, Vectores, Funciones y paquetes"
+description: "Aprender los elementos básicos de la programación con R: crear funciones y cargar paquetes."
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+#library(gradethis)
+knitr::opts_chunk$set(echo = FALSE)
+tutorial_options(#exercise.checker = gradethis::grade_learnr,
+                 exercise.timelimit = 5, 
+                 exercise.completion = FALSE)
+```
+
+<style>
+body {
+text-align: justify}
+</style>
+
+## Tema 1: Elementos básicos
+
+Puedes encontrar el repositorio de este y otros tutoriales en <https://github.com/calderonsamuel/R_tutorial_interactivo>
+
+### ¿Por qué aprender a programar?
+
+Puedes ver el vídeo completo, pero lo recomiendo a partir del 5:45.
+
+![](https://youtu.be/X5Wkp1gsNik?t=346)
+
+### Usar R como calculadora
+
+R es un entorno y lenguaje de programación con un enfoque al análisis estadístico[^1]. En palabras sencillas, R es un idioma con el que podemos pedirle a nuestra computadora que haga ciertas cosas para nosotros. En estos tutoriales usaremos R a través de RStudio[^2].
+
+Debido a que casi todo lo que puedes hacer con R se hace a través de objetos, empezaremos presentando dos de los más comunes: los operadores y las funciones. Iremos conociendo otros tipos de objetos a medida que avancemos en los tutoriales.
+
+### Operadores aritméticos
+
+Los operadores, como dice su nombre, nos permiten realizar operaciones entre ciertos valores de manera similar a como lo haríamos con una calculadora. Los siguientes nos permiten realizar operaciones aritméticas básicas:
+
+|Operador|Operación|
+|:------:|---------|
+| `+`    | Adición    |
+| `-`    | Sustracción|
+| `*`    | Multiplicación|
+| `/`    | División real |
+| `**` o `^`| Potencia |
+| `()`   | Para priorizar operaciones al interior de los paréntesis |
+
+Podemos ver cómo lucen los operadores en funcionamiento al usarlos en R. 
+
+```{r aritmeticos, exercise=TRUE}
+# Realiza la siguiente operación: 10 * 15 - 50 / 25
+
+
+```
+
+```{r aritmeticos-check}
+# grade_result(
+#   pass_if(x = ~ identical(.result, 148)),
+#   correct = "¡Lo hiciste muy bien!",
+#   incorrect = "Vuelve a revisar el código"
+# )
+```
+
+
+### Quiz aritmético
+
+```{r quiz-aritmetico}
+quiz(
+  question("¿Cuál sería el resultado de correr `(((1+2)*3)**2)/3`?",
+    answer("No tengo idea"),
+    answer("6"),
+    answer("27", correct = TRUE),
+    answer("69"),
+    correct = "¡Correcto! R primero opera el `1+2` al ser el nivel más profundo, obteniendo como resultado 3. Inmediatamente después, R realiza la operación `3*3` y obtiene 9. Después de esto, R opera el `9**2`obteniedo 81, y finaliza con la operación `81/3`, obteniedo 27 como resultado.",
+    allow_retry = TRUE
+  ),
+  question("¿Cuáles de las siguientes expresiones dan el mismo resultado que `2+2-2*2/2**2`?",
+    answer("`(2+2)-(2*(2/(2**2)))`", correct = TRUE),
+    answer("`2+(2-(2*(2/(2**2))))`", correct = TRUE),
+    answer("`(2+2)-(2*2)/(2**2)`", correct = TRUE),
+    answer("`2+2-(2*(2/2)**2)`"),
+    allow_retry = TRUE
+  )
+)
+```
+
+Hasta este punto, R está siendo utilizado como una simple calculadora, pero podemos exigirle mucho más.
+
+### Operador de asignación
+
+Antes de explotar al máximo las capacidades de R, es necesario conocer otro operador fundamental: el de asignamiento. Está compuesto por el signo "menor que" (`<`) y el signo de resta (`-`), que al juntarse lucen como una flecha que apunta hacia la izquierda (`<-`). Este operador sirve para asignar un nombre a cualquier objeto o valor, de tal modo podamos acceder a él con mayor facilidad. Por ejemplo, podemos asignarle el nombre "resultado" al resultado de la operación que realizamos anteriormente.
+
+*A simple vista, nada ha cambiado[^3], pero cuando accedemos al objeto* `resultado` *ahora obtenemos inmediatamente la respuesta de nuestra operación.*
+
+```{r resultado, exercise=TRUE, exercise.lines = 4}
+resultado <- (((1+2)*3)**2)/3
+
+# Escribe "resultado" sin las comillas debajo de este comentario y ejecuta el código
+
+```
+
+### Actualizar valor asignado
+
+Si por algún motivo necesitamos actualizar el valor asignado a nuestro objeto, basta con volver a asignar el mismo nombre a otro valor. Incluso se puede hacer referencia al valor anterior para modificarlo. No hay un límite de veces que el valor de un objeto puede ser modificado. En el siguiente ejemplo, sumaremos 3 a `resultado` para obtener 30. 
+
+```{r actualizar-asignado, exercise=TRUE}
+resultado <- (((1+2)*3)**2)/3
+
+resultado <- resultado + 3
+
+resultado
+```
+
+
+## Tema 2: Funciones
+
+### ¿Qué son las funciones?
+
+Hemos visto que podemos usar el operador `**` para elevar un número a cualquier potencia, pero no tenemos un operador para obtener la raíz. Podemos solucionar esto haciendo uso de funciones.
+
+Las funciones nos permiten aplicar transformaciones a los valores u objetos que ingresemos en ellas. Para crear una función, debemos asignarle un nombre, argumentos y código que será utilizado para la transformación. Su forma general en R es la siguiente:
+
+```{r, echo = TRUE, eval = FALSE}
+nombredefuncion <- function(argumento_1, argumento_2, argumento_n){
+  
+cuerpo de código
+  
+}
+```
+
+### Función de raíz cuadrada
+
+Para que sea más entendible, haremos nuestra función para hallar la raíz cuadrada de cualquier número[^4] y la llamaremos `raiz_cuadrada`. Siempre es importante asignar un nombre significativo y que dé una buena idea del funcionamiento de la función.
+
+*Como vemos en el cuerpo de la función, esta obtiene un número "x" y calcula su raíz cuadrada. Probemos su funcionamiento.*
+
+```{r raiz_cuadrada, exercise=TRUE, exercise.lines=9}
+raiz_cuadrada <- function(x){
+  
+  x**(1/2)
+  
+}
+
+# Escribe "raiz_cuadrada(25)" para obtener la raíz de 25
+
+```
+
+### Función de raiz cúbica
+
+R ha calculado de manera correcta que la raíz cuadrada de 25 es 5. También podemos hacer una función para determinar la raíz cúbica de un número "x" de la misma manera.
+
+```{r raiz_cubica, exercise=TRUE, exercise.lines=9}
+raiz_cubica <- function(x){
+  
+  x**(1/3)
+  
+}
+
+# Escribe "raiz_cubica(27)" para obtener la raíz cúbica de 27
+
+```
+
+### Raíz n
+
+Al probar el funcionamiento de `raiz_cubica()` vemos que nos arroja el cálculo correcto. Podríamos hacer una función de raíz para cada número, pero como las funciones pueden tener más de un argumento, podemos usar eso para nuestra ventaja y hacer una función que aplique una raiz "n" a cualquier número "x".
+
+```{r raiz_n, exercise=TRUE, exercise.lines=9}
+raiz_n <- function(x, n){
+  
+  x**(1/n)
+  
+}
+
+# Escribe "raiz_n(1024, 10)" para obtener la raíz 10 de 1024
+
+
+```
+
+### Función texto_raiz()
+
+Ese es el poder de las funciones, nos permiten hacer nuestras transformaciones de manera generalizada. Incluso podemos usar funciones en el cuerpo y argumento de otras funciones. En el siguiente ejemplo, usaremos la función predefinida `paste()`, que nos permite pegar textos para formar una oración.
+
+```{r texto_raiz-setup}
+raiz_n <- function(x, n){
+  
+  x**(1/n)
+  
+}
+```
+
+
+```{r texto_raiz, exercise=TRUE, exercise.lines=9}
+texto_raiz <- function(x, n){
+  
+  paste("La raiz ", n, " de", x, "es ", raiz_n(x, n))
+}
+
+texto_raiz(1024, 10)
+
+```
+
+Los argumentos de una función no necesitan ir en la misma línea de código. Para una más fácil lectura, es posible separarlos por líneas (respetando las comas entre argumentos) siempre y cuando sigan dentro del mismo paréntesis de la función. Utilizaremos la función `paste()` para ejemplificar.
+
+```{r paste, exercise = TRUE}
+paste("Un", "texto", "largo", "se", "imprime")
+
+paste("Un", 
+      "texto", 
+      "largo", 
+      "se", 
+      "imprime")
+```
+
+### Argumentos de una función
+
+Como hemos visto, las funciones necesitan ser provistas de argumentos a través de los cuales pasamos los objetos o valores que serán transformados en el cuerpo de la función. Una manera sencilla de verificar qué argumentos tiene una función es haciendo uso de la función `args()`. 
+
+```{r args, exercise=TRUE, exercise.setup= "texto_raiz-setup"}
+# Ver los argumentos de la función que definimos preiamente
+args(raiz_n)
+```
+
+Podemos tener un panorama más completo, viendo tanto los argumentos como el cuerpo de la función, si ingresamos sólo el nombre de la función **sin usar paréntesis**.
+
+```{r function-name, exercise=TRUE, exercise.setup="texto_raiz-setup"}
+raiz_n
+```
+
+### Argumentos por defecto
+
+Un truco muy útil al usar funciones es utilizar argumentos con valores por defecto. Vamos a reescribir nuestra función `raiz_n()` para utilizar un valor por defecto de `n = 2`, de tal modo que cuando no le proveamos explícitamente un valor para `n`, la función no deje de funcionar. 
+
+```{r arg-por-defecto, exercise = TRUE}
+raiz_n <- function(x, n = 2){
+  x ** (1/n)
+}
+
+# Utiliza la función sin indicar un valor para n. Por ejemplo: raiz_n(16)
+```
+
+Este es un truco muy utilizado por muchas funciones, porque permite no repetir trabajo innecesario y al mismo tiempo darle al usuario de la función una recomendación de cómo implementarla.
+
+### Argumento elipsis {data-allow-skip=TRUE}
+
+En algunas funciones, vamos a encontrar que al inspeccionar sus argumentos, nos aparece uno que sólo contiene tres puntos (`...`), también llamados *elipsis*. Esto es utilizado cuando no sabemos de antemano cuántos objetos serán introducidos en la función, o cuando una función hace uso en su interior de una función que utiliza la elipsis. Tenemos el ejemplo de las funciones `sum()`y `mean()`.
+
+```{r elipsis, exercise = TRUE}
+# sum() devuelve la suma de todos los valores ingresados a su elipsis
+args(sum)
+
+# mean() devuelve el promedio de su objeto x, pero utiliza internamente sum()
+args(mean)
+```
+
+En la web de [R-bloggers](https://www.r-bloggers.com/r-three-dots-ellipsis/) hay una explicación más detallada.
+
+*Una vez que hemos entendido cómo usar funciones, estamos listos para conocer los paquetes.*
+
+## Tema 3: Paquetes
+
+### ¿Qué son los paquetes?
+
+R es un lenguaje utilizado por muchas personas y cada quien escribe sus funciones según sus propias necesidades. Sin embargo, no resulta extraño que varios usuarios necesiten lo mismo. Por ejemplo, resulta lógico pensar que no somos las únicas personas que necesitan obtener la raíz "n" de un número. 
+
+Es en este punto que entran en juego los paquetes, una colección de funciones y datos que los usuarios de R comparten entre sí para facilitar el trabajo a los demás y evitar la repetición innecesaria de creación de funciones de uso común o de alta utilidad[^5]. Hay paquetes de todo tipo, desde los que te permiten realizar una función muy específica (como `clipr` que es usado para copiar y pegar información contenida en el portapapeles del sistema) hasta los que te permiten expandir los límites de lo que R es capaz de hacer (como `reticulate`, que te permite ejecutar código del lenguaje de programación Python en tu entorno R).
+
+Cuando inicias R, se activa un grupo base de paquetes. Estos han sido desarrollados por el R Core Team y son la pieza fundamental de su funcionalidad. 
+
+Puedes instalar paquetes usando la función `install.packages()` y poniendo como argumento el nombre del paquete entre comillas `""`.  Este procedimiento sólo será necesario una vez, ya que después de instalados, los paquetes son conservados en la memoria de la computadora. Aquí puedes ver algunos ejemplos:
+
+```{r install.packages, eval = FALSE, echo = TRUE}
+install.packages("ggplot2")
+install.packages("DT")
+install.packages("RColorBrewer")
+```
+
+Pero tenerlos instalados no es suficiente. Cada vez que necesitas usar un paquete lo puedes llamar con `library(paquete)`. Por ejemplo:
+
+```{r ejemplo-library, echo=TRUE, eval=FALSE}
+library(ggplot2)
+library(DT)
+library(RColorBrewer)
+```
+
+Esto hará que sus funciones y objetos estén disponibles para el uso. Te darás cuenta que no has llamado al paquete si corres un código y el resultado es un error como este: 
+
+```{r glue-error, error = TRUE, echo=TRUE}
+glue("texto", "de", "ejemplo")
+```
+
+Esto significa que no has llamado al paquete necesario usando `library()`. En cambio, si al llamar al paquete te da como resultado un error de este tipo:
+
+```{r, echo=TRUE, eval=FALSE}
+library(testpackage)
+
+# Error in library(testpackage) : there is no package called ‘testpackage’
+```
+
+Significa que necesitas instalarlo. No hay que asustarse al obtener un mensaje de error alguna vez, por lo general suelen ser bastante explicativos respecto a por qué son causados y nos permiten corregir aquello en lo que nos equivocamos.
+
+Es posible instalar paquetes desde otro origen, como Github o BioConductor, pero no enseñaremos a realizarlo. Una breve visita a Google permitirá satisfacer a los curiosos.
+
+### Quiz Paquetes
+
+```{r quiz-paquetes}
+quiz(
+  question("Deseo usar una función del paquete instalado `dplyr`, ¿cómo puedo acceder a sus funciones?",
+    answer('`dplyr <- install.packages("dplyr")`'),
+    answer('`install.packages("dplyr")`'),
+    answer('`library("dplyr")`'),
+    answer("`library(dplyr)`", correct = TRUE),
+    allow_retry = TRUE
+  ),
+  question("Obtuve el siguiente mensaje: `Error in library(ggplot2): there is no package called 'ggplot2'`. ¿Qué hice mal?",
+    answer("Intentar instalar un paquete que no existe"),
+    answer("Intentar correr una función sin cargar el paquete que la contiene"),
+    answer("Intentar correr una función habiendo llamado un paquete diferente al que la contenía"),
+    answer("Intentar cargar un paquete que no había instalado", correct = TRUE)
+  )
+)
+```
+
+### Obtener ayuda de una función
+
+Cuando no estamos seguros de cómo implementar una función, podemos consultar su documentación. En R, esto se realiza con la función `help()`. Basta con ingresar el nombre de la función como único argumento.
+
+```{r help, exercise=TRUE}
+library(lubridate)
+
+help(today)
+```
+
+Esta función también nos puede brindar información de otros objetos contenidos en R base o paquetes que hemos cargado.
+
+```{r help2, exercise=TRUE}
+library(ggplot2)
+
+help(economics)
+```
+
+
+
+## Tema 4: Vectores
+
+### Identificando los vectores
+
+Los siguientes objetos fundamentales para el manejo de R son los vectores. Estos pueden ser de dos tipos: atómicos y listas. La diferencia entre ellos radica en el tipo de información que pueden contener. Para efectos de estos tutoriales, consideraremos las listas como vectores "especiales" junto a otros que explicaremos más adelante. 
+
+### Vectores atómicos
+
+Los cuatro principales tipos de vectores atómicos son: *logical*, *double*, *integer* y *character*[^6]. Los vectores de tipo *logical* pueden asumir dos valores: `TRUE` o `FALSE`(o en su forma abreviada `T` o `F`). Los de tipo *double* e *integer* asumen valores numéricos, los *double* pueden asumir valores racionales y los *integer* sólo valores enteros. Los vectores de tipo *character* asumen cualquier cadena de texto. En el siguiente recuadro de código podemos ver un ejemplo de cada uno:
+
+```{r atomicos, echo=TRUE}
+v_logical <- TRUE
+v_double <- 3.1416
+v_integer <- 5L
+v_character <- "Hola mundo"
+```
+
+Si estamos atentos, vemos que el *integer*  va acompañado de una "L" al final. Esto es necesario porque R interpreta por defecto cualquier número como *double*. Tanto los *double* como los *integer* pertenecen a la categoría de vectores numéricos. Los *character* siempre estarán rodeados de comillas (`""`). 
+
+### Comprobar tipo de vector con `is.*()`
+
+Para comprobar si nuestro vector es de un tipo determinado utilizamos una función de forma `is.*()` reemplazando el `*` por el tipo que queremos comprobar.
+
+```{r is.type, echo=TRUE}
+is.logical(v_logical)
+is.numeric(v_double)
+is.integer(v_double)
+```
+
+Podemos ver que por cada consulta obtenemos un valor *logical* `TRUE` cuando se cumple la condición y `FALSE` cuando no se cumple. Es decir, es cierto que `v_logical` es *logical*, es cierto que `v_double` es numérico y es falso que `v_double` es *integer*. El valor *logical* obtenido con cada consulta es un vector en sí mismo.
+
+### Comprobar tipo de vector con `typeof()`
+
+Otra manera de verificar el tipo de vector que tenemos es con la función `typeof()`. Esta nos devuelve un  *character* indicando el tipo de vector que tenemos.
+
+```{r typeof, echo=TRUE}
+typeof(v_character)
+typeof(v_integer)
+```
+
+### Vectores con más de un elemento 
+
+Hasta el momento hemos visto vectores que contienen un solo elemento. Sin embargo, es sumamente común encontrarse con vectores de mayor longitud. Por ejemplo, el vector `letters` contiene todas las letras minúsculas del alfabeto. Podemos consultar la longitud de un vector con la función `length()`. Esto es muy útil cuando sabemos que nuestro vector podría contener una gran cantidad de elementos y no queremos inspeccionarlos todos. El número que vemos rodeado entre corchetes (`[]`) en nuestro resultado nos indica el índice que el elemento siguiente tiene en el vector. Es por ello que hasta el momento en cada operación que realizábamos hemos obtenido un "[1]" antes de cada resultado.
+
+```{r length, echo=TRUE}
+length(v_logical)
+length(letters)
+print(letters)
+```
+
+Para formar vectores de longitud mayor a uno se utiliza la función `c()` agregando como argumentos todos los elementos que queremos.
+
+```{r mi_vector_largo, echo=TRUE}
+mi_vector_largo <- c("elemento1", 
+                     "elemento2", 
+                     "elemento3", 
+                     "elemento4")
+
+print(mi_vector_largo)
+```
+
+### Operador de secuencia simple
+
+Para vectores numéricos, también es posible utilizar el signo dos puntos (`:`) como operador para crear una secuencia, que avanza de uno en uno, desde un número a otro. El vector resultado incluirá a los dos números utilizados en la operación. 
+
+```{r mi_vector_numerico1, echo=TRUE}
+mi_vector_numerico1 <- 1:6
+
+print(mi_vector_numerico1)
+```
+
+### Concatenar vectores largos
+
+Podemos hacer uso de `c()` nuevamente para seguir haciendo crecer nuestro vector. Incluso podemos usar una operación de secuencia como argumento. Al consultar el tipo de vector que hemos creado, vemos que mantiene el mismo tipo que sus "ancestros": *integer*.
+
+```{r mi_vector_numerico2, echo=TRUE}
+mi_vector_numerico2 <- 11:16
+
+mi_vector_muy_largo <- c(mi_vector_numerico1, 
+                         mi_vector_numerico2, 
+                         21:26)
+
+print(mi_vector_muy_largo)
+typeof(mi_vector_muy_largo)
+```
+
+## Tema 5: Coerción y valores NA
+
+### Coerción de vectores
+
+Crear vectores más largos puede tener efectos inesperados para el usuario que no está atento. Veamos el siguiente ejemplo:
+
+```{r vector_combinado-setup}
+mi_vector_muy_largo <- c(1:6, 11:16, 21:26)
+```
+
+
+```{r vector_combinado, exercise=TRUE}
+vector_combinado <- c(mi_vector_muy_largo, "1")
+
+typeof(vector_combinado)
+```
+
+Al agregar `"1"` a nuestro vector, su tipo ha cambiado a *character*. ¿Por qué sucede esto? En primer lugar, hay que tener claro que `"1"` no es lo mismo que `1`. Recordemos que todo valor que está entre comillas es de tipo *character*, incluso si se trata de números. 
+
+En segundo lugar, tengamos en cuenta que los vectores atómicos sólo pueden tener un tipo. Esto quiere decir que cuando los tipos de los elementos que se combinan dentro del vector son diferentes, R debe decidir cuál de los tipos de vector mantener, eligiéndo sólo uno. Este procedimiento es llamado **coerción**.
+
+### Reglas de coerción implícita
+
+Aunque suena complicado, las reglas de coerción son bastante sencillas. R le dará prioridad a mantener el tipo de vector según el siguiente orden:
+
+1. Character
+2. Double
+3. Integer
+4. Logical
+
+Es decir, ante cualquier conflicto en el tipo de vectores a combinar se preservará el tipo que tenga más alta prioridad. Si nos detenemos a analizar por qué sucede, es bastante evidente. Los valores *logical* son en realidad leídos por la computadora como `1` cuando son `TRUE` y como `0` cuando son `FALSE`. Es por ello que la siguiente operación no nos arroja un error.
+
+```{r uno_mas_true, echo=TRUE}
+1L + TRUE
+```
+
+Del mismo modo, sabemos que cualquier número entero también puede ser expresado como número racional. Es por ello que los *integer* son coercionados a *double* cuando hay conflicto entre ellos.
+
+```{r uno_mas_pi, echo=TRUE}
+typeof(1L + 3.1416)
+```
+
+¿Es posible convertir texto a números en R? No[^7]. Es por ello que cuando un vector tipo *character* se combina con cualquier otro tipo de vector, prevalece el tipo *character*, como en el ejemplo que vimos al inicio de esta sección.
+
+### Coerción explícita
+
+En todos los casos de coerción que hemos mencionado hasta el momento R ha decidido mediante sus propias reglas qué tipo de vector debe prevalecer, aplicando **coerción implícita**. Este procedimiento puede ocasionar problemas cuando el usuario no tiene suficientemente claras las reglas de coerción.
+
+La **coerción explícita** permite decidir de antemano qué tipo de vector queremos obtener. Para ello se hace uso de una función de la forma `as.*()` donde `*` representa el tipo deseado.
+
+```{r as-integer, exercise=TRUE}
+vector_true_integer <- as.integer(TRUE)
+
+typeof(vector_true_integer)
+```
+
+En este ejemplo, hemos usado `as.integer()` para cambiar el tipo de nuestro vector, de *logical* a *integer*. Es posible hacer lo mismo para otros tipos de vectores. Tomemos en cuenta que la transformación se realiza de manera directa, sin respetar el orden de prioridad. 
+
+```{r as-character, exercise=TRUE}
+as.character(TRUE)
+```
+
+Es por ello que `TRUE` se convierte directamente en el *character* `"TRUE"` sin convertirse primero en el *integer* `1L`, luego en el *double* `1` y luego en el *character* `"1"`. De aquí viene el verdadero poder de la coerción explícita, porque nos permite incluso "revertir" el orden de prioridad que R usa en la coerción implícita. Es decir, podemos convertir **cualquier** tipo de vector a otro.
+
+```{r multiple-typeof, exercise=TRUE}
+typeof(as.logical("TRUE"))
+typeof(as.integer("10"))
+typeof(as.integer(5.0))
+typeof(as.double("6.108"))
+```
+
+### Coerción puede perder información
+
+De todos modos, esto se debe usar con precaución. Sabemos que todo *logical* puede convertirse a *integer*, estos a su vez pueden convertirse a *double* y estos a *character* sin perder ninguna información. No sucede lo mismo en el procedimiento reverso. Por ejemplo, esto sucede cuando queremos convertir un *double* con cifras decimales a *integer*.
+
+```{r as-integer-decimal, exercise=TRUE}
+as.integer(5.4234)
+```
+
+El contenido decimal se pierde, porque R no lo necesita en el *integer*, y no es posible recuperarlo aún retransformando el valor a *double* en la misma línea de código.
+
+```{r as-double-as-integer-decimal, exercise=TRUE}
+as.double(as.integer(5.4234))
+```
+
+Algo similar sucede cuando intentamos convertir a *logical* valores numéricos mayores a 1. 
+
+```{r as-logical-coercion, exercise=TRUE}
+as.logical(8)
+as.logical(-0.000000135)
+```
+
+R interpreta como `TRUE` todo número diferente a `0`. Es probable que no sea el resultado que esperábamos en esta transformación. Pero todavía hay más. ¿Qué sucederá si intentamos convertir una **palabra** a número?
+
+### Valores NA
+
+```{r na_int, exercise=TRUE}
+as.integer("sustantivo")
+```
+
+R no es capaz de asignar un valor numérico a `"sustantivo"` y como resultado nos arroja un advertencia o *warning*: `NAs introduced by coercion`. El valor `NA` representa un valor perdido y no es posible transformarlo. Los valores perdidos pueden aparecer en nuestros datos por diferentes motivos, desde la recolección hasta la transformación de nuestra data. 
+
+### Suma con valor NA
+
+Debemos ser extremadamente cuidadosos al trabajar con ellos, porque pueden generar algunos problemas indeseados. Por ejemplo, si queremos obtener la suma de todos los elementos de un vector, usando la función `sum()`, y resulta que uno de ellos es un `NA`.
+
+```{r vector_NA, echo=TRUE}
+vector_con_NA <- c(1, 2, 3, 4, NA, 6, 7)
+```
+
+
+```{r vector_con_NA}
+vector_con_NA <- c(1, 2, 3, 4, NA, 6, 7)
+```
+
+```{r sum-con-na, exercise=TRUE, exercise.setup="vector_con_NA"}
+sum(vector_con_NA)
+```
+
+El resultado obtenido es simplemente `NA`. El mismo problema se extiende al querer obtener un promedio usando la función `mean()`.
+
+```{r mean-con-na, exercise=TRUE, exercise.setup="vector_con_NA"}
+mean(vector_con_NA)
+```
+
+### Argumento `na.rm`
+
+Felizmente, estas funciones permiten proporcionar el argumento `na.rm = TRUE` para ignorar los valores `NA` y trabajar sólo con valores válidos.
+
+```{r na-rm, exercise=TRUE, exercise.setup="vector_con_NA"}
+sum(vector_con_NA, na.rm = TRUE)
+mean(vector_con_NA, na.rm = TRUE)
+```
+
+Sin embargo, no necesariamente encontraremos esta herramienta en todas las funciones que trabajan con vectores. Por ello es indispensable estar atentos al trabajar nuestros datos y revisar la documentación de las funciones con las que estamos trabajando.
+
+## Proyecto: Dados cargados
+
+### ¿Qué son los dados cargados?
+
+Son dados cuyos números no tienen una probabilidad equitativa de ser obtenidos.
+
+![](https://www.youtube.com/watch?v=uPgMKAijIUk)
+
+### Indicaciones
+
+El proyecto se realiza en un R script dentro de RStudio. Puedes crearlo siguiendo desde el menú:  
+
+```
+File > New File > R Script
+```
+
+No olvides guardar tu R Script para poder revisar su contenido más adelante. Recomendamos el nombre "Proyecto dados cargados".
+
+1. Revisa los argumentos o páginas de ayuda de las funciones `sample()` y `rep()`. ¿Cuáles son sus argumentos por defecto?
+2. Crea un vector `mis_letras` obteniendo cinco letras aleatorias del vector predefinido `letters`. Recuerda que este contiene las 26 letras del alfabeto en minúsculas. Debes lograrlo usando la función `sample()`.
+3. Crea un vector `mis_repeticiones` obteniendo 100 repeticiones de tu nombre. Debes lograrlo usando la función `rep()` y su argumento `times`.
+4. Crea un vector `dado_normal` que contenga los seis lados de un dado normal. Tú decides qué *tipo* de vector sería el más adecuado.
+5. Utiliza la función `sample()` y `dado_normal` para simular el lanzamiento de unos dados.
+6. Crea un vector `dado_cargado` que tenga los seis lados de un lado normal, pero con diferentes proporciones. Por ejemplo, podría contener una secuencia del uno al cinco y luego cinco repeticiones del número seis. Puedes utilizar `rep()` en el proceso.
+7. Crea una función `lanzar_dado()` con un argumento único llamado `dado`. Esta función simulará un lanzamiento de cualquier dado que proporciones. Prueba que tu función actúe adecuadamente usándola con tus vectores `dado_normal` y `dado_cargado`. 
+8. Crea una función `dado_frase()` con un argumento único llamado `dado`. Esta función utilizará internamente `lanzar_dado()` para simular el lanzamiento de `dado` y devolverá una frase indicando el número obtenido. Por ejemplo: "Lanzaste el dado y obtuviste el número X". Utiliza la función `paste()` para crear la frase. Nuevamente, verifica su funcionamiento al utilizarla con `dado_normal` y `dado_cargado`.
+
+Opcional
+
+1. Crea `lanzar_dados()` de tal modo que devuelva el resultado de dos lanzamientos. Por ejemplo: "Lanzaste dos dados y obtuviste los números X y Y".
+2. Crea `lanzar_dado_cargado()`, una función sin argumentos que retorne el número resultado de tirar un dado cargado sin crear antes ningún vector. (Es posible hacerlo usando el argumento `prob` de la función `sample()`)
+
+
+[^1]: Definición obtenida de https://es.wikipedia.org/wiki/R_(lenguaje_de_programaci%C3%B3n)
+[^2]: RStudio es un Entorno de desarrollo integrado (IDE) para R. Para instalar ambos, recomendamos seguir las instrucciones del punto 1.4.1 y 1.4.2 del siguiente enlace https://es.r4ds.hadley.nz/introducci%C3%B3n.html
+[^3]: Si estamos usando RStudio podemos ver que en en la sección Values de la pestaña "Environment" ha aparecido nuestro objeto "resultado" asociado al resultado de la operación.
+[^4]: Teniendo en cuenta que la raíz cuadrada de X puede ser expresada como potencia de X en la forma X^(1/2)^
+[^5]: Podemos obtener la mayor parte de paquetes del CRAN (Comprehensive R Archive Network). La función `install.packages()` busca allí los paquetes que le pedimos que descargue.
+[^6]: No se conoce una traducción oficial al castellano para los tipos de vectores. En la versión en español de "R for data science" son llamados lógicos, dobles, enteros y caracter.
+[^7]: Al menos no de manera automática, como sí se puede en otros lenguajes de programación.
+
