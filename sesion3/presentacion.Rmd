@@ -1,0 +1,124 @@
+---
+title: "Sesion 3"
+subtitle: "Importación de datos"
+author: "Samuel Calderon"
+date: "28/01/2021"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+```
+
+## Repaso de escritura con R Markdown
+
+Paso 1: Creamos un nuevo proyecto (dentro de la carpeta "R")
+
+    Menú File > 
+      New Proyect > 
+      New Directory > 
+      New Proyect > 
+      Elegir nombre y ubicación > 
+      Create project
+
+Paso 2: Creamos un nuevo archivo R Markdown
+
+    Menú File > 
+      New File > 
+      R Markdown > 
+      Configurar nombre de autor >
+      Ok
+      
+---
+
+Paso 3: Replicar un [artículo de la BBC](https://www.bbc.com/mundo/noticias-america-latina-55725589). 
+Sólo hasta llegar al encabezado **"Universidades con y sin fines de lucro" **.
+
+![](images/articulo-bbc.png){width=80%}
+
+Paso 4: Hacer Knit al documento con output HTML.
+
+# Importación de datos
+
+## Recuerda el primer paso
+
+Paso 1: Creamos un nuevo proyecto (dentro de la carpeta "R")
+
+    Menú File > 
+      New Proyect > 
+      New Directory > 
+      New Proyect > 
+      Elegir nombre y ubicación > 
+      Create project
+
+## Material a utilizar
+
+- R para ciencia de datos. [Capítulo Importación de datos](https://r4ds-en-espaniol.netlify.app/importaci%C3%B3n-de-datos.html)
+- Importing data with RStudio [blog](https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio)
+- Different ways of importing data into R [blog](https://towardsdatascience.com/different-ways-of-importing-data-into-r-2d234e8e0dec)
+
+La data a importar en la práctica se encuentra en una carpeta de [Google Drive](https://drive.google.com/drive/folders/1ZRZsR6WDcrdKOsNnM1lz_frwpMP0WndW?usp=sharing) para su descarga. No olvides ubicar todos los archivos descargados dentro de la carpeta "data" de tu proyecto. 
+
+## Descomprimir archivos
+
+Dos de los archivos descargados han sido comprimidos. Para descomprimirlos, puedes hacer uso del siguiente código.
+
+```{r unzip, eval=FALSE, echo=TRUE}
+unzip(zipfile = "data/enaho01a_2019_500.zip", exdir = "data")
+unzip(zipfile = "data/Enaho01A-2020-500.zip", exdir = "data")
+```
+
+- `zipfile`: Nombre del archivo a descomprimir
+- `exdir`: Carpeta en la que se ubicará el contenido descomprimido
+
+---
+
+Ahora deberías contar con todos estos archivos en tu carpeta "data".
+
+```{r}
+data.frame(archivos = dir("data")) %>% knitr::kable()
+```
+
+## Paquetes necesarios
+
+Existen paquetes especializados para cada tipo de datos que deseamos descargar. 
+En esta oportunidad, aprenderemos a usar los siguientes.
+
+- `readr`: Para archivos de texto
+- `readxl`: Para archivos de Excel
+- `haven`: Para archivos de SPSS y Stata
+
+### Recuerda
+
+Fuera del mundo de la investigación académica, existen muchos tipos de formatos de almacenamiento de datos que están mejor optimizados para tareas específicas. 
+
+---
+
+Una característica común de todos los paquetes presentados es que al leer los datos en R, se crean como *tibbles*, un formato de trabajo para datos tabulares que existe sólo en R. Además de ello, sus funciones comparten elementos en su interfaz (API), lo que permite trabajar con distintos tipos de datos realizando cambios mínimos.
+
+# Importación de archivos de texto
+
+## Cargando readr
+
+Para acceder a las funciones de un paquete, siempre debemos primero cargarlo haciendo uso de `library()`.
+
+```{r, echo=TRUE, eval=FALSE}
+library(readr)
+```
+
+Esto nos permitirá tener acceso a las funciones y datos contenidos en el paquete. 
+
+---
+
+En la carpeta "data" contamos contamos con tres tipos de archivos de texto.
+
+- mtcars.txt: Texto separado por un delimitador arbitrario.
+- diamonds_sample.tsv: Texto separado por tabulaciones
+- iris.csv: Texto separado por comas
+
+---
+
+La función que nutre el núcleo de `readr` es `read_delim()`. Nos permitirá leer prácticamente todo tipo de archivos de texto siempre y cuando le indiquemos el tipo de delimitador.
+
+Exploremos los archivos de texto en nuestra carpeta "data".

@@ -1,0 +1,19 @@
+---
+title: "importar_csv"
+author: "Samuel Calderon"
+date: "28/01/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(readr)
+data_iris <- read_csv("data/iris.csv")
+```
+
+Hay que usar `head()`
+hay que usar `tail()`
+hay que usar `str()`

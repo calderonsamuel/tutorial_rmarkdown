@@ -1,0 +1,47 @@
+---
+title: "respuestas-practica5"
+author: "Samuel Calderon"
+date: "04/02/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r}
+library(readr)
+sida_mujeres_peru <- read_csv("data/sida_mujeres_peru.csv", 
+    col_types = cols(`De 50 a 59 años` = col_double(), 
+        `De 60 años y más` = col_double()))
+fallecidos_covid <- read_csv("data/fallecidos_covid.csv")
+```
+
+## sida_mujeres_peru
+
+Mostrar la evolución de casos en el tiempo para todos los grupos etáreos en un sólo gráfico
+
+```{r}
+sida_mujeres_peru %>% 
+  pivot_longer(cols = c(`De 0 a 14 años`, 
+                        `De 15 a 24 años`, 
+                        `De 25 a 49 años`, 
+                        `De 50 a 59 años`, 
+                        `De 60 años y más`),
+               names_to = "grupo_de_edad", 
+               values_to = "casos") %>% 
+  ggplot(aes(año, casos)) +
+  geom_line(aes(color = grupo_de_edad))
+```
+
+## fallecidos_covid
+
+Obtener el recuento de fallecidos que nacieron en 1960
+
+```{r}
+fallecidos_covid %>% 
+  separate(FECHA_NAC, into = c("año", "mes", "dia"), sep = c(4, 6)) %>% 
+  count(año) %>% 
+  filter(año == "1960")
+```
+

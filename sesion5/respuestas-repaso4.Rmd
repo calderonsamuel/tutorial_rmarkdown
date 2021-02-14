@@ -1,0 +1,72 @@
+---
+title: "respuestas-repaso4"
+author: "Samuel Calderon"
+date: "04/02/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Lectura de datos
+
+```{r}
+library(readxl)
+library(dplyr)
+
+licenciamiento <- read_excel("data/Licenciamiento Institucional_5.xls")
+```
+
+## Pregunta 1
+
+```{r}
+licenciamiento %>% 
+  count(TIPO_GESTION)
+```
+
+## Pregunta 2
+
+```{r}
+licenciamiento %>% 
+  filter(TIPO_GESTION == "PÚBLICO") %>% 
+  count(ESTADO_LICENCIAMIENTO)
+```
+
+## Pregunta 3
+
+```{r}
+licenciamiento %>% 
+  filter(TIPO_GESTION == "PRIVADO") %>% 
+  count(ESTADO_LICENCIAMIENTO)
+```
+
+## Pregunta 2 y 3
+
+```{r}
+licenciamiento %>% 
+  filter(ESTADO_LICENCIAMIENTO == "LICENCIA OTORGADA") %>% 
+  count(TIPO_GESTION)
+```
+
+## Pregunta 4
+
+```{r}
+licenciamiento %>% 
+  filter(ESTADO_LICENCIAMIENTO == "LICENCIA OTORGADA") %>% 
+  count(DEPARTAMENTO_LOCAL) %>% 
+  arrange(desc(n)) %>% 
+  mutate(rank = row_number()) %>% 
+  filter(rank <= 5)
+```
+
+## Pregunta 4 sin rank
+
+```{r}
+licenciamiento %>% 
+  filter(ESTADO_LICENCIAMIENTO == "LICENCIA OTORGADA") %>% 
+  count(DEPARTAMENTO_LOCAL) %>% 
+  arrange(desc(n)) %>% 
+  filter(row_number() <= 5)
+```
+

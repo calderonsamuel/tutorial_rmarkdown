@@ -1,0 +1,45 @@
+---
+title: "importar con haven"
+author: "Samuel Calderon"
+date: "28/01/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+library(haven)
+```
+
+
+```{r}
+enaho2020 <- read_sav("data/Enaho01A-2020-500.sav")
+enaho2019 <- read_dta("data/enaho01a_2019_500.dta")
+```
+
+## Head
+
+```{r}
+select(slice(enaho2020, 1:6), AÑO, MES, UBIGEO)
+```
+
+
+```{r}
+enaho2020 %>% 
+  slice(10:20) %>% 
+  select(AÑO, MES, CONGLOME)
+```
+
+```{r}
+enaho2019 %>% 
+  slice(1:6) %>% 
+  select(aÑo, mes, ubigeo)
+```
+
+
+
+
+

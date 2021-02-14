@@ -1,0 +1,156 @@
+---
+title: "Evolución de indicadores peruanos usando gapminder"
+author: "Samuel Calderon"
+date: "2021-02-01"
+output: 
+  html_document:
+    theme: journal
+    highlight: pygments
+    df_print: kable
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r paquetes, warning=FALSE, message=FALSE}
+# Paquetes necesarios
+library(readxl)
+library(dplyr)
+library(ggplot2)
+```
+
+# Obtención de los datos
+
+```{r data}
+gapminder <- read_excel("data/gapminder_subset.xlsx")
+```
+
+A continuación se da a conocer una muestra de 10 observaciones presentes en los datos.
+
+```{r}
+gapminder %>% 
+  sample_n(10)
+```
+
+Por cuestiones de comodidad, cambiaremos el nombre de las columnas de nuestra data.
+
+```{r}
+gapminder <- gapminder %>% 
+  rename(pais = country,
+         continente = continent,
+         año = year,
+         expectativa_de_vida = lifeExp,
+         poblacion = pop,
+         pbi_per_capita = gdpPercap)
+
+gapminder %>% 
+  sample_n(10)
+```
+
+## Cantidad de países por continente
+
+```{r}
+gapminder %>% 
+  filter(año == "2007") %>% 
+  count(continente)
+```
+
+Visto de manera gráfica:
+
+```{r}
+gapminder %>% 
+  filter(año == "2007") %>% 
+  count(continente) %>% 
+  ggplot(aes(x = continente, y = n)) +
+  geom_col()
+```
+
+
+# Evolución del PBI per cápita peruano
+
+Podemos obtener la tabla de datos de evolución del PBI peruano.
+
+```{r}
+gapminder %>% 
+  filter(pais == "Peru") %>% 
+  select(pais, año, pbi_per_capita)
+```
+
+
+```{r}
+gapminder %>% 
+  filter(pais == "Peru") %>% 
+  ggplot(aes(x = año, y = pbi_per_capita)) +
+  geom_line(color = "orange") 
+```
+
+## Comparación entre países de alianza del pacífico
+
+```{r}
+gapminder %>% 
+  filter(pais %in% c("Peru", "Chile", "Colombia", "Mexico")) %>% 
+  ggplot(aes(x = año, y = pbi_per_capita)) +
+  geom_line(aes(color = pais))
+```
+
+## Comparación entre Perú y Colombia después de 1980
+
+```{r}
+gapminder %>% 
+  filter(pais %in% c("Peru", "Colombia"), 
+         año > 1980) %>% 
+  ggplot(aes(x = año, y = pbi_per_capita)) +
+  geom_line(aes(color = pais))
+```
+
+## Cálculo del PBI total nacional
+
+```{r}
+gapminder %>% 
+  filter(pais == "Peru") %>% 
+  mutate(pbi_total = pbi_per_capita * poblacion) %>% 
+  select(pais, año, pbi_total)
+```
+
+Visto de manera gráfica:
+
+```{r}
+gapminder %>% 
+  filter(pais == "Peru") %>% 
+  mutate(pbi_total = pbi_per_capita * poblacion) %>% 
+  ggplot(aes(x = año, y = pbi_total)) +
+  geom_line(color = "orange")
+```
+
+## Comparación de la evolución del PBI nacional entre Perú y Colombia
+
+```{r}
+gapminder %>% 
+  filter(pais %in% c("Peru", "Colombia")) %>% 
+  mutate(pbi_total = pbi_per_capita * poblacion) %>% 
+  ggplot(aes(x = año, y = pbi_total)) +
+  geom_line(aes(color = pais))
+```
+
+## Top 10 de países con menor PBI per cápita en 2007
+
+```{r}
+gapminder %>% 
+  filter(año == 2007) %>% 
+  select(pais, continente, pbi_per_capita) %>% 
+  arrange(pbi_per_capita) %>% 
+  mutate(rank = row_number()) %>% 
+  filter(rank <= 10)
+```
+
+## Top 10 de países con mayor PBI per cápita en 2007
+
+```{r}
+gapminder %>% 
+  filter(año == 2007) %>% 
+  select(pais, continente, pbi_per_capita) %>% 
+  arrange(desc(pbi_per_capita)) %>% 
+  mutate(rank = row_number()) %>% 
+  filter(rank <= 10)
+```

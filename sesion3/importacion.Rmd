@@ -1,0 +1,51 @@
+---
+title: "importacion"
+author: "Samuel Calderon"
+date: "28/01/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Leer datos de texto
+
+Para crear un bloque de código usar los atajos:
+
+- Windows: Ctrl + Alt + I
+- Mac: Cmd + Opt + I
+
+```{r}
+library(readr)
+
+data_mtcars <- read_delim(file = "data/mtcars.txt", delim = "|")
+
+data_mtcars3 <- read_delim("data/mtcars.txt", "|", 
+    escape_double = FALSE, col_types = cols(cyl = col_integer(), 
+        hp = col_integer(), vs = col_integer(), 
+        am = col_integer(), gear = col_integer(), 
+        carb = col_integer()), trim_ws = TRUE)
+```
+
+## Previsualización
+
+La función `head()` muestra las 6 primeras observaciones de mi tabla.
+
+```{r}
+head(data_mtcars)
+```
+
+Puedo usar la función `tail()` para mostrar las últimas observaciones.
+
+```{r}
+tail(data_mtcars)
+```
+
+Puedo usar la función `str()` que nos va a mostrar la estructura de la tabla.
+
+```{r}
+str(data_mtcars)
+```
+
+

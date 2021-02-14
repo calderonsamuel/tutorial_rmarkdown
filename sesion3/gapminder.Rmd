@@ -1,0 +1,37 @@
+---
+title: "gapminder"
+author: "Samuel Calderon"
+date: "28/01/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(readxl)
+gapminder <- read_excel("data/gapminder.xlsx")
+```
+
+## Head
+
+```{r}
+head(gapminder)
+```
+
+## Tail
+
+```{r}
+tail(gapminder)
+```
+
+## STR
+
+```{r}
+str(gapminder)
+```
+
+
+
+
