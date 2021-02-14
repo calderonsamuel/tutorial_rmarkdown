@@ -1,0 +1,60 @@
+---
+title: 'Coronavirus: los 5 días que marcaron el destino de la pandemia en el mundo'
+author: "Samuel Calderon"
+date: "26/1/2021"
+output:
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Atajo: 
+Windows: Ctrl + Alt + k
+Mac: Cmd + Opt + k
+
+![Torre de la Grulla Amarilla en Wuhan](imagenes/foto1.jpg)
+
+**Hace un año, el gobierno chino cerró la ciudad de Wuhan. Durante semanas, los funcionarios habían sostenido que el brote estaba bajo control y que solo había unas pocas docenas de casos vinculados a un mercado de animales vivos. 
+Pero, de hecho, el virus se había extendido por toda la ciudad y por China.**
+
+Esta es la historia de cinco días críticos durante el comienzo del brote.
+
+***
+
+Para el 30 de diciembre, varias personas habían sido ingresadas en hospitales de la ciudad central de Wuhan, al enfermar con fiebre alta y neumonía.
+
+El primer caso conocido fue el de un hombre de unos 70 años que cayó enfermo el 1 de diciembre. Luego se descubrió que muchos de los casos estaban conectados a un mercado de animales vivos en expansión -el mercado mayorista de mariscos de Huanan- y los médicos comenzaron a sospechar que no se trataba de una neumonía normal.
+
+Muestras de las infecciones en los pulmones habían sido enviadas a empresas de secuenciación genética para identificar la causa de la enfermedad y los resultados preliminares habían indicado **un nuevo coronavirus** similar al Sars.
+
+![](imagenes/foto2.jpg)
+
+## 30 de diciembre de 2019: alerta de virus
+
+Alrededor de las 16:00 horas del 30 de diciembre, la jefa del Departamento de Emergencias del Hospital Central de Wuhan recibió los resultados de una prueba realizada por el laboratorio de secuenciación Capital Bio Medicals en Beijing.
+
+![Robert Maguire de la OMS y un médico chino visitan a un paciente con SARS en Guangzhou, China – abril de 2003](https://ichef.bbci.co.uk/news/800/cpsprodpb/13110/production/_116669087_1200-sars-2003-gettyimages-1194872129.jpg)
+
+- Coronavirus: 8 gráficos para entender cómo la pandemia ha afectado a las mayores economías del mundo
+- Los nuevos locos años 20: "Después de la pandemia puede venir una época de desenfreno sexual y derroche económico"
+
+***
+
+**\"Él había identificado el virus. Era un nuevo coronavirus.** Y no era altamente transmisible. Esto realmente no lo entendí porque había escuchado que muchas, muchas personas se habían infectado", dijo Lipkin a la BBC. "No creo que haya intentado un engaño, creo que simplemente estaba equivocado".
+
+<h2>Mi subtitulo</h2>
+
+## Mi subtitulo
+
+***
+
+## Enlaces
+
+* [Coronavirus: 8 gráficos para entender cómo la pandemia ha afectado a las mayores economías del mundo](https://www.bbc.com/mundo/noticias-55802814)
+* Los nuevos locos años 20: "Después de la pandemia puede venir una época de desenfreno sexual y derroche económico"
+
+## Video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EAzpg7J-OxA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
