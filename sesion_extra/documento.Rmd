@@ -1,0 +1,221 @@
+---
+title: "Flujo de análisis de datos"
+author: "Samuel Calderon"
+date: "18/02/2021"
+output: 
+    html_document:
+        theme: 
+            version: 4
+            bootswatch: journal
+        toc: true
+        toc_float: true
+        toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(gapminder)
+```
+
+# Estructura de un reporte simple
+
+La ventaja de usar R Markdown frente a otros tipos de archivos para análisis de datos está en su capacidad para mezclar texto, código, y el resultado del código (que generalmente serán tablas o gráficos).
+
+Recuerda que para hacer uso de las funciones de un paquete que hayas descargado, necesitas primero "cargar" el paquete con `library()`. Luego de eso, cada paso de tu análisis en el que uses código, debe estar preferentemente registrado en su propio bloque de código.
+
+## Estructura típica
+
+Teniendo en cuenta lo anterior, podemos resumir la estructura típica de un reporte de la siguiente manera:
+
+1. Cargar paquetes
+2. Cargar datos
+3. Análisis (se repite las veces que sean necesarias)
+    - Explicación del método
+    - Bloque código
+    - Explicación del resultado
+4. Conclusiones
+
+## Cargar paquetes
+
+### Paquetes para cargar datos
+
+Los paquetes se cargan haciendo uso de la función `library()`. Algo importante de recordar es que por cada documento R Markdown que escribas, sólo necesitas cargar un paquete una sola vez.
+
+Por ejemplo, si quisieras cargar los siguientes archivos:
+
+- "data/gapminder.xlsx"
+- "data/mtcars.xlsx"
+- "data/ece2020.csv"
+
+Necesitarás cargar el paquete `readxl` para leer los archivos *.xlsx* y `readr` para leer el archivo *.csv*.
+
+```{r, eval=FALSE}
+library(readxl)
+library(readr)
+```
+
+Observa que a pesar de que queremos cargar dos archivos *.xlsx*, sólo es necesario cargar `readxl` una vez. 
+
+### Paquetes para ordenamiento y análisis de datos
+
+No solo vamos a requerir cargar datos a nuestra sesión de trabajo, para trabajar con las tablas será necesario requerir a funciones como `select()`, `filter()`, `pivot_longer()`, `ggplot()` y hasta el operador pipe `%>%`. Para ello vamos a requerir cargar los paquetes:
+
+- `dplyr`: que contiene `select()`, `filter()`, el operador `%>%` y otras funciones más
+- `tidyr`: que contiene `pivot_longer()`, `pivot_wider()`, `separate()` y otras funciones más 
+- `ggplot2`: que contiene las funciones para crear los gráficos que conocemos
+
+Entonces, a nuestro bloque de código en el que hemos cargado los paquetes necesarios para cargar datos, debemos sumarle líneas para cargar los otros paquetes necesarios.
+
+```{r, eval=FALSE}
+library(readxl)
+library(readr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+```
+
+Con esto, ahora ya tenemos todos los elementos básicos para el cargado y análisis de datos.
+
+### Paquetes del tidyverse
+
+El *tidyverse* es una colección de paquetes que comparten una filosofía común: trabajar con datos *tidy* (ordenados). Una manera sencilla de cargar los paquetes típicos a usar en análisis de datos es cargando el paquete `tidyverse`, que nos ayuda a cargar varios paquetes llamando sólo a uno. Mira lo que sucede al cargar `tidyverse`.
+
+```{r}
+library(tidyverse)
+```
+
+Se nos muestra un mensaje indicando que se han cargado todos los paquetes del *nucleo* del tidyverse. ¿Cuáles son estos paquetes?
+
+- `ggplot2`: Para realizar gráficos. 
+- `tibble`: Provee una nueva clase de *data.frame*. Es a lo que comúnmente hemos estado llamado *tablas*.
+- `tidyr`: Provee funciones para convertir datos desordenados a ordenados.
+- `readr`: Provee funciones para leer datos desde archivos de texto, incluyendo los muy comunes *.csv* (separados por comas).
+- `purrr`: Provee funciones para iterar sencillamente en nuestros objetos. Facilita los bucles o loops.
+- `dplyr`: Provee las funciones que conoces para análisis de datos, además del operador `%>%`.
+- `stringr`: Provee funciones para trabajar fácilmente con texto y *expresiones regulares*.
+- `forcats`: Provee funciones para trabajar fácilmente con *factores*.
+
+En otras palabras, usar `library(tidyverse)` equivale a usar:
+
+```{r, eval=FALSE}
+library(ggplot2)
+library(tibble)
+library(tidyr)
+library(readr)
+library(purrr)
+library(dplyr)
+library(stringr)
+library(forcats)
+```
+
+Se considera buena práctica usar `library(tidyverse)` para cargar estos paquetes de uso típico. Recuerda que si necesitas leer archivos *.xlsx* igual necesitas añadir la línea en la que cargas `readxl`.
+
+## Cargar datos
+
+Una vez que se cargan los paquetes necesitas cargar los datos que vas a utilizar. Puedes cargar todos los datos que necesitarás en un sólo bloque de código.
+
+```{r, eval=FALSE}
+gapminder <- read_excel("data/gapminder.xlsx")
+mtcars <- read_excel("data/mtcars.xlsx")
+ece2020 <- read_csv("data/ece2020.csv")
+```
+
+Es buena práctica crear un nuevo objeto si vamos a trabajar típicamente con un subconjunto de datos. Por ejemplo, si sé que voy a estar utilizando sólo las observaciones de `gapminder` correspondientes al año 2007, podría crear un nuevo objeto resultado del filtrado.
+
+```{r}
+gapminder2007 <- gapminder %>% filter(year == 2007)
+```
+
+No olvides ponerle un nombre significativo a los objetos que vas creando.
+
+
+# Encadenamiento de funciones
+
+Una vez que conoces el operador `%>%` es tentador reusar código propio o de otras personas y esperar que funcione sin problemas para nuestro set de datos. Por ejemplo, si quisieras obtener el top 10 de observaciones basado en cierto indicador, podrías sentirte inclinado a copiar y pegar el siguiente código para adaptarlo.
+
+```{r}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  select(country, continent, gdpPercap) %>% 
+  arrange(desc(gdpPercap)) %>% 
+  mutate(rank = row_number()) %>% 
+  filter(rank <= 10)
+```
+
+Sin embargo, debes tener cuidado. Este código ha sido diseñado para trabajar con un set de datos específico, y cada función encadenada se nutre de la anterior. Por lo tanto, en lugar de querer adaptar todo el código de una sola vez, es mejor ir primero analizando qué hace cada línea.
+
+Empecemos por analizar la primera línea del código.
+
+```{r}
+gapminder
+```
+
+La primera línea nos da el set de datos a partir del cual queremos realizar el top 10. Este es el momento para identificar cuál es la unidad de observación de esta tabla. En este caso, tenemos que cada observación representa a un país en cierto año para el cual se le midió el PBI per cápita, la población y la expectativa de vida.
+
+Veamos la segunda línea.
+
+```{r}
+gapminder %>% 
+  filter(year == 2007)
+```
+
+Se está realizando un filtrado del set de datos, en el que sólo retenemos las observaciones en que el año corresponda a 2007. Esto nos deja una tabla con menos filas.
+
+Veamos la tercera línea.
+
+```{r}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  select(country, continent, gdpPercap)
+```
+
+Con los datos filtrados, se decidió que para cada país, sólo necesitamos retener las variables de nombre del país, nombre del continente y pbi per cápita. ¿Cómo saber a qué año corresponden las observaciones? No es necesario porque en la línea 2 hemos pedido retener sólo aquellas correspondientes al 2007.
+
+Veamos la cuarta línea.
+
+```{r}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  select(country, continent, gdpPercap) %>% 
+  arrange(desc(gdpPercap))
+```
+
+Para obtener un top 10, necesitamos que nuestros datos estén ordenados de acuerdo a la variable de interés. Por eso con la cuarta línea estamos pidiendo que la tabla se ordene basado en el orden descendente de la variable PBI per cápita. 
+
+Veamos la quinta línea.
+
+```{r}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  select(country, continent, gdpPercap) %>% 
+  arrange(desc(gdpPercap)) %>% 
+  mutate(rank = row_number())
+```
+
+Para identificar con mayor facilidad el número de orden de nuestras observaciones, utilizamos `mutate()` para crear la nueva columna `rank` que contiene el número de fila de nuestras observaciones.
+
+Veamos la sexta línea.
+
+```{r}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  select(country, continent, gdpPercap) %>% 
+  arrange(desc(gdpPercap)) %>% 
+  mutate(rank = row_number()) %>% 
+  filter(rank <= 10)
+```
+
+Una vez que hemos conseguido ordenar nuestros datos y tenemos la columna `rank`, podemos por fin filtrar sólo aquellos datos en los que el valor de `rank`, es decir su número de fila o posición, sea menor o igual a 10. Con esto, el resultado que obtenemos es el top 10 de observaciones basado en el orden descendente de la columna PBI per cápita.
+
+Fíjate que si analizas qué hace el código que copiaste, es mucho más fácil entender qué es lo que tienes que cambiar para adaptarlo a tus necesidades. Es buena práctica que cuando adaptes el código, también pruebes tus cambios línea por línea  para ver si vas por buen camino.
+
+# Unir varios conjuntos de datos
+
+## Por filas
+
+## Por columnas
+
+
+
+
+
