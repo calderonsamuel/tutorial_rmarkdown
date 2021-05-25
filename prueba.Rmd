@@ -1,0 +1,16 @@
+---
+title: "Untitled"
+author: "Samuel Calderon"
+date: "20/5/2021"
+output: html_document
+---
+
+Este trabajo es una réplica de un original.
+
+# encabezado1 
+
+mi primer parrafo
+
+mi segundo parrafo
+
+![](images/articulo-bbc.png)

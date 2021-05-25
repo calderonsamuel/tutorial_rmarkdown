@@ -1,8 +1,13 @@
 ---
-title: "Diamond sizes"
-date: 2016-08-25
-output: pdf_document
+title: "Mi primer archivo en Rpubs.com"
+author: "Pongo mi nombre"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    df_print: paged
 ---
+
+mi texto en prosa
 
 ```{r setup, include = FALSE}
 library(ggplot2)
@@ -12,15 +17,11 @@ smaller <- diamonds %>%
   filter(carat <= 2.5)
 ```
 
-We have data about `r nrow(diamonds)` diamonds. Only 
-`r nrow(diamonds) - nrow(smaller)` are larger than
-2.5 carats. The distribution of the remainder is shown
-below:
+Tenemos datos de `r nrow(diamonds)` diamantes. Solo `r nrow(diamonds) - nrow(smaller)` tienen un tamaño mayor a 2.5 carats. La distribución del resto de diamantes se muestra a continuación:
 
 ```{r, echo = FALSE}
 smaller %>% 
-  ggplot(aes(depth)) + 
+  ggplot(aes(carat)) + 
   geom_freqpoly(binwidth = 0.01)
 ```
-
 

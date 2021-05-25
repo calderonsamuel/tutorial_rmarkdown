@@ -1,6 +1,6 @@
 ---
 title: "Sesión 1"
-subtitle: "El editor RStudio y markdown"
+subtitle: "Introducción a R y R Markdown"
 output: ioslides_presentation
 author: "Samuel Calderon"
 ---
@@ -9,9 +9,54 @@ author: "Samuel Calderon"
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+# Presentación del curso
+
+## Docente
+
+Samuel Enrique Calderon Serrano: 
+
+- Politólogo de la Universidad Antonio Ruiz de Montoya. 
+- Actualmente trabaja en la Superintendencia Nacional de Educación Universitaria - SUNEDU como miembro del Equipo Técnico Normativo de la Dirección de Licenciamiento. 
+- Miembro de la organización [DecideBien](https://github.com/DecideBienpe). Colabora ocasionalmente en iniciativas de código abierto. 
+- Proviene de Lima, Perú. 
+- Otros canales: 
+    - Web: [www.samuelenrique.com](https://www.samuelenrique.com)
+    - Twitter: [\@samuel__case](https://twitter.com/samuel__case)
+    - Github: [/calderonsamuel](https://github.com/calderonsamuel)
+
+## Contenido del curso
+
+- Público objetivo: 
+    - Estudiantes o egresados de carreras de ciencias sociales, periodismo o educación con interés en aprender herramientas de análisis y visualización de datos.
+- Aprendizajes esperados: 
+    - Elementos básicos del análisis de datos usando R a través de RStudio
+        - Importación de datos
+        - Limpieza y ordenamiento de datos
+        - Análisis exploratorio de datos ordenados (tidy data)
+    - Elaboración de reportes de análisis de datos usando R Markdown
+    
+---
+
+Este curso NO enseñará:
+
+- Estadística
+- Programación
+- Excel, SPSS, Stata, etc
+    
+## Producto final esperado
+
+Cada participante elaborará un reporte que incluirá:
+
+- Descripción de los conjuntos de datos utilizados
+- Explicación de metodología utilizada
+- Productos de análisis (ránkings, tablas de frecuencia, gráficos, etc)
+- Interpretación de resultados 
+
+El reporte usará conjuntos de datos abiertos y será publicado vía web en formato *bookdown*.
+
 ## Software requerido
 
-Para la presente sesión es necesario contar con el siguiente software instalado:
+Para la presente edición del taller es necesario contar con el siguiente software instalado:
 
 1.  R programming language (versión 4.0.0 o superior)
 2.  RStudio IDE (versión 1.4.0 o superior)
@@ -21,7 +66,43 @@ También se necesitan los siguientes paquetes de R:
 1.  tidyverse
 2.  rmarkdown
 
-# La consola de R
+## Inscripción a Rpubs.com
+
+Adicionalmente, se requiere que los participantes cuenten con una cuenta en el servicio Rpubs para poder subir a la web los trabajos realizados.
+
+La inscripción es sumamente sencilla y rápida
+
+---
+
+¿Qué es Rpubs.com?
+
+---
+
+1. Dirigirse a <https://rpubs.com>
+
+![](images/rpubs-01.png){width=80%}
+
+---
+
+2. Seleccionar "Register"
+
+![](images/rpubs-02.png){width=80%}
+
+---
+
+3. Ingresar los datos solicitados. 
+
+![](images/rpubs-03.png){width=80%}
+
+---
+
+Con esto es suficiente. 
+
+En el futuro, puedes acceder con tu nombre de usuario (o email) y contraseña.
+
+Por seguridad, puedes guardar esos datos en un gestor de contraseñas, como el de Google.
+
+# R a través de los años
 
 ## R en la terminal
 
@@ -46,19 +127,112 @@ Es posible acceder a la consola de R desde una terminal.
 
 ![](images/terminal3.png){width="100%"}
 
+## El Rgui como editor
+
+En los años 2000, se elaboró una interfaz más amigable y dedicada a trabajar con R llamada "R Graphic User Interface" (Rgui).
+
+![](images/rgui-01.png){width=50%}
+
+---
+
+Esta interfaz nos conecta directamente a la consola y nos brinda la opción de tener un editor de scripts, previsualizar nuestros gráficos, entre otras cosas.
+
+![](images/rgui-02.png){width=100%}
+
+## RStudio
+
+En la década de los 2010 aparece el proyecto RStudio, gracias al trabajo de J.J. Allaire.
+
+![](images/jj-allaire.jpg){width=100%}
+
+---
+
+Su desarrollo inició en diciembre de 2010 y su primera versión oficial se lanzó en noviembre de 2016. Es el editor con el que trabajaremos en estas sesiones.
+
+![](images/rstudio-ventana.png){width=100%}
+
 # El editor de código RStudio
 
 ------------------------------------------------------------------------
 
-Generalmente, no será necesario acceder a R a través de una terminal porque lo haremos utilizando el entorno de programación RStudio, que nos brinda una consola de R automáticamente (aunque tras bambalinas realiza previamente el procedimiento explicado).
+Generalmente, no será necesario acceder a R a través de una terminal ni del Rgui, porque lo haremos utilizando el entorno de programación RStudio, que nos brinda una consola de R automáticamente.
 
-------------------------------------------------------------------------
+Rstudio nos brinda varios paneles que cumplen distintas funciones. Es importante mencionar que el siguiente listado toma en cuenta la ubicación por defecto de los paneles, ya que se pueden modificar según el gusto de cada usuario.
 
-![](images/rstudio-consola.png){width="100%"}
+## El panel de edición
 
-## Asignar directorio de trabajo general
+![](images/rstudio-paneles-01.png){width=100%}
 
-El directorio de trabajo general es la carpeta en la que guardamos nuestros trabajos realizados con R. Por defecto, es la carpeta de "Documentos" del usuario de la computadora.
+---
+
+En este panel aparecerán todos los archivos editables. RStudio nos brinda la opción de utilizar múltiples tipos de archivo y de tener varios abiertos al mismo tiempo. 
+
+Entre los formatos que se pueden abrir y editar en este panel encontramos:
+
+- *.R*: Scripts de R
+- *.Rmd*: Archivos R Markdown
+- *.py*: Scripts de Python
+- *.html*: Documentos en formato HTML
+- *.css*: Hojas de estilo de cascada
+- *.txt*: Documentos de texto sin enriquecer
+- *.csv*: Archivos de valores separados por comas
+- etc
+
+---
+
+En el panel de edición también podremos obtener un visor de datos cada vez que lo solicitemos.
+
+
+
+## El panel de consola
+
+![](images/rstudio-paneles-02.png){width=100%}
+
+---
+
+En el panel de consola encontramos directamente la consola de R lista para ser usada. 
+
+Generalmente, este panel es usado directamente en ocasionas muy puntuales, ya que la mayor parte del tiempo se trabajará con código en el panel de edición.
+
+Cabe mencionar que este panel también brinda acceso a una ventana de Terminal y a una ventana de ejecución de trabajos en paralelo (Jobs).
+
+## El panel de  environment
+
+![](images/rstudio-paneles-03.png){width=100%}
+
+---
+
+Desde este panel tenemos acceso a todos los environment de nuestra sesión de R. Cuando creemos un objeto, nos aparecerá listado en este panel.
+
+Cuando trabajemos en otros tipos de proyectos, como la creación de paquetes, conexión remota a bases de datos, creación de páginas web, uso de sistemas de control de versiones, etc, este panel tendrá otras ventanas para mostrar el estado de esos trabajos.
+
+## El panel de apoyo
+
+![](images/rstudio-paneles-04.png){width=100%}
+
+---
+
+Este panel nos permitirá previsualizar el resultado de nuestro trabajo. Cuenta con lo siguiente:
+
+- Explorador de archivos (Files)
+- Ventana de gráficos (Plots)
+- Explorador de paquetes instalados (Packages)
+- Ventana de ayuda (Help)
+- Visualizador de contenido Web (View)
+
+# El directorio de trabajo
+
+---
+
+El directorio de trabajo es donde R busca los archivos que le pides cargar, y donde pondrá los archivos que le pidas guardar. RStudio muestra el directorio de trabajo en la parte superior de la consola.
+
+En muchas ocasiones existe la tentación de trabajar con archivos que están fuera de nuestro directorio de trabajo. Es recomendable evitar este comportamiento porque suele ser la raíz de muchos problemas.
+
+Para ello, RStudio cuenta con los *Proyectos*, una manera sencilla de organizar nuestro trabajo. Mi mayor recomendación para usuarios de RStudio iniciantes y especialistas es trabajar ***siempre*** con proyectos dentro de RStudio.
+
+## Asignar directorio de trabajo por defecto
+
+El directorio de trabajo por defecto es la carpeta en la que R usará cada vez que no estemos dentro de un proyecto. Por defecto, es la carpeta de "Documentos" del usuario de la computadora.
 
 RStudio cuenta con un explorador de archivos para revisar el contenido de nuestros directorios.
 
@@ -81,13 +255,7 @@ Mi recomendación personal es utilizar como directorio general la carpeta llamad
 
 ![](images/rstudio-wd.png){height="100%"}
 
-## EL directorio de trabajo
-
-El directorio de trabajo es donde R busca los archivos que le pides cargar, y donde pondrá los archivos que le pidas guardar. RStudio muestra el directorio de trabajo en la parte superior de la consola.
-
-En muchas ocasiones existe la tentación de trabajar con archivos que están fuera de nuestro directorio de trabajo. Es recomendable evitar este comportamiento porque suele ser la raíz de muchos problemas.
-
-Para ello, RStudio cuenta con los *Proyectos*, una manera sencilla de organizar nuestro trabajo. Mi mayor recomendación para usuarios de RStudio iniciantes y especialistas es trabajar ***siempre*** con proyectos dentro de RStudio.
+# Proyectos
 
 ## Crear proyectos
 
@@ -103,17 +271,102 @@ Puedes crear un proyecto siguiendo la siguiente ruta:
 
 Si estás usando el servicio <https://www.rstudio.cloud> puedes crear nuevos proyectos en tu espacio de trabajo (Your workspace).
 
+---
+
+1. Ir al menú file
+
+![](images/crear-proyecto-01.png){width=100%}
+
+---
+
+<ol start=2><li>Hacer click en "New Project"</li>
+
+![](images/crear-proyecto-02.png){width=100%}
+
+---
+
+<ol start=3><li>Elegir "New directory"</li>
+
+![](images/crear-proyecto-03.png)
+
+---
+
+<ol start=4><li>Elegir "New project"</li>
+
+Las demás opciones son plantillas para proyectos típicos con los que te podrás familiarizar más adelante
+
+![](images/crear-proyecto-04.png)
+
+---
+
+<ol start=5><li>Indicar el nombre del proyecto</li>
+
+![](images/crear-proyecto-05.png)
+
+---
+
+<ol start=6><li>Elegir la carpeta en la que se guardará el proyecto</li> 
+
+Recomiendo que sea la carpeta "R"
+
+![](images/crear-proyecto-06-1.png)
+
+---
+
+![](images/crear-proyecto-06-2.png)
+
+---
+
+<ol start=7><li>Hacer click en "Create project"</li>
+
+![](images/crear-proyecto-07.png)
+
+---
+
+RStudio te dará varias  señales de que creaste exitosamente tu  proyecto. También, te indicará cuál es el directorio de trabajo de tu proyecto.
+
+![](images/crear-proyecto-08.png){width=100%}
+
 ## Usar un proyecto
 
-Al crear un nuevo proyecto, RStudio crea para ti una carpeta con un archivo que lleva un nombre tipo *"\*.Rproj"*. Cuando estés fuera del proyecto bastará con hacer doble click en ese archivo para que RStudio abra una sesión de trabajo usando la ubicación del proyecto.
+Al crear un nuevo proyecto, RStudio crea para ti una carpeta con un archivo que lleva un nombre tipo *"\*.Rproj"*.
 
-Si deseas cerrar el proyecto actual para trabajar en otro, peudes hacerlo desde el menú "File" haciendo click en "Close Project".
+![](images/proyecto-01.png){width=100%}
+
+---
+
+Cuando estés fuera del proyecto bastará con hacer doble click en ese archivo para que RStudio abra una sesión de trabajo usando la ubicación del proyecto.
+
+![](images/proyecto-02.png){width=100%}
+
+---
+
+![](images/proyecto-03.png){width=100%}
+
+---
+
+Si deseas cerrar el proyecto actual para trabajar en otro, puedes hacerlo desde el menú "File" haciendo click en "Close Project".
+
+![](images/proyecto-04.png){width=45%}
+
+# Trabajo 1: Crea tu primer proyecto
+
+1. Crea un nuevo proyecto llamado: mi_primer_proyecto
+2. Una vez creado el proyecto, en la consola ejecuta el  siguiente código:
+
+```{r, eval=FALSE}
+getwd()
+```
+
+3. Copia y pega el resultado de ese código en el chat de la llamada grupal.
+
+# Descanso de 15 minutos
 
 # Elementos básicos de Rmarkdown
 
 ## ¿Qué es?
 
-R Markdown nos provee de un marco de trabajo unificado para la ciencia de datos y el análisis de datos, combinando código, sus resultados, y los comentarios escritos por el autor. Los documentos R Markdown son totalmente reproducibles y soportan docentas de formatos de salida como PDFs, archivos Word, diapositivas, y más.
+R Markdown nos provee de un marco de trabajo unificado para la ciencia de datos y el análisis de datos, combinando código, sus resultados, y los comentarios escritos por el autor. Los documentos R Markdown son totalmente reproducibles y soportan docenas de formatos de salida como PDFs, archivos Word, diapositivas, y más.
 
 Uno de los objetivos de este taller es que los participantes aprendan a usar R Markdown y puedan encontrar la forma en que puede ayudarles a potenciar su trabajo. 
 
@@ -152,6 +405,55 @@ Cuando haces knit el documento (knit significa tejer en inglés), R Markdown env
 
 El archivo markdown generado por knitr es procesado entonces por pandoc (<http://pandoc.org/>) que es el responsable de crear el archivo terminado. La ventaja de este flujo de trabajo en dos pasos es que puedes crear un muy amplio rango de formatos de salida, que conocerás más adelante.
 
+# Trabajo 2: Publica tu primer archivo en Rpubs.com
+
+---
+
+Va a solicitar packrat, rsconnect. En algunos casos solo publica desde microsoft edge. (revisar navegador por defecto)
+
+Una vez renderizado el archivo en formato HTML, súbelo a la plataforma Rpubs.com
+
+No olvides cambiar el nombre de autor en el YAML.
+
+---
+
+![](images/publish.png){width=100%}
+
+---
+
+![](images/publish-02.png){width=100%}
+
+---
+
+![](images/publish-03.png){width=100%}
+
+---
+
+![](images/publish-04.png){width=100%}
+
+--- 
+
+Una vez publicado, comparte el enlace de tu publicación en el chat de la llamada grupal.
+
+# Trabajo 3: Crea tu propio archivo R Markdown
+
 ---
 
 Para comenzar con tu propio archivo .Rmd, selecciona File > New File > R Markdown… en la barra de menú. RStudio iniciará un asistente que puedes usar para pre-rellenar tu archivo con contenido útil que te recuerda cómo funcionan las principales características de R Markdown.
+
+Todo el contenido después del YAML debe ser eliminado antes de continuar con el trabajo.
+
+---
+
+El objetivo es poder replicar [este artículo](https://www.bbc.com/mundo/noticias-america-latina-56994622) de la BBC acerca del coronavirus. Lo haremos usando la Guía de Referencia de R Markdown para saber cómo escribir.
+
+**R Markdown: Reference Guide** ([descarga](https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf))
+
+Recuerda cambiar el título del Una vez finalizado el artículo, deberá ser subido a Rpubs.com
+
+---
+
+![](images/articulo-bbc.png){width=100%}
+---
+
+Una vez publicado, comparte el enlace de tu publicación en el chat de la llamada grupal.
