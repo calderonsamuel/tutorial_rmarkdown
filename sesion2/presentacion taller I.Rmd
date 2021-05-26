@@ -1,0 +1,273 @@
+---
+title: "Sesión 2"
+subtitle: "Importación de datos"
+author: "Samuel Calderon"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+```
+
+## Repaso de escritura con R Markdown
+
+Paso 1: Creamos un nuevo proyecto (dentro de la carpeta "R")
+
+    Menú File > 
+      New Proyect > 
+      New Directory > 
+      New Proyect > 
+      Elegir nombre y ubicación > 
+      Create project
+      Nombre: repaso_01
+
+Paso 2: Creamos un nuevo archivo R Markdown
+
+    Menú File > 
+      New File > 
+      R Markdown > 
+        Author: Tu nombre
+        Title: Repaso de escritura
+        
+---
+
+Paso 3: Replicar un [artículo de andina.pe](https://andina.pe/agencia/noticia-universidad-amazonas-logra-primera-clonacion-un-animal-623641.aspx)
+
+![](images/articulo-andina.png){width=80%}
+      
+---
+
+Paso 4: Hacer Knit al documento con output HTML
+
+Paso 5: Publicar el documento en Rpubs.com y compartir el enlace en el chat grupal
+
+# Importación de datos
+
+## Recuerda el primer paso
+
+Paso 1: Creamos un nuevo proyecto (dentro de la carpeta "R")
+
+    Menú File > 
+      New Proyect > 
+      New Directory > 
+      New Proyect > 
+      Elegir nombre y ubicación
+        Nombre: sesion2
+        Ubicacion: Carpeta R > 
+      Create project
+      
+---
+
+Dentro de la carpeta del proyecto, creamos una carpeta llamada "data". Puedes hacer lo desde el visor de archivos de RStudio ("Files") o desde tu explorador de archivos  cotidiano.
+
+Para comprobar que llegaste hasta aquí, ejecuta el siguiente código en la consola y copia el resultado en el chat grupal.
+
+```{r, echo=TRUE, eval=FALSE}
+dir()
+```
+
+
+## Material a utilizar
+
+- R para ciencia de datos. [Capítulo Importación de datos](https://r4ds-en-espaniol.netlify.app/importaci%C3%B3n-de-datos.html)
+- Importing data with RStudio [blog](https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio)
+- Different ways of importing data into R [blog](https://towardsdatascience.com/different-ways-of-importing-data-into-r-2d234e8e0dec)
+
+La data a importar en la práctica se encuentra en una carpeta de [Google Drive](https://drive.google.com/drive/folders/1PStbhj2IXd1dx29QAKhjXzb0C_UNajFB?usp=sharing) para su descarga. No olvides ubicar todos los archivos descargados dentro de la carpeta "data" de tu proyecto. 
+
+---
+
+Ahora deberías contar con todos estos archivos en tu carpeta "data".
+
+```{r}
+data.frame(archivos = dir("data")) %>% slice(1:6) %>% knitr::kable()
+```
+
+---
+
+```{r}
+data.frame(archivos = dir("data")) %>% slice(7:11) %>% knitr::kable()
+```
+
+---
+
+Para comprobar que todo está bien, ejecuta el siguiente código en la consola y copia el resultado en el chat grupal.
+
+```{r, echo=TRUE, eval=FALSE}
+dir("data")
+```
+
+
+## Paquetes necesarios
+
+Existen paquetes especializados para cada tipo de datos que deseamos descargar. 
+En esta oportunidad, aprenderemos a usar los siguientes.
+
+- `readr`: Para archivos de texto
+- `readxl`: Para archivos de Excel
+- `haven`: Para archivos de SPSS y Stata
+
+Todos estos paquetes se descagaron cuando instalaste ´tidyverse´.
+
+### Recuerda
+
+Fuera del mundo de la investigación académica, existen muchos tipos de formatos de almacenamiento de datos que están mejor optimizados para tareas específicas. 
+
+---
+
+Una característica común de todos los paquetes presentados es que al leer los datos en R, se crean como *tibbles*, un formato de trabajo para datos tabulares que existe sólo en R. Además de ello, sus funciones comparten elementos en su interfaz (API), lo que permite trabajar con distintos tipos de datos realizando cambios mínimos.
+
+# Importación de archivos de texto
+
+## Cargando readr
+
+Para acceder a las funciones de un paquete, siempre debemos primero cargarlo haciendo uso de `library()`.
+
+```{r, echo=TRUE, eval=FALSE}
+library(readr)
+```
+
+Esto nos permitirá tener acceso a las funciones y datos contenidos en el paquete. 
+
+---
+
+En la carpeta "data" contamos con cinco tipos de archivos:
+
+- \*.txt: Texto separado por un delimitador arbitrario.
+- \*.tsv: Texto separado por tabulaciones
+- \*.csv: Texto separado por comas
+- \*.xlsx: Archivo de Excel
+- \*.SAV: Archivo de SPSS
+
+---
+
+La función que nutre el núcleo de `readr` es `read_delim()`. Nos permitirá leer prácticamente todo tipo de archivos de texto siempre y cuando le indiquemos el tipo de delimitador.
+
+Exploremos los archivos de texto en nuestra carpeta "data".
+
+## gapminder_comas.csv
+
+Los archivos de valores separados por comas (**C**omma **S**eparated **V**alues) son de los más utilizados en el mundo del análisis de datos debido a que prácticamente cualquier software puede reconocerlos. 
+
+Son archivos de texto que representan datos tabulares en los que los valores de cada columna están separados por comas.
+
+**Ver archivo original**
+
+## Leer datos csv
+
+Para leer estos archivos, usamos la función `read_csv()` del paquete `readr`.
+
+```{r, echo=TRUE, eval=FALSE}
+read_csv("data/gapminder_comas.csv")
+```
+
+---
+
+```{r}
+read_csv("data/gapminder_comas.csv")  
+```
+
+---
+
+Al ejecutar el código, obtenemos dos tipos de output. El primero nos indica que la lectura asignó a cada columna cierto tipo de datos. Este tipo de output es un simple mensaje (message).
+
+El segundo output nos indica el objeto obtenido (un tibble), con la cantidad de filas y columnas que contiene. Además, nos brinda las diez primeras filas de la información obtenida, y el nombre y tipo de cada columna. Si este conjunto de datos tuviera más columnas, sólo se nos mostraría la cantidad de columnas que alcances en nuestra ventana. 
+
+---
+
+Si deseamos usar los datos obtenidos para un análisis posterior, como probablemente sea el caso, es necesario almacenar la tabla generada haciendo uso del operador de asignación `<-`. El nombre indicado aparecerá en nuestro panel "Environment".
+
+```{r, echo=TRUE}
+datos_obtenidos_csv <- read_csv("data/gapminder_comas.csv")
+```
+
+---
+
+Vemos que volvemos a obtener el mensaje, pero esta vez no se nos muestran los datos. Esto sucede porque al asignarle un nombre, le hemos indicado a R que queremos acceder a los datos sólo cuando se lo indiquemos explícitamente. Para hacer ello, simplemente tipeamos el nombre que le asignamos al conjunto de datos.
+
+---
+
+```{r, echo=TRUE}
+datos_obtenidos_csv
+```
+
+---
+
+En esta ocasión, sí obtenemos la información contenida en el conjunto de datos, pero no el mensaje. Esto sucede porque los mensajes sólo nos muestran información relevante al momento de ejecutar una función, como lo es `read_csv()`.
+
+## Preguntas
+
+1. ¿De qué creen que se trata este conjunto de datos?
+2. ¿Cuál es la unidad de observación?
+
+## gapminder_tabs.tsv
+
+Otra manera de almacenar datos es usando uso de archivos de valores separados por tabulaciones (**T**ab **S**eparated **V**alues)
+
+Para leer estos archivos, hacemos uso de la función `read_tsv()`.
+
+---
+
+```{r, echo=TRUE}
+datos_obtenidos_tsv <- read_tsv("data/gapminder_tabs.tsv")
+```
+
+---
+
+Nuevamente, la función nos comunica mediante un mensaje qué tipo de columnas ha identificado.
+
+Podemos inspeccionar el contenido de este conjunto de datos del mismo modo anterior.
+
+---
+
+```{r, echo=TRUE}
+datos_obtenidos_tsv
+```
+
+## read_delim()
+
+Para archivos de texto con cualquier otro tipo de delimitador, usamos la función `read_delim()`, que además de solicitarnos la ubicación del archivo, nos pide especificar el delimitador que se usó para almacenar los datos.
+
+Por ejemplo, inspeccionemos el archivo "gapminder_comas2.txt"
+
+---
+
+Vemos que es muy similar a los archivos anteriores, pero en este caso las columnas están separadas por punto y coma. 
+
+Para leer este archivo, hacemos uso de `read_delim()` indicando como separador el caracter adecuado.
+
+---
+
+```{r, echo=TRUE}
+datos_obtenidos_punto_y_coma <- read_delim("data/gapminder_comas2.txt", delim = ";")
+```
+
+
+# Ejercicio
+
+---
+
+Lee el resto de archivos .txt y guardalos en tu "Environment". Los archivos deben ser leídos cada uno en un bloque de código.
+
+Para comprobar que lograste hacerlo, ejecuta el siguiente código y comparte el resultado en el chat grupal:
+
+```{r, echo=TRUE}
+ls()
+```
+
+# Descanso de 15 minutos
+
+## Lectura de datos excel
+
+## Lectura de datos excel con argumentos
+
+## Lectura de archivos SPSS
+
+## Uso de datos de paquetes instalados
+
+## Escritura de archivos
+
+
+
+
