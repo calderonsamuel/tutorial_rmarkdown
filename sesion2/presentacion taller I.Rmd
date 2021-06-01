@@ -248,7 +248,7 @@ datos_obtenidos_punto_y_coma <- read_delim("data/gapminder_comas2.txt", delim = 
 
 ---
 
-Lee el resto de archivos .txt y guardalos en tu "Environment". Los archivos deben ser leídos cada uno en un bloque de código.
+Lee el resto de archivos .txt y asignales un nombre en tu "Environment". Los archivos deben ser leídos cada uno en un bloque de código.
 
 Para comprobar que lograste hacerlo, ejecuta el siguiente código y comparte el resultado en el chat grupal:
 
@@ -260,13 +260,147 @@ ls()
 
 ## Lectura de datos excel
 
-## Lectura de datos excel con argumentos
+Para poder leer datos de excel, vamos a hacer uso del paquete `readxl`. 
+
+Recuerda que para cargar cualquier paquete, especificas su nombre sin comillas dentro de un llamado a la funcion `library()`.
+
+```{r}
+library(readxl)
+```
+
+---
+
+La función que nos permite leer archivos *.xlsx* es `read_xlsx()`. La usamos igual que en los casos anteriores.
+
+```{r}
+gapminder_excel <- read_xlsx("data/gapminder_excel.xlsx")
+```
+
+---
+
+```{r}
+gapminder_excel
+```
+
+---
+
+Alternativamente, podemos usar la función `read_excel()`, que nos da el mismo resultado.
+
+```{r}
+gapminder_excel2 <- read_excel("data/gapminder_excel.xlsx")
+```
+
+---
+
+```{r}
+gapminder_excel2
+```
+
+
 
 ## Lectura de archivos SPSS
 
-## Uso de datos de paquetes instalados
+Para leer archivos SPSS cargamos el paquete `haven`.
+
+```{r}
+library(haven)
+```
+
+---
+
+Como la extensión de los archivos es *.sav* podemos leerlos con la función `read_sav()`.
+
+```{r}
+universidades <- read_sav("data/09_UNIVERSIDADES_CARATULA.SAV")
+```
+
+---
+
+```{r}
+universidades
+```
+
+---
+
+Alternativamente, podemos usar la función `read_spss()`, que nos da el mismo resultado.
+
+```{r}
+universidades2 <- read_spss("data/09_UNIVERSIDADES_CARATULA.SAV")
+```
+
+---
+
+```{r}
+universidades2
+```
+
+
+# Lectura de datos con más argumentos
+
+---
+
+No siempre los datos estarán de antemano en un formato que nos permita leerlos automáticamente. En algunos casos, será necesario especificar argumentos adicionales al momento de leerlos.
+
+## Ejercicio
+
+Intentar leer los datos de los archivos excel restantes.
+
+## Solución
+
+Usar los argumentos adicionales:
+
+- `skip`
+- `sheet`
+- `col_names`
+
+
+# Uso de datos de paquetes instalados
+
+---
+
+Cuando se carga un paquete, el usuario tiene acceso a los set de datos contenidos en él. Podemos obtener un listado de los set de datos contenidos en un paquete usando la función `datasets()` del paquete `vcdExtra`.
+
+```{r}
+library(vcdExtra)
+```
+
+---
+
+Por ejemplo, para conocer los conjuntos de datos del paquete `ggplot2`:
+
+```{r}
+datasets("ggplot2")
+```
+
+---
+
+Si ya hemos cargado el paquete, basta con llamar al conjunto de datos usando su nombre.
+
+```{r}
+library(ggplot2)
+```
+
+---
+
+```{r}
+diamonds
+```
+
+---
+
+```{r}
+economics
+```
+
+---
+
+```{r}
+seals
+```
 
 ## Escritura de archivos
+
+
 
 
 

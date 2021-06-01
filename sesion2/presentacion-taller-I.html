@@ -3538,7 +3538,7 @@ slide:not(.current) .plotly.html-widget{
 
 </article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
 
-<p>Lee el resto de archivos .txt y guardalos en tu &ldquo;Environment&rdquo;. Los archivos deben ser leídos cada uno en un bloque de código.</p>
+<p>Lee el resto de archivos .txt y asignales un nombre en tu &ldquo;Environment&rdquo;. Los archivos deben ser leídos cada uno en un bloque de código.</p>
 
 <p>Para comprobar que lograste hacerlo, ejecuta el siguiente código y comparte el resultado en el chat grupal:</p>
 
@@ -3551,11 +3551,220 @@ slide:not(.current) .plotly.html-widget{
 
 </article></slide><slide class=""><hgroup><h2>Lectura de datos excel</h2></hgroup><article  id="lectura-de-datos-excel">
 
-</article></slide><slide class=""><hgroup><h2>Lectura de datos excel con argumentos</h2></hgroup><article  id="lectura-de-datos-excel-con-argumentos">
+<p>Para poder leer datos de excel, vamos a hacer uso del paquete <code>readxl</code>.</p>
+
+<p>Recuerda que para cargar cualquier paquete, especificas su nombre sin comillas dentro de un llamado a la funcion <code>library()</code>.</p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p>La función que nos permite leer archivos <em>.xlsx</em> es <code>read_xlsx()</code>. La usamos igual que en los casos anteriores.</p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre >## # A tibble: 1,704 x 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10 Afghanistan Asia       1997    41.8 22227415      635.
+## # … with 1,694 more rows</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p>Alternativamente, podemos usar la función <code>read_excel()</code>, que nos da el mismo resultado.</p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre >## # A tibble: 1,704 x 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10 Afghanistan Asia       1997    41.8 22227415      635.
+## # … with 1,694 more rows</pre>
 
 </article></slide><slide class=""><hgroup><h2>Lectura de archivos SPSS</h2></hgroup><article  id="lectura-de-archivos-spss">
 
-</article></slide><slide class=""><hgroup><h2>Uso de datos de paquetes instalados</h2></hgroup><article  id="uso-de-datos-de-paquetes-instalados">
+<p>Para leer archivos SPSS cargamos el paquete <code>haven</code>.</p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p>Como la extensión de los archivos es <em>.sav</em> podemos leerlos con la función <code>read_sav()</code>.</p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre >## # A tibble: 122 x 8
+##    SELECT UC0DD_CD UC0DD_DPTO UC0PP_CD UC0PP_PROV UC0DI_CD UC0DI_DIST   UC0P_OBS
+##    &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;   
+##  1 U0001  16       LORETO     01       MAYNAS     13       SAN JUAN BA… &quot;&quot;      
+##  2 U0002  14       LAMBAYEQUE 03       LAMBAYEQUE 01       LAMBAYEQUE   &quot;&quot;      
+##  3 U0003  15       LIMA       01       LIMA       40       SANTIAGO DE… &quot;&quot;      
+##  4 U0004  15       LIMA       01       LIMA       13       JESUS MARIA  &quot;&quot;      
+##  5 U0005  15       LIMA       01       LIMA       35       SAN MARTIN … &quot;&quot;      
+##  6 U0006  15       LIMA       01       LIMA       40       SANTIAGO DE… &quot;&quot;      
+##  7 U0007  15       LIMA       01       LIMA       21       PUEBLO LIBRE &quot;&quot;      
+##  8 U0008  23       TACNA      01       TACNA      01       TACNA        &quot;&quot;      
+##  9 U0009  10       HUANUCO    01       HUANUCO    01       HUANUCO      &quot;&quot;      
+## 10 U0010  15       LIMA       01       LIMA       13       JESUS MARIA  &quot;&quot;      
+## # … with 112 more rows</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p>Alternativamente, podemos usar la función <code>read_spss()</code>, que nos da el mismo resultado.</p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre >## # A tibble: 122 x 8
+##    SELECT UC0DD_CD UC0DD_DPTO UC0PP_CD UC0PP_PROV UC0DI_CD UC0DI_DIST   UC0P_OBS
+##    &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;        &lt;chr&gt;   
+##  1 U0001  16       LORETO     01       MAYNAS     13       SAN JUAN BA… &quot;&quot;      
+##  2 U0002  14       LAMBAYEQUE 03       LAMBAYEQUE 01       LAMBAYEQUE   &quot;&quot;      
+##  3 U0003  15       LIMA       01       LIMA       40       SANTIAGO DE… &quot;&quot;      
+##  4 U0004  15       LIMA       01       LIMA       13       JESUS MARIA  &quot;&quot;      
+##  5 U0005  15       LIMA       01       LIMA       35       SAN MARTIN … &quot;&quot;      
+##  6 U0006  15       LIMA       01       LIMA       40       SANTIAGO DE… &quot;&quot;      
+##  7 U0007  15       LIMA       01       LIMA       21       PUEBLO LIBRE &quot;&quot;      
+##  8 U0008  23       TACNA      01       TACNA      01       TACNA        &quot;&quot;      
+##  9 U0009  10       HUANUCO    01       HUANUCO    01       HUANUCO      &quot;&quot;      
+## 10 U0010  15       LIMA       01       LIMA       13       JESUS MARIA  &quot;&quot;      
+## # … with 112 more rows</pre>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Lectura de datos con más argumentos</h2></hgroup><article  id="lectura-de-datos-con-más-argumentos">
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p>No siempre los datos estarán de antemano en un formato que nos permita leerlos automáticamente. En algunos casos, será necesario especificar argumentos adicionales al momento de leerlos.</p>
+
+</article></slide><slide class=""><hgroup><h2>Ejercicio</h2></hgroup><article  id="ejercicio-1">
+
+<p>Intentar leer los datos de los archivos excel restantes.</p>
+
+</article></slide><slide class=""><hgroup><h2>Solución</h2></hgroup><article  id="solución">
+
+<p>Usar los argumentos adicionales:</p>
+
+<ul>
+<li><code>skip</code></li>
+<li><code>sheet</code></li>
+<li><code>col_names</code></li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Uso de datos de paquetes instalados</h2></hgroup><article  id="uso-de-datos-de-paquetes-instalados">
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p>Cuando se carga un paquete, el usuario tiene acceso a los set de datos contenidos en él. Podemos obtener un listado de los set de datos contenidos en un paquete usando la función <code>datasets()</code> del paquete <code>vcdExtra</code>.</p>
+
+<pre >## Loading required package: vcd</pre>
+
+<pre >## Loading required package: grid</pre>
+
+<pre >## Loading required package: gnm</pre>
+
+<pre >## 
+## Attaching package: &#39;vcdExtra&#39;</pre>
+
+<pre >## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     summarise</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p>Por ejemplo, para conocer los conjuntos de datos del paquete <code>ggplot2</code>:</p>
+
+<pre >##              Item      class      dim
+## 1        diamonds data.frame 53940x10
+## 2       economics data.frame    574x6
+## 3  economics_long data.frame   2870x4
+## 4       faithfuld data.frame   5625x3
+## 5     luv_colours data.frame    657x4
+## 6         midwest data.frame   437x28
+## 7             mpg data.frame   234x11
+## 8          msleep data.frame    83x11
+## 9    presidential data.frame     11x4
+## 10          seals data.frame   1155x4
+## 11      txhousing data.frame   8602x9
+##                                                                Title
+## 1                           Prices of over 50,000 round cut diamonds
+## 2                                            US economic time series
+## 3                                            US economic time series
+## 4                           2d density estimate of Old Faithful data
+## 5                                            &#39;colors()&#39; in Luv space
+## 6                                               Midwest demographics
+## 7  Fuel economy data from 1999 to 2008 for 38 popular models of cars
+## 8       An updated and expanded version of the mammals sleep dataset
+## 9                    Terms of 11 presidents from Eisenhower to Obama
+## 10                                    Vector field of seal movements
+## 11                                               Housing sales in TX</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<p>Si ya hemos cargado el paquete, basta con llamar al conjunto de datos usando su nombre.</p>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre >## # A tibble: 53,940 x 10
+##    carat cut       color clarity depth table price     x     y     z
+##    &lt;dbl&gt; &lt;ord&gt;     &lt;ord&gt; &lt;ord&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1 0.23  Ideal     E     SI2      61.5    55   326  3.95  3.98  2.43
+##  2 0.21  Premium   E     SI1      59.8    61   326  3.89  3.84  2.31
+##  3 0.23  Good      E     VS1      56.9    65   327  4.05  4.07  2.31
+##  4 0.290 Premium   I     VS2      62.4    58   334  4.2   4.23  2.63
+##  5 0.31  Good      J     SI2      63.3    58   335  4.34  4.35  2.75
+##  6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
+##  7 0.24  Very Good I     VVS1     62.3    57   336  3.95  3.98  2.47
+##  8 0.26  Very Good H     SI1      61.9    55   337  4.07  4.11  2.53
+##  9 0.22  Fair      E     VS2      65.1    61   337  3.87  3.78  2.49
+## 10 0.23  Very Good H     VS1      59.4    61   338  4     4.05  2.39
+## # … with 53,930 more rows</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre >## # A tibble: 574 x 6
+##    date         pce    pop psavert uempmed unemploy
+##    &lt;date&gt;     &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+##  1 1967-07-01  507. 198712    12.6     4.5     2944
+##  2 1967-08-01  510. 198911    12.6     4.7     2945
+##  3 1967-09-01  516. 199113    11.9     4.6     2958
+##  4 1967-10-01  512. 199311    12.9     4.9     3143
+##  5 1967-11-01  517. 199498    12.8     4.7     3066
+##  6 1967-12-01  525. 199657    11.8     4.8     3018
+##  7 1968-01-01  531. 199808    11.7     5.1     2878
+##  8 1968-02-01  534. 199920    12.3     4.5     3001
+##  9 1968-03-01  544. 200056    11.7     4.1     2877
+## 10 1968-04-01  544  200208    12.3     4.6     2709
+## # … with 564 more rows</pre>
+
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article >
+
+<pre >## # A tibble: 1,155 x 4
+##      lat  long delta_long delta_lat
+##    &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;
+##  1  29.7 -173.     -0.915   0.143  
+##  2  30.7 -173.     -0.867   0.128  
+##  3  31.7 -173.     -0.819   0.113  
+##  4  32.7 -173.     -0.771   0.0980 
+##  5  33.7 -173.     -0.723   0.0828 
+##  6  34.7 -173.     -0.674   0.0675 
+##  7  35.7 -173.     -0.626   0.0522 
+##  8  36.7 -173.     -0.577   0.0369 
+##  9  37.7 -173.     -0.529   0.0216 
+## 10  38.7 -173.     -0.480   0.00635
+## # … with 1,145 more rows</pre>
 
 </article></slide><slide class=""><hgroup><h2>Escritura de archivos</h2></hgroup><article  id="escritura-de-archivos"></article></slide>
 
