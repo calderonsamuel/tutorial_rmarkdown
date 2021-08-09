@@ -1,0 +1,76 @@
+---
+title: "Untitled"
+author: "Samuel Calderon"
+date: "15/6/2021"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+library(tidyr)
+```
+
+```{r}
+tabla2 <- read_csv("data/tabla2.csv")
+```
+
+```{r}
+tabla2 %>% 
+    filter(row_number() != 12) %>% 
+    pivot_wider(names_from = type, values_from = count)
+```
+
+
+
+```{r}
+gapminder <- readxl::read_xlsx("data/gapminder.xlsx")
+```
+
+```{r}
+gapminder %>% 
+    pivot_longer(c(lifeExp, pop, gdpPercap), names_to = "variable", values_to = "valor") %>% 
+    pivot_wider(names_from = variable, values_from = valor)
+```
+
+
+## Ejercicio 1
+
+```{r}
+sida_mujeres <- read_csv("data/sida_mujeres_peru.csv", col_types = "dddddd")
+```
+
+```{r}
+sida_mujeres %>% 
+    pivot_longer(c(`De 0 a 14 años`, `De 15 a 24 años`, `De 25 a 49 años`, `De 50 a 59 años`, `De 60 años y más`),
+                 names_to = "grupo_etareo", values_to = "casos")
+```
+
+
+```{r}
+sida_mujeres %>% 
+    pivot_longer(-año, names_to = "grupo_etareo", values_to = "casos")
+```
+
+## Ejercicio 2
+
+```{r}
+covid <- read_csv("data/fallecidos_covid.csv")
+```
+
+```{r}
+covid %>% 
+    separate(FECHA_NAC, into = c("año", "mes", "dia"), sep = "\\.") %>% 
+    filter(año == "1960") %>% 
+    summarise(n = n())
+```
+
+
+
+
+
+
+
+

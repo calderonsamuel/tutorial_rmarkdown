@@ -1,0 +1,778 @@
+---
+title: "Análisis de datos con dplyr"
+author: "Samuel Calderon"
+output: ioslides_presentation
+---
+
+# Repaso
+
+## Crear proyecto nuevo
+
+Crear un nuevo proyecto en nuevo directorio: "repaso-rbasico"
+
+## Crear documento R Markdown
+
+1. Crear un nuevo archivo R Markdown:
+    - Documento HTML
+    - Título: "Repaso de R básico"
+    - Contenido: Según el escenario presentado
+    
+## Escenario 1
+
+Te comparten el conjunto de datos "gapminder.xlsx". Necesitas importar el conjunto de datos y contestar algunas preguntas.
+
+1. ¿Cuántas filas tiene el conjunto de datos?
+2. ¿Cuántas columnas tiene el conjunto de datos?
+3. ¿Cuál es la unidad de observación del conjunto de datos?
+4. ¿Cuántas columnas contiene valores numéricos?
+5. ¿Cuántas contiene valores categóricos?
+
+Publicar en Rpubs.com el resultado de hacerle *Knit* al documento.
+
+## Escenario 2
+
+Generar un tibble de tres (3) observaciones con las siguientes columnas:
+
+- **deporte (texto):** nombre del deporte
+- **jugadores (numérico):** cantidad de jugadores necesarios practicar ese deporte
+- **limite_tiempo (lógico):** ¿una partida oficial tiene límite de tiempo?
+- **duración (numérico):** duración normal de una partida oficial, en minutos
+
+Ver ejemplo en la siguiente lámina
+
+---
+
+```{r, echo=FALSE}
+knitr::kable(data.frame(
+    deporte = c("Baloncesto", "Ajedrez"),
+    jugadores = c(10, 2),
+    limite_tiempo = c(TRUE, FALSE),
+    duracion = c(48, NA)
+))
+```
+
+
+# dplyr
+
+## Crear nuevo proyecto
+
+Para que mantengas un buen orden en tu aprendizaje, es momento de crear un nuevo proyecto en el que irás anotando todo lo que aprendas en esta sesión. Cabe mencionar que todo lo que anotes deberás publicarlo al final en tu perfil de Rpubs.com
+
+- Crear un nuevo proyecto en nuevo directorio: "dplyr"
+
+## Crear documento R Markdown
+
+- Crear un nuevo archivo R Markdown:
+    - Documento HTML
+    - Título: "Análisis de datos con dplyr"
+    - Contenido: Según las notas que tomes en la sesión
+
+---
+
+Hemos aprendido a crear tibbles y data.frames. Lo siguiente es aprender a utilizarlos. De ahora en adelante, nuestros ejemplos sólo utilizarán tibbles y me referiré a ellos como "df".
+
+## ¿Qué es dplyr?
+
+Es un paquete para R que nos permite trabajar con mayor facilidad nuestros datos tabulares. Para poder usar sus funciones, debemos cargar el paquete. Como forma parte de los paquetes del tidyverse, podemos cargar todos juntos a la vez.
+
+---
+
+```{r dplyr}
+# Para cargar sólo dplyr
+library(dplyr)
+```
+
+---
+
+
+```{r, eval=FALSE}
+# Para cargar todo el tidyverse
+library(tidyverse)
+```
+
+---
+
+En resumen, sus funciones nos permiten realizar las siguientes tareas:
+
+- **Filtrar** observaciones de acuerdo a sus valores con `filter()`.
+- **Organizar** las filas de acuerdo a sus valores con `arrange()`.
+- **Seleccionar** variables por su nombre con `select()`.
+- **Modificar** las variables de nuestro conjunto de datos con `mutate()`.
+- **Resumir** nuestros datos en valores representativos con `summarise()`.
+- **Agrupar** nuestros datos para operar en ellos con `group_by()`.
+
+---
+
+Usaremos como ejemplo el dataset "gapminder.xlsx". 
+
+```{r}
+library(readxl)
+
+gapminder <- read_xlsx("data/gapminder.xlsx")
+```
+
+Contiene información de la expectativa de vida (lifeExp), población (pop) y el PBI per cápita (gdpPercap) de 142 países de 1952 a 2007.
+
+---
+
+```{r}
+gapminder
+```
+
+
+# filter()
+
+---
+
+La función `filter()` nos simplifica la tarea de hacer *subsetting*. Podemos elegir obtener sólo la información referida a Perú por ejemplo. El primer argumento de `filter()` es el df que queremos filtrar, y los siguientes argumentos son las pruebas lógicas que le queremos aplicar. 
+
+```{r filter_ejm1, eval=FALSE}
+filter(gapminder, country == "Peru")
+```
+
+---
+
+```{r, echo=FALSE}
+filter(gapminder, country == "Peru")
+```
+
+---
+
+Dentro de `filter()`, R entiende que `country` se refiere a la columna `country` del df `gapminder` y sólo filtra aquellos elementos dentro de esa columna que son iguales a `"Peru"`.
+
+Es posible añadir más de una condición. Supongamos que queremos la información de Perú, pero sólo a partir del año 1992.
+
+```{r filter_ejm2, eval=FALSE}
+filter(gapminder, country == "Peru", year >= 1992)
+```
+
+---
+
+```{r, echo=FALSE}
+filter(gapminder, country == "Peru", year >= 1992)
+```
+
+---
+
+Añadir una nueva prueba lógica funciona igual que utilizar el operador `&`. Evidentemente, aún podemos utilizar otros operadores lógicos. Supongamos que queremos obtener la data a partir de 1992 para Perú y Chile.
+
+```{r filter_ejm3, eval=FALSE}
+filter(gapminder, 
+       country == "Peru" | country == "Chile", 
+       year >= 1992)
+```
+
+---
+
+```{r, echo=FALSE}
+filter(gapminder, 
+       country == "Peru" | country == "Chile", 
+       year >= 1992)
+```
+
+---
+
+Si quiero obtener la información de varios países, puedo ahorrarme algo de tipeo usando `%in%` dentro de `filter()`. Esta vez le pediré los datos a partir del 2002. Guardaré este subset para usarlo más adelante.
+
+```{r filter}
+gapminder_subset <- filter(gapminder, 
+       country %in% c("Peru", "Chile", "Colombia", "Ecuador"),
+       year >= 2002)
+```
+
+---
+
+```{r }
+gapminder_subset
+```
+
+## Ejercicio 1
+
+Usando gapminder, filtra los datos de países miembros permanentes del consejo de seguridad de la ONU para los años entre 1957 y 2007
+
+- Países: "United States", "United Kingdom", "France", "China". (Rusia no está presente en gapminder)
+
+## Ejercicio 2
+
+Usando gapminder, filtra los datos de países de África y Asia para el año 1997.
+
+- ¿Cuántos observaciones obtienes?
+
+# select()
+
+---
+
+La función `select()` nos permite seleccionar columnas específicas de nuestro df. Supongamos que sólo queremos los nombres de los países, el año y el total de población. Podemos hacerlo con `select()`.
+
+Sólo hace falta indicar como argumentos de `select()` el nombre de las variables a escoger. 
+
+```{r select_ejm1, eval=FALSE}
+select(gapminder_subset, country, year, pop)
+```
+
+---
+
+```{r , echo=FALSE}
+select(gapminder_subset, country, year, pop)
+```
+
+---
+
+Además de eso select nos permite cambiar en el momento el nombre de nuestras variables.
+
+```{r select_ejm2, eval=FALSE}
+select(gapminder_subset, 
+       pais = country, 
+       año =year, 
+       poblacion = pop)
+```
+
+---
+
+```{r, echo=FALSE}
+select(gapminder_subset, 
+       pais = country, 
+       año =year, 
+       poblacion = pop)
+```
+
+---
+
+Si lo que deseo es excluir una variable, debo anteponerle un signo negativo.
+
+```{r select_ejm3, eval=FALSE}
+select(gapminder_subset, -continent)
+```
+
+---
+
+```{r, echo=FALSE}
+select(gapminder_subset, -continent)
+```
+
+---
+
+Si deseo excluir más de una variable, puedo anteponerle un signo negativo a un vector con los nombres deseados.
+
+
+```{r, eval=FALSE}
+select(gapminder_subset, -c(continent, pop, gdpPercap))
+```
+
+---
+
+```{r, echo=FALSE}
+select(gapminder_subset, -c(continent, pop, gdpPercap))
+```
+
+## Ejercicio 1
+
+Usando gapminder, selecciona las variables country, year y lifeExp.
+
+## Ejercicio 2
+
+Usando gapminder, selecciona las variables country, year y pop. Esta vez traduce sus nombres
+
+## Ejercicio 3
+
+Usando gapminder, selecciona todas las variables con excepción de lifeExp y gdpPercap.
+
+# arrange()
+
+---
+
+La utilidad de `arrange()` es que nos permite ordenar nuestros datos en base a las variables que escojamos. Recuerda nuestro subset de gapminder. Está ordenado por el orden alfabético de la columna `country`. 
+
+```{r gapminder_subset}
+gapminder_subset
+```
+
+---
+
+Podemos indicarle que se ordene por año.
+
+```{r arrange_ejm1}
+arrange(gapminder_subset, year)
+```
+
+---
+
+Ahora aparecen primero los datos del 2002 y luego los del 2007. Por defecto, el orden se hace en forma ascendente. Si uso la función `desc()` rodeando la columna elegida, ocurre lo contrario.
+
+```{r arrange_ejm2}
+arrange(gapminder_subset, desc(year))
+```
+
+---
+
+Puedo ordenar en base a más de una columna, sólo debo agregarla como otro argumento. Por ejemplo, si quiero ver el orden en las expectativas de vida por año.
+
+```{r arrange_ejm3}
+arrange(gapminder_subset, year, lifeExp)
+```
+
+En ambos años, Perú tuvo la expectativa de vida más baja.
+
+## Ejercicio 1
+
+Usando gapminder y la función arrange, determina cuál es el año más bajo
+
+## Ejercicio 2
+
+Usando gapminder y la función arrange, determina cuál es fue la expectativa de vida más alta en el año más bajo
+
+## Ejercicio 3
+
+Usando gapminder y la función arrange, determina cuál es fue la expectativa de vida más alta en el año más alto
+
+# mutate()
+
+---
+
+En muchas oportunidades, lo que voy a necesitar es crear nuevas variables. Para ello puedo utilizar `mutate()`. Por ejemplo, multiplicando los datos de población y PBI per cápita es posible para mí obtener el PBI total de un país. 
+
+```{r mutate_ejm1}
+mutate(gapminder_subset, 
+       PBI_total = pop * gdpPercap)
+```
+
+---
+
+La operación realizada dentro de `mutate()` itera automáticamente a través de las filas de las variables seleccionadas para obtener el resultado. Es por ello que también es posible operar en ellas usando una constante. 
+
+---
+
+`mutate()` además permite usar múltiples transformaciones en una sola llamada, incluso utilizando variables recién creadas.
+
+```{r mutate_ejm2}
+mutate(gapminder_subset, 
+       PBI_total = pop * gdpPercap,
+       PBI_total_texto = paste("PBI de",country,"en",year,":",PBI_total,"dólares")
+       )
+```
+
+---
+
+También es posible sobreescribir los valores de mis columnas, basta con ponerle el mismo nombre a la transformación
+
+```{r}
+mutate(gapminder_subset,
+       gdpPercap = round(gdpPercap, digits = 1)
+       )
+```
+
+## Ejercicio 1
+
+Usando gapminder y las funciones `filter()` y `mutate()`, determina el PBI de China y United States en los años 1952 y 2007.
+
+# summarise()
+
+---
+
+Lo siguiente a aprender es el uso de `summarise()`. Es una función que nos permite obtener datos resumen de nuestras variables. Algo a tener en cuenta es que al hacer nuestro df sólo retendrá los datos de resumen, obviando la data de la cual fueron obtenidos. Los ejemplos dejarán esto más claro.
+
+Por ejemplo, podemos obtener el recuento de observaciones de nuestra tabla si usamos `n()`. En el mismo código podemos asignarle un nombre a la columna, en este caso le ponemos `recuento`.
+
+```{r summarise_n}
+summarise(gapminder_subset, recuento = n())
+```
+
+---
+
+Podemos obtener cualquier otro tipo de resumen, por ejemplo, el promedio de expectativa de vida para el periodo escogido. Llamaremos `promedio` a esta columna.
+
+```{r summarise_mean}
+summarise(gapminder_subset, promedio = mean(lifeExp))
+```
+
+---
+
+Naturalmente, es posible crear más de una variable resumen al mismo tiempo, incluso es posible crearla en referencia a una creada previamente en el mismo código.
+
+```{r summarise_varios}
+summarise(gapminder_subset, 
+          recuento = n(),
+          promedio = mean(lifeExp),
+          resumen = paste("La expectativa de vida de las", 
+                          recuento,
+                          "observaciones es",
+                          promedio))
+```
+
+## Ejercicio 1
+
+Usando gapminder, la función `filter()` y `summarise()` determina el promedio de la expectativa de vida para Asia, Africa y Oceania en 1952.
+
+# group_by()
+
+---
+
+Existe una gran cantidad de datos de resumen que se pueden obtener en nuestro análisis, pero no siempre vamos a querer que los datos sean generales. En la siguiente sección aprenderas a resumir datos agrupados.
+
+---
+
+La función `group_by()` nos permite seleccionar variables para agruparlas y obtener datos de resumen diferenciados. Aunque es posible utilizarla en conjunto con otras funciones de `dplyr()`, usarla junto con `summarise()` nos demuestra claramente su poder.
+
+Podemos obtener el recuento de observaciones por país si primero agrupamos nuestros datos. 
+
+```{r group_by_recuento}
+gapminder_subset <- group_by(gapminder_subset, country)
+```
+
+---
+
+```{r }
+summarise(gapminder_subset, recuento = n())
+```
+
+---
+
+Ten en cuenta que los datos permanecerán agrupados hasta que le indiquemos al df que se debe desagrupar, a través de `ungroup()`.
+
+```{r }
+gapminder_subset <- ungroup(gapminder_subset)
+```
+
+---
+
+Del mismo modo, podemos obtener el promedio de expectativa de vida, pero esta vez diferenciado por país.
+
+```{r group_by_promedio}
+gapminder_subset <- group_by(gapminder_subset, country)
+```
+
+---
+
+
+```{r}
+summarise(gapminder_subset, promedio = mean(lifeExp))
+```
+
+---
+
+No olvides desagrupar tus datos.
+
+
+```{r}
+gapminder_subset <- ungroup(gapminder_subset)
+```
+
+## Ejercicio 1
+
+Usando gapminder, la función `group_by()` y `summarise()` determina el promedio de la expectativa de vida para todos los continentes en 1952.
+
+## Ejercicio 2
+
+Usando gapminder, la función `group_by()` y `summarise()` determina el promedio de la población y del PBI per cápita para todos los continentes en 2007.
+
+# Descanso de 15 minutos
+
+# Operador pipe
+
+## Primer argumento de las funciones
+
+Es importante notar una característica común entre todas las funciones de `dplyr()` que hemos conocido: el primer argumento siempre es el df al que se le va a aplicar la transformación. Esta es una característica consistente con todos los paquetes del `tidyverse`, que permite tener un flujo de trabajo *pipeable*.
+
+## Ejemplos
+
+```{r, eval=FALSE}
+filter(gapminder, country == "Peru")
+select(gapminder, continent, year, pop)
+arrange(gapminder, desc(gdpPercap))
+mutate(gapminder, pbi_total = pop * gdpPercap)
+summarise(gapminder, promedio_pbi = mean(gdpPercap))
+group_by(gapminder, continent)
+ungroup(gapminder)
+```
+
+---
+
+Lo que esto quiere decir concretamente es que las funciones se pueden encadenar a través de un operador llamado *pipe* (`%>%`), cuyo valor en el lado izquierdo se convierte en el primer argumento de la función del lado derecho. 
+
+## El paquete magrittr
+
+El *pipe* fue diseñado originalmente en el paquete `magrittr`, que viene con algunas funciones *pipeables* que pueden reemplazar a los operadores aritméticos de R. 
+
+Esta sección tratará de ilustrar la utilidad del *pipe* en cualquier función, luego pasaremos a ver ejemplos específicos con dplyr.
+
+```{r, message=FALSE, warning=FALSE}
+library(magrittr)
+```
+
+
+---
+
+|original   |magrittr              |
+|:---------:|:--------------------:|
+|`5 + 3`    |  `add(5, 3)`         |
+|`10 - 5`   | `subtract(10, 5)`    |
+|`2 * 10`   | `multiply_by(2, 10)` |
+|`100/10`   | `divide_by(100, 10)` |
+
+## Representando operaciones con magrittr
+
+```{r}
+100 + 50
+```
+
+```{r}
+add(100, 50)
+```
+
+---
+
+```{r}
+(20 + 30) * 10
+```
+
+```{r}
+multiply_by(add(20, 30), 10)
+```
+
+---
+
+```{r}
+(10 - 5) / 5
+```
+
+```{r}
+divide_by(subtract(10, 5), 5)
+```
+
+
+
+## Ejercicio 
+
+Representa esta operación usando las funciones de `magrittr`.
+
+```{r}
+(((12 * 5) - 11)/ 7) + 3
+```
+
+
+## Las funciones como secuencia
+
+Piensa nuevamente en esta operación:
+
+```{r, eval=FALSE}
+(((12 * 5) - 11)/ 7) + 3
+```
+
+Para obtener el resultado, se realizan una serie de pasos:
+
+1. Tomamos inicialmente el número 12
+2. Luego, se le multiplica por 5
+3. Luego, al resultado, se le resta 11
+4. Luego, al resultado, se le divide entre 7
+5. Luego, al resultado, se le suma 3
+
+Usando las funciones de `magrittr`, tenemos tres maneras de representar esta secuencia.
+
+## 1. Funciones anidadas
+
+Llamar las funciones dentro de las otras funciones. Nótese que la primera operación va en el nivel más profundo, empezando desde el 12. 
+
+```{r}
+add(divide_by(subtract(multiply_by(12, 5), 11), 7), 3)
+```
+
+---
+
+Si quisiéramos que cada función ocupe su propia línea, podemos hacerlo de esta manera:
+
+```{r}
+add(
+  divide_by(
+    subtract(
+      multiply_by(12, 
+                  5), 
+      11), 
+    7), 
+  3)
+```
+
+Aunque esto nos permite entender la secuencia *de adentro hacia afuera* no necesariamente favorece su lectura
+
+
+## 2. Secuencia de objetos intermedios
+
+Esto parece más entendible y al leerlo se sigue la estructura de pasos descritos anteriormente. Vemos que al igual que con las funciones de `dplyr`, las funciones de `magrittr` siempre tienen el mismo primer argumento: el objeto a transformar.
+
+```{r pipe_objeto_intermedio}
+numero_inicial <- 12
+resultado1 <- multiply_by(numero_inicial, 5)
+resultado2 <- subtract(resultado1, 11)
+resultado3 <- divide_by(resultado2, 7)
+resultado_final <- add(resultado3, 3)
+resultado_final
+```
+
+---
+
+Si no deseo ir asignando nombres nuevos, puedo ir sobreescribiendo el valor de mi objeto en cada paso. De esta manera se ve más claro que el primer argumento de cada función depende del paso anterior.
+
+```{r}
+numero <- 12
+numero <- multiply_by(numero, 5)
+numero <- subtract(numero, 11)
+numero <- divide_by(numero, 7)
+numero <- add(numero, 3)
+numero
+```
+
+## Funciones encadenadas con pipe
+
+Si uso *pipes* (`%>%`) no necesito crear objetos intermedios y el operador puede leerse como *luego*. Tomo el 12, luego multiplico por 5, luego resto 11, luego divido entre 7, luego aumento 3. 
+
+```{r}
+12 %>% 
+  multiply_by(5) %>% 
+  subtract(11) %>% 
+  divide_by(7) %>% 
+  add(3)
+```
+
+Hemos conseguido el mismo resultado de tres maneras distintas, pero usando *pipes* hemos encadenado varias funciones una tras otra sin sacrificar la legibilidad de nuestro código ni llenar el *Environment* de objetos innecesarios.
+
+## Ejercicio
+
+Representa las siguientes operaciones usando pipes
+
+```{r}
+(((10 + 30) * 3) / 12) - 5
+```
+
+```{r}
+(((7 - 3) / 2) + 3) * 20
+```
+
+## Usar pipes con las funciones de dplyr
+
+Una vez entendido el uso de *pipes*, podemos aplicarlo a nuestro análisis de datos. Seguimos trabajando con `gapminder`. 
+
+```{r gapminder_call}
+gapminder
+```
+
+---
+
+En `gapminder` tengo todo lo necesario para obtener el ranking del promedio del PBI nacional para cada uno de los cinco continentes en los años 1987 y 2007 (esto me permitirá comparar los cambios en la economía mundial en esos treinta años).
+
+Para ello voy a requerir usar todas las funciones de `dplyr` que he aprendido hasta el momento. Primero lo haremos paso por paso y luego convertiremos todo en el flujo de unos cuantos *pipes*.
+
+Como quiero mostrar el resultado de cada paso realizado, rodeo la asignación de mi objeto con paréntesis
+
+---
+
+Debido a que sólo necesito los años 1987 y 2007, filtro mis datos. Al objeto modificado lo llamaré `gapminder_modificado`.
+
+```{r gapminder_flow1}
+(gapminder_modificado <- filter(gapminder, year %in% c(1987, 2007)) )
+```
+
+---
+
+El siguiente paso es quedarme sólo con las variables que necesito. En este caso son continente, año, PBI per cápita y población.
+
+```{r}
+(gapminder_modificado <- select(gapminder_modificado, 
+                               continent, year, gdpPercap, pop) )
+```
+
+---
+
+A continuación, debo obtener el PBI nacional multiplicando el PBI per cápita por la población.
+
+```{r gapminder_flow3}
+(gapminder_modificado <- mutate(gapminder_modificado,
+                               PBI_nacional = pop * gdpPercap) )
+```
+
+---
+
+Ahora que tengo el PBI nacional, puedo obtener el promedio por año y continente.
+
+```{r gapminder_flow4, message=FALSE, warning=FALSE}
+gapminder_modificado <- group_by(gapminder_modificado, continent, year)
+gapminder_modificado <- summarise(gapminder_modificado, promedio = mean(PBI_nacional))
+(gapminder_modificado <- ungroup(gapminder_modificado) )
+```
+
+---
+
+Ahora sólo me falta ordenar mis datos de manera descendente según el promedio del PBI. 
+
+```{r gapminder_flow5}
+(gapminder_modificado <- arrange(gapminder_modificado, year, desc(promedio)) )
+```
+
+---
+
+Listo. Con el flujo de análisis terminado, puedo verificar que en esos treinta años, Asia superó a Europa en el promedio de su PBI nacional.
+
+---
+
+Podría juntar todos estos pasos en un solo bloque para que quede claro lo que sucedió.
+
+```{r, message=FALSE, warning=FALSE}
+gapminder_modificado <- filter(gapminder, year %in% c(1987, 2007)) 
+
+gapminder_modificado <- select(gapminder_modificado, continent, year, gdpPercap, pop)
+
+gapminder_modificado <- mutate(gapminder_modificado, PBI_nacional = pop * gdpPercap)
+
+gapminder_modificado <- group_by(gapminder_modificado, continent, year)
+
+gapminder_modificado <- summarise(gapminder_modificado, promedio = mean(PBI_nacional))
+
+gapminder_modificado <- ungroup(gapminder_modificado)
+
+gapminder_modificado <- arrange(gapminder_modificado, year, desc(promedio))
+```
+
+## Reescribiendo el flujo con pipes
+
+Podemos hacer todo el análisis usando pipes.
+
+---
+
+```{r gapminder_pipeline, message=FALSE, warning=FALSE}
+gapminder %>% 
+  filter(year %in% c(1987, 2007)) %>%
+  select(continent, year, gdpPercap, pop) %>% 
+  mutate(PBI_nacional = pop * gdpPercap) %>% 
+  group_by(continent, year) %>% 
+  summarise(promedio = mean(PBI_nacional)) %>% 
+  ungroup() %>% 
+  arrange(year, desc(promedio))
+```
+
+---
+
+Hemos obtenido el mismo resultado escribiendo mucho menos código y sin crear ningún objeto intermedio. 
+
+## Ejercicio 1
+
+Utilizando `gapminder` y las funciones de `dplyr`, obtén el ranking del PBI nacional de Perú, México, Colombia y Chile en los años 1967, 1987 y 2007. 
+
+Guíate de esta secuencia:
+
+1. Usar gapminder
+2. Filtrar los datos de los  cuatro países y los años seleccionados
+3. Seleccionar las variables pais, población y pbi per cápita
+4. Calcular el pbi total para cada observación
+5. Agrupar las observaciones por año
+6. Organizar por valor de pbi total en orden descendente
+7. Desagrupar las observaciones
+
+## Ejercicio 2
+
+Realiza un análisis que permita responder a la pregunta:
+
+¿Qué continentes tuvieron la mejor y peor expectativa de vida *mediana* en 1992?
+
+## Ejercicio 3
+
+Realiza un análisis que permita responder a la pregunta:
+
+¿Qué continente tuvo el mayor porcentaje de países con expectativa de vida superior a la mediana mundial en 2007?

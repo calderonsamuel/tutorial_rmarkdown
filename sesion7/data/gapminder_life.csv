@@ -1,0 +1,1705 @@
+country,year,lifeExp
+Japan,2007,82.603
+"Hong Kong, China",2007,82.208
+Japan,2002,82
+Iceland,2007,81.757
+Switzerland,2007,81.701
+"Hong Kong, China",2002,81.495
+Australia,2007,81.235
+Spain,2007,80.941
+Sweden,2007,80.884
+Israel,2007,80.745
+Japan,1997,80.69
+France,2007,80.657
+Canada,2007,80.653
+Switzerland,2002,80.62
+Italy,2007,80.546
+Iceland,2002,80.5
+Australia,2002,80.37
+Italy,2002,80.24
+New Zealand,2007,80.204
+Norway,2007,80.196
+Sweden,2002,80.04
+"Hong Kong, China",1997,80
+Singapore,2007,79.972
+Austria,2007,79.829
+Spain,2002,79.78
+Canada,2002,79.77
+Netherlands,2007,79.762
+Israel,2002,79.696
+France,2002,79.59
+Greece,2007,79.483
+Belgium,2007,79.441
+United Kingdom,2007,79.425
+Germany,2007,79.406
+Sweden,1997,79.39
+Switzerland,1997,79.37
+Japan,1992,79.36
+Finland,2007,79.313
+New Zealand,2002,79.11
+Norway,2002,79.05
+Austria,2002,78.98
+Iceland,1997,78.95
+Ireland,2007,78.885
+Australia,1997,78.83
+Italy,1997,78.82
+Costa Rica,2007,78.782
+Singapore,2002,78.77
+Iceland,1992,78.77
+Spain,1997,78.77
+Puerto Rico,2007,78.746
+Japan,1987,78.67
+Germany,2002,78.67
+France,1997,78.64
+"Korea, Rep.",2007,78.623
+Canada,1997,78.61
+Chile,2007,78.553
+Netherlands,2002,78.53
+United Kingdom,2002,78.471
+Taiwan,2007,78.4
+Finland,2002,78.37
+Denmark,2007,78.332
+Belgium,2002,78.32
+Norway,1997,78.32
+Cuba,2007,78.273
+Israel,1997,78.269
+Greece,2002,78.256
+United States,2007,78.242
+Sweden,1992,78.16
+Costa Rica,2002,78.123
+Portugal,2007,78.098
+Netherlands,1997,78.03
+Switzerland,1992,78.03
+Canada,1992,77.95
+Slovenia,2007,77.926
+Greece,1997,77.869
+Chile,2002,77.86
+Ireland,2002,77.783
+Puerto Rico,2002,77.778
+"Hong Kong, China",1992,77.601
+Kuwait,2007,77.588
+Spain,1992,77.57
+Australia,1992,77.56
+New Zealand,1997,77.55
+Belgium,1997,77.53
+Austria,1997,77.51
+France,1992,77.46
+Italy,1992,77.44
+Netherlands,1992,77.42
+Switzerland,1987,77.41
+Germany,1997,77.34
+Norway,1992,77.32
+United States,2002,77.31
+Portugal,2002,77.29
+Costa Rica,1997,77.26
+Iceland,1987,77.23
+United Kingdom,1997,77.218
+Sweden,1987,77.19
+Denmark,2002,77.18
+Cuba,2002,77.158
+Singapore,1997,77.158
+Finland,1997,77.13
+Japan,1982,77.11
+"Korea, Rep.",2002,77.045
+Greece,1992,77.03
+Taiwan,2002,76.99
+Iceland,1982,76.99
+Israel,1992,76.93
+Kuwait,2002,76.904
+Spain,1987,76.9
+Canada,1987,76.86
+Netherlands,1987,76.83
+United States,1997,76.81
+Greece,1987,76.67
+Slovenia,2002,76.66
+Czech Republic,2007,76.486
+Belgium,1992,76.46
+Reunion,2007,76.442
+Albania,2007,76.423
+Italy,1987,76.42
+Sweden,1982,76.42
+United Kingdom,1992,76.42
+Uruguay,2007,76.384
+France,1987,76.34
+New Zealand,1992,76.33
+Australia,1987,76.32
+Spain,1982,76.3
+Switzerland,1982,76.21
+"Hong Kong, China",1987,76.2
+Mexico,2007,76.195
+Kuwait,1997,76.156
+Cuba,1997,76.151
+Ireland,1997,76.122
+Denmark,1997,76.11
+Iceland,1977,76.11
+United States,1992,76.09
+Germany,1992,76.07
+Netherlands,1982,76.05
+Austria,1992,76.04
+Norway,1982,75.97
+Portugal,1997,75.97
+Norway,1987,75.89
+Chile,1997,75.816
+Singapore,1992,75.788
+Canada,1982,75.76
+Croatia,2007,75.748
+Reunion,2002,75.744
+Costa Rica,1992,75.713
+Finland,1992,75.7
+Albania,2002,75.651
+Oman,2007,75.64
+Bahrain,2007,75.635
+Israel,1987,75.6
+Poland,2007,75.563
+Panama,2007,75.537
+Czech Republic,2002,75.51
+Ireland,1992,75.467
+"Hong Kong, China",1982,75.45
+Montenegro,1997,75.445
+Sweden,1977,75.44
+Montenegro,1992,75.435
+Switzerland,1977,75.39
+Japan,1977,75.38
+Norway,1977,75.37
+Belgium,1987,75.35
+Denmark,1992,75.33
+Argentina,2007,75.32
+Uruguay,2002,75.307
+Taiwan,1997,75.25
+Greece,1982,75.24
+Netherlands,1977,75.24
+Kuwait,1992,75.19
+Slovenia,1997,75.13
+United States,1987,75.02
+United Kingdom,1987,75.007
+Ecuador,2007,74.994
+Italy,1982,74.98
+Austria,1987,74.94
+Puerto Rico,1997,74.917
+Mexico,2002,74.902
+France,1982,74.89
+Croatia,2002,74.876
+Montenegro,1987,74.865
+Portugal,1992,74.86
+Bosnia and Herzegovina,2007,74.852
+Germany,1987,74.847
+Finland,1987,74.83
+Denmark,1987,74.8
+Bahrain,2002,74.795
+Reunion,1997,74.772
+Costa Rica,1987,74.752
+Australia,1982,74.74
+Sweden,1972,74.72
+Panama,2002,74.712
+Denmark,1977,74.69
+Poland,2002,74.67
+Slovak Republic,2007,74.663
+United States,1982,74.65
+"Korea, Rep.",1997,74.647
+Puerto Rico,1987,74.63
+Denmark,1982,74.63
+Finland,1982,74.55
+Montenegro,2007,74.543
+Iceland,1972,74.46
+Israel,1982,74.45
+Cuba,1992,74.414
+Spain,1977,74.39
+Ireland,1987,74.36
+Argentina,2002,74.34
+Norway,1972,74.34
+New Zealand,1987,74.32
+Taiwan,1992,74.26
+Vietnam,2007,74.249
+Malaysia,2007,74.241
+Uruguay,1997,74.223
+Canada,1977,74.21
+Oman,2002,74.193
+Cuba,1987,74.174
+Kuwait,1987,74.174
+Ecuador,2002,74.173
+Sweden,1967,74.16
+Syria,2007,74.143
+Chile,1992,74.126
+Montenegro,1982,74.101
+Bosnia and Herzegovina,2002,74.09
+Norway,1967,74.08
+Portugal,1987,74.06
+United Kingdom,1982,74.04
+Czech Republic,1997,74.01
+Serbia,2007,74.002
+Montenegro,2002,73.981
+Libya,2007,73.952
+Belgium,1982,73.93
+Bahrain,1997,73.925
+Tunisia,2007,73.923
+Puerto Rico,1992,73.911
+New Zealand,1982,73.84
+France,1977,73.83
+Netherlands,1967,73.82
+Germany,1982,73.8
+Slovak Republic,2002,73.8
+Switzerland,1972,73.78
+Puerto Rico,1982,73.75
+Netherlands,1972,73.75
+Venezuela,2007,73.747
+Panama,1997,73.738
+Iceland,1967,73.73
+Cuba,1982,73.717
+Croatia,1997,73.68
+Greece,1977,73.68
+Iceland,1962,73.68
+Mexico,1997,73.67
+Slovenia,1992,73.64
+Reunion,1992,73.615
+"Hong Kong, China",1977,73.6
+Singapore,1987,73.56
+Australia,1977,73.49
+Italy,1977,73.48
+Denmark,1972,73.47
+Iceland,1957,73.47
+Norway,1962,73.47
+Costa Rica,1982,73.45
+Puerto Rico,1977,73.44
+Norway,1957,73.44
+West Bank and Gaza,2007,73.422
+Japan,1972,73.42
+Taiwan,1987,73.4
+United States,1977,73.38
+Sweden,1962,73.37
+Hungary,2007,73.338
+Argentina,1997,73.275
+Bosnia and Herzegovina,1997,73.244
+Netherlands,1962,73.23
+Serbia,2002,73.213
+Austria,1982,73.18
+Ireland,1982,73.1
+Montenegro,1977,73.066
+Israel,1977,73.06
+Spain,1972,73.06
+Syria,2002,73.053
+Malaysia,2002,73.044
+Tunisia,2002,73.042
+Vietnam,2002,73.017
+Bulgaria,2007,73.005
+Netherlands,1957,72.99
+China,2007,72.961
+Denmark,1967,72.96
+Albania,1997,72.95
+Nicaragua,2007,72.899
+Colombia,2007,72.889
+Canada,1972,72.88
+Mauritius,2007,72.801
+Belgium,1977,72.8
+Saudi Arabia,2007,72.777
+Portugal,1982,72.77
+Switzerland,1967,72.77
+Venezuela,2002,72.766
+United Kingdom,1977,72.76
+Uruguay,1992,72.752
+Poland,1997,72.75
+Libya,2002,72.737
+Slovak Republic,1997,72.71
+Norway,1952,72.67
+Cuba,1977,72.649
+Bahrain,1992,72.601
+Hungary,2002,72.59
+Jamaica,2007,72.567
+Jordan,2007,72.535
+Croatia,1992,72.527
+Finland,1977,72.52
+Germany,1977,72.5
+Oman,1997,72.499
+Chile,1987,72.492
+Iceland,1952,72.49
+Sweden,1957,72.49
+Romania,2007,72.476
+Panama,1992,72.462
+Czech Republic,1992,72.4
+Sri Lanka,2007,72.396
+Brazil,2007,72.39
+France,1972,72.38
+West Bank and Gaza,2002,72.37
+Denmark,1962,72.35
+Greece,1972,72.34
+Ecuador,1997,72.312
+Algeria,2007,72.301
+Jamaica,1997,72.262
+Slovenia,1987,72.25
+"Korea, Rep.",1992,72.244
+Dominican Republic,2007,72.235
+Serbia,1997,72.232
+New Zealand,1977,72.22
+Italy,1972,72.19
+Bosnia and Herzegovina,1992,72.178
+Austria,1977,72.17
+Puerto Rico,1972,72.16
+Taiwan,1982,72.16
+Venezuela,1997,72.146
+Bulgaria,2002,72.14
+Canada,1967,72.13
+Netherlands,1952,72.13
+Jamaica,2002,72.047
+Ireland,1977,72.03
+China,2002,72.028
+United Kingdom,1972,72.01
+"Hong Kong, China",1972,72
+Albania,1987,72
+Lebanon,2007,71.993
+Tunisia,1997,71.973
+Mauritius,2002,71.954
+Malaysia,1997,71.938
+Australia,1972,71.93
+Uruguay,1987,71.918
+Reunion,1987,71.913
+New Zealand,1972,71.89
+El Salvador,2007,71.878
+Argentina,1992,71.868
+Sweden,1952,71.86
+Denmark,1957,71.81
+Turkey,2007,71.777
+Jamaica,1987,71.77
+Jamaica,1992,71.766
+Singapore,1982,71.76
+Paraguay,2007,71.752
+Philippines,2007,71.688
+Colombia,2002,71.682
+Serbia,1992,71.659
+Israel,1972,71.63
+Saudi Arabia,2002,71.626
+Albania,1992,71.581
+Czech Republic,1987,71.58
+Libya,1997,71.555
+France,1967,71.55
+Syria,1997,71.527
+Panama,1987,71.523
+Croatia,1987,71.52
+New Zealand,1967,71.52
+Mexico,1992,71.455
+Belgium,1972,71.44
+Spain,1967,71.44
+Japan,1967,71.43
+Peru,2007,71.421
+Slovak Republic,1992,71.38
+United Kingdom,1967,71.36
+United States,1972,71.34
+Bulgaria,1987,71.34
+Egypt,2007,71.338
+Romania,2002,71.322
+Poland,1982,71.32
+Switzerland,1962,71.32
+Kuwait,1982,71.309
+Canada,1962,71.3
+Ireland,1972,71.28
+Jordan,2002,71.263
+New Zealand,1962,71.24
+Serbia,1987,71.218
+Jamaica,1982,71.21
+Oman,1992,71.197
+Bulgaria,1992,71.19
+Morocco,2007,71.164
+Venezuela,1992,71.15
+Bosnia and Herzegovina,1987,71.14
+Puerto Rico,1967,71.1
+Australia,1967,71.1
+West Bank and Gaza,1997,71.096
+Bulgaria,1982,71.08
+Ireland,1967,71.08
+Slovak Republic,1987,71.08
+Slovenia,1982,71.063
+Italy,1967,71.06
+Hungary,1997,71.04
+Lebanon,2002,71.028
+Brazil,2002,71.006
+Germany,1972,71
+Greece,1967,71
+Algeria,2002,70.994
+Poland,1992,70.99
+Poland,1987,70.98
+Slovak Republic,1967,70.98
+Slovenia,1977,70.97
+Iran,2007,70.964
+Czech Republic,1982,70.96
+Belgium,1967,70.94
+Australia,1962,70.93
+Bulgaria,1972,70.9
+Finland,1972,70.87
+Poland,1972,70.85
+Dominican Republic,2002,70.847
+Turkey,2002,70.845
+Nicaragua,2002,70.836
+Sri Lanka,2002,70.815
+Bulgaria,1977,70.81
+Uruguay,1982,70.805
+Germany,1967,70.8
+Slovak Republic,1982,70.8
+Singapore,1977,70.795
+Denmark,1952,70.78
+Argentina,1987,70.774
+United States,1967,70.76
+United Kingdom,1962,70.76
+Paraguay,2002,70.755
+Costa Rica,1977,70.75
+Bahrain,1987,70.75
+Israel,1967,70.75
+Mauritius,1997,70.736
+El Salvador,2002,70.734
+Cuba,1972,70.723
+Czech Republic,1977,70.71
+Malaysia,1992,70.693
+Bosnia and Herzegovina,1982,70.69
+Vietnam,1997,70.672
+Poland,1977,70.67
+Indonesia,2007,70.65
+"Korea, Dem. Rep.",1987,70.647
+Croatia,1977,70.64
+Montenegro,1972,70.636
+Austria,1972,70.63
+Thailand,2007,70.616
+Taiwan,1977,70.59
+Chile,1982,70.565
+Switzerland,1957,70.56
+Saudi Arabia,1997,70.533
+France,1962,70.51
+Panama,1982,70.472
+Croatia,1982,70.46
+Sri Lanka,1997,70.457
+Slovak Republic,1977,70.45
+China,1997,70.426
+Albania,1982,70.42
+Bulgaria,1967,70.42
+United Kingdom,1957,70.42
+Portugal,1977,70.41
+Czech Republic,1967,70.38
+Sri Lanka,1992,70.379
+Slovak Republic,1972,70.35
+Slovak Republic,1962,70.33
+Australia,1957,70.33
+Bulgaria,1997,70.32
+Colombia,1997,70.313
+Philippines,2002,70.303
+Germany,1962,70.3
+Serbia,1977,70.3
+Czech Republic,1972,70.29
+Ireland,1962,70.29
+Lebanon,1997,70.265
+New Zealand,1957,70.26
+Guatemala,2007,70.259
+Belgium,1962,70.25
+United States,1962,70.21
+Honduras,2007,70.198
+Venezuela,1987,70.19
+Serbia,1982,70.162
+Austria,1967,70.14
+Jamaica,1977,70.11
+Tunisia,1992,70.001
+"Hong Kong, China",1967,70
+"Korea, Dem. Rep.",1992,69.978
+Canada,1957,69.96
+Dominican Republic,1997,69.957
+Hungary,1977,69.95
+Argentina,1982,69.942
+Peru,2002,69.906
+Czech Republic,1962,69.9
+Reunion,1982,69.885
+Trinidad and Tobago,1992,69.862
+Bosnia and Herzegovina,1977,69.86
+Finland,1967,69.83
+Slovenia,1972,69.82
+Trinidad and Tobago,2007,69.819
+"Korea, Rep.",1987,69.81
+Egypt,2002,69.806
+Jordan,1997,69.772
+Hungary,1972,69.76
+Mauritius,1992,69.745
+Romania,1997,69.72
+West Bank and Gaza,1992,69.718
+Spain,1962,69.69
+Romania,1982,69.66
+Puerto Rico,1962,69.62
+Switzerland,1952,69.62
+Morocco,2002,69.615
+Ecuador,1992,69.613
+Croatia,1972,69.61
+Poland,1967,69.61
+Trinidad and Tobago,1987,69.582
+Hungary,1987,69.58
+Austria,1962,69.54
+El Salvador,1997,69.535
+Romania,1987,69.53
+Singapore,1972,69.521
+Bulgaria,1962,69.51
+Greece,1962,69.51
+Malaysia,1987,69.5
+Hungary,1967,69.5
+Mexico,1987,69.498
+United States,1957,69.49
+Uruguay,1977,69.481
+Trinidad and Tobago,1997,69.465
+Romania,1977,69.46
+Iran,2002,69.451
+Paraguay,1997,69.4
+Israel,1962,69.39
+Taiwan,1972,69.39
+Hungary,1982,69.39
+New Zealand,1952,69.39
+Brazil,1997,69.388
+Romania,1992,69.36
+Kuwait,1977,69.343
+Lebanon,1992,69.292
+Portugal,1972,69.26
+Syria,1992,69.249
+Belgium,1957,69.24
+Italy,1962,69.24
+Romania,1972,69.21
+Slovenia,1967,69.18
+United Kingdom,1952,69.18
+Hungary,1992,69.17
+Algeria,1997,69.152
+Slovenia,1962,69.15
+Australia,1952,69.12
+"Korea, Dem. Rep.",1982,69.1
+Germany,1957,69.1
+Bahrain,1982,69.052
+Czech Republic,1957,69.03
+Sri Lanka,1987,69.011
+Jamaica,1972,69
+Guatemala,2002,68.978
+Trinidad and Tobago,2002,68.976
+Albania,1977,68.93
+France,1957,68.93
+Ireland,1957,68.9
+Turkey,1997,68.835
+Trinidad and Tobago,1982,68.832
+Saudi Arabia,1992,68.768
+Sri Lanka,1982,68.757
+Libya,1992,68.755
+Canada,1952,68.75
+Finland,1962,68.75
+Mauritius,1987,68.74
+Japan,1962,68.73
+Serbia,1972,68.7
+China,1992,68.69
+Panama,1977,68.681
+Uruguay,1972,68.673
+Indonesia,2002,68.588
+Honduras,2002,68.565
+Philippines,1997,68.564
+Thailand,2002,68.564
+Venezuela,1982,68.557
+Puerto Rico,1957,68.54
+Croatia,1967,68.5
+Argentina,1977,68.481
+Uruguay,1967,68.468
+Dominican Republic,1992,68.457
+United States,1952,68.44
+Nicaragua,1997,68.426
+Colombia,1992,68.421
+Peru,1997,68.386
+Trinidad and Tobago,1977,68.3
+Cuba,1967,68.29
+Uruguay,1962,68.253
+Paraguay,1992,68.225
+Iran,1997,68.042
+Jordan,1992,68.015
+Malaysia,1982,68
+Belgium,1952,68
+Hungary,1962,67.96
+Singapore,1967,67.946
+Lebanon,1987,67.926
+Greece,1957,67.86
+Slovenia,1957,67.85
+Costa Rica,1972,67.849
+Israel,1957,67.84
+Italy,1957,67.81
+Colombia,1987,67.768
+Algeria,1992,67.744
+Oman,1987,67.734
+"Korea, Dem. Rep.",1997,67.727
+Kuwait,1972,67.712
+Albania,1972,67.69
+Vietnam,1992,67.662
+Morocco,1997,67.66
+Honduras,1997,67.659
+"Hong Kong, China",1962,67.65
+Poland,1962,67.64
+Thailand,1997,67.521
+Jamaica,1967,67.51
+Taiwan,1967,67.5
+Germany,1952,67.5
+Finland,1957,67.49
+Austria,1957,67.48
+Venezuela,1977,67.456
+Bosnia and Herzegovina,1972,67.45
+Slovak Republic,1957,67.45
+France,1952,67.41
+Mexico,1982,67.405
+Paraguay,1987,67.378
+Thailand,1992,67.298
+"Korea, Dem. Rep.",2007,67.297
+China,1987,67.274
+Ecuador,1987,67.231
+Egypt,1997,67.217
+Montenegro,1967,67.178
+"Korea, Dem. Rep.",1977,67.159
+Croatia,1962,67.13
+"Korea, Rep.",1982,67.123
+Argentina,1972,67.065
+Reunion,1977,67.064
+Brazil,1992,67.057
+Chile,1977,67.052
+West Bank and Gaza,1987,67.046
+Uruguay,1957,67.044
+Lebanon,1982,66.983
+Syria,1987,66.974
+Serbia,1967,66.914
+Ireland,1952,66.91
+Tunisia,1987,66.894
+Paraguay,1982,66.874
+Czech Republic,1952,66.87
+Mongolia,2007,66.803
+Austria,1952,66.8
+Romania,1962,66.8
+Romania,1967,66.8
+El Salvador,1992,66.798
+Mauritius,1982,66.711
+"Korea, Dem. Rep.",2002,66.662
+Spain,1957,66.66
+Colombia,1982,66.653
+Bulgaria,1957,66.61
+Portugal,1967,66.6
+Finland,1952,66.55
+Peru,1992,66.458
+Philippines,1992,66.458
+Hungary,1957,66.41
+Honduras,1992,66.399
+Paraguay,1977,66.353
+Guatemala,1997,66.322
+Saudi Arabia,1987,66.295
+Libya,1987,66.234
+Albania,1967,66.22
+Panama,1972,66.216
+Turkey,1992,66.146
+Lebanon,1977,66.099
+Thailand,1987,66.084
+Uruguay,1952,66.071
+Dominican Republic,1987,66.046
+Indonesia,1997,66.041
+Sri Lanka,1977,65.949
+Italy,1952,65.94
+Trinidad and Tobago,1972,65.9
+Jordan,1987,65.869
+Greece,1952,65.86
+Nicaragua,1992,65.843
+Paraguay,1972,65.815
+Algeria,1987,65.799
+Singapore,1962,65.798
+Poland,1957,65.77
+Iran,1992,65.742
+Venezuela,1972,65.712
+Argentina,1967,65.634
+Jamaica,1962,65.61
+Bahrain,1977,65.593
+Slovenia,1952,65.57
+Bolivia,2007,65.554
+Sao Tome and Principe,2007,65.528
+China,1982,65.525
+Japan,1957,65.5
+Pakistan,2007,65.483
+Costa Rica,1967,65.424
+Lebanon,1972,65.421
+Trinidad and Tobago,1967,65.4
+Morocco,1992,65.393
+Israel,1952,65.39
+Malaysia,1977,65.256
+Cuba,1962,65.246
+Brazil,1987,65.205
+Taiwan,1962,65.2
+Comoros,2007,65.152
+Argentina,1962,65.142
+Iraq,1987,65.044
+Sri Lanka,1972,65.042
+Mongolia,2002,65.033
+Mexico,1977,65.032
+Paraguay,1967,64.951
+Spain,1952,64.94
+Mauritius,1977,64.93
+Trinidad and Tobago,1962,64.9
+Albania,1962,64.82
+Bosnia and Herzegovina,1967,64.79
+Croatia,1957,64.77
+"Korea, Rep.",1977,64.766
+"Hong Kong, China",1957,64.75
+India,2007,64.698
+Kuwait,1967,64.624
+Thailand,1982,64.597
+Syria,1982,64.59
+Serbia,1962,64.531
+Honduras,1987,64.492
+West Bank and Gaza,1982,64.406
+Argentina,1957,64.399
+Portugal,1962,64.39
+Paraguay,1962,64.361
+Slovak Republic,1952,64.36
+Ecuador,1982,64.342
+Sao Tome and Principe,2002,64.337
+Puerto Rico,1952,64.28
+Reunion,1972,64.274
+Sri Lanka,1967,64.266
+Mauritania,2007,64.164
+Philippines,1987,64.151
+Peru,1987,64.134
+Romania,1957,64.1
+Panama,1967,64.071
+Bangladesh,2007,64.062
+Tunisia,1982,64.048
+Hungary,1952,64.03
+"Korea, Dem. Rep.",1972,63.983
+China,1977,63.96736
+Bolivia,2002,63.883
+Lebanon,1967,63.87
+Colombia,1977,63.837
+Nepal,2007,63.785
+Jordan,1982,63.739
+Montenegro,1962,63.728
+Dominican Republic,1982,63.727
+Egypt,1992,63.674
+Mongolia,1997,63.625
+Botswana,1987,63.622
+Pakistan,2002,63.61
+Venezuela,1967,63.479
+Chile,1972,63.441
+Guatemala,1992,63.373
+Brazil,1982,63.336
+Sao Tome and Principe,1997,63.306
+Bahrain,1972,63.3
+Paraguay,1957,63.196
+Singapore,1957,63.179
+El Salvador,1987,63.154
+China,1972,63.11888
+Turkey,1987,63.108
+Senegal,2007,63.062
+Iran,1987,63.04
+Japan,1952,63.03
+Saudi Arabia,1982,63.012
+Malaysia,1972,63.01
+Comoros,2002,62.974
+Mauritius,1972,62.944
+India,2002,62.879
+Costa Rica,1962,62.842
+Vietnam,1987,62.82
+Botswana,1992,62.745
+Sao Tome and Principe,1992,62.742
+Oman,1982,62.728
+"Yemen, Rep.",2007,62.698
+Indonesia,1992,62.681
+Morocco,1987,62.677
+Paraguay,1952,62.649
+"Korea, Rep.",1972,62.612
+Jamaica,1957,62.61
+Thailand,1977,62.494
+Argentina,1952,62.485
+Taiwan,1957,62.4
+Mexico,1972,62.361
+Zimbabwe,1987,62.351
+Cuba,1957,62.325
+Mauritania,2002,62.247
+Sri Lanka,1962,62.192
+Libya,1982,62.155
+Lebanon,1962,62.094
+Philippines,1982,62.082
+Myanmar,2007,62.069
+Bolivia,1997,62.05
+Iraq,1982,62.038
+Bangladesh,2002,62.013
+Nicaragua,1987,62.008
+Namibia,1992,61.999
+Bosnia and Herzegovina,1962,61.93
+South Africa,1992,61.888
+Pakistan,1997,61.818
+Panama,1962,61.817
+Trinidad and Tobago,1957,61.8
+Dominican Republic,1977,61.788
+India,1997,61.765
+Sao Tome and Principe,1987,61.728
+Serbia,1957,61.685
+Colombia,1972,61.623
+Senegal,2002,61.6
+Mauritius,1967,61.557
+Portugal,1957,61.51
+Brazil,1977,61.489
+Botswana,1982,61.484
+Sri Lanka,1957,61.456
+Montenegro,1957,61.448
+Peru,1982,61.406
+Algeria,1982,61.368
+Gabon,1992,61.366
+Nepal,2002,61.34
+Ecuador,1977,61.31
+Poland,1952,61.31
+Mongolia,1992,61.271
+Croatia,1952,61.21
+Syria,1977,61.195
+Jordan,1977,61.134
+Romania,1952,61.05
+Turkey,1982,61.036
+"Hong Kong, China",1952,60.96
+Haiti,2007,60.916
+Honduras,1982,60.909
+Pakistan,1992,60.838
+Namibia,1987,60.835
+South Africa,1987,60.834
+Guatemala,1987,60.782
+Venezuela,1962,60.77
+West Bank and Gaza,1977,60.765
+Comoros,1997,60.66
+Reunion,1967,60.542
+Chile,1967,60.523
+Kuwait,1962,60.47
+Gabon,1997,60.461
+Mauritania,1997,60.43
+Iraq,1977,60.413
+Thailand,1972,60.405
+Singapore,1952,60.396
+Zimbabwe,1992,60.377
+Zimbabwe,1982,60.363
+Sao Tome and Principe,1982,60.351
+Myanmar,1997,60.328
+"Yemen, Rep.",2002,60.308
+Mauritius,1962,60.246
+South Africa,1997,60.236
+India,1992,60.223
+Mongolia,1987,60.222
+Gabon,1987,60.19
+Senegal,1997,60.187
+Indonesia,1987,60.137
+Mexico,1967,60.11
+Philippines,1977,60.06
+Costa Rica,1957,60.026
+Ghana,2007,60.022
+Colombia,1967,59.963
+Bolivia,1992,59.957
+"Korea, Dem. Rep.",1967,59.942
+Bahrain,1967,59.923
+Myanmar,2002,59.908
+Tunisia,1977,59.837
+Portugal,1952,59.82
+Egypt,1987,59.797
+Cambodia,2007,59.723
+Lesotho,1992,59.685
+Morocco,1982,59.65
+Dominican Republic,1972,59.631
+Iran,1982,59.62
+Bulgaria,1952,59.6
+Iraq,2007,59.545
+Turkey,1977,59.507
+Brazil,1972,59.504
+Lebanon,1957,59.489
+Iraq,1992,59.461
+Gambia,2007,59.448
+Madagascar,2007,59.443
+Nepal,1997,59.426
+Cuba,1952,59.421
+Bangladesh,1997,59.412
+Malaysia,1967,59.371
+Kenya,1987,59.339
+Myanmar,1992,59.32
+Botswana,1977,59.319
+Nicaragua,1982,59.298
+Kenya,1992,59.285
+Albania,1957,59.28
+Panama,1957,59.201
+Montenegro,1952,59.164
+Trinidad and Tobago,1952,59.1
+Namibia,1982,58.968
+Namibia,1997,58.909
+Vietnam,1982,58.816
+Iraq,1997,58.811
+Ecuador,1972,58.796
+Kenya,1982,58.766
+Saudi Arabia,1977,58.69
+Ghana,1997,58.556
+Sudan,2007,58.556
+India,1987,58.553
+Sao Tome and Principe,1977,58.55
+Jamaica,1952,58.53
+Taiwan,1952,58.5
+Swaziland,1992,58.474
+Ghana,2002,58.453
+Bosnia and Herzegovina,1957,58.45
+Peru,1977,58.447
+Togo,2007,58.42
+Togo,1997,58.39
+China,1967,58.38112
+Myanmar,1987,58.339
+Mauritania,1992,58.333
+Mexico,1962,58.299
+Thailand,1967,58.285
+Pakistan,1987,58.245
+El Salvador,1972,58.207
+Senegal,1992,58.196
+South Africa,1982,58.161
+Guatemala,1982,58.137
+Haiti,2002,58.137
+Mauritius,1957,58.089
+Philippines,1972,58.065
+Togo,1992,58.061
+Myanmar,1982,58.056
+Gambia,2002,58.041
+Eritrea,2007,58.04
+Kuwait,1957,58.033
+"Yemen, Rep.",1997,58.02
+Algeria,1977,58.014
+Serbia,1952,57.996
+Comoros,1992,57.939
+Chile,1962,57.924
+Venezuela,1957,57.907
+Colombia,1962,57.863
+"Korea, Rep.",1967,57.716
+Iran,1977,57.702
+Swaziland,1987,57.678
+Zimbabwe,1977,57.674
+Reunion,1962,57.666
+Brazil,1967,57.632
+Sri Lanka,1952,57.593
+Togo,2002,57.561
+Ghana,1992,57.501
+Mongolia,1982,57.489
+"Congo, Rep.",1987,57.47
+Nicaragua,1977,57.47
+Libya,1977,57.442
+Honduras,1977,57.402
+Oman,1977,57.367
+Syria,1972,57.296
+Madagascar,2002,57.286
+Bolivia,1987,57.251
+Costa Rica,1952,57.206
+Lesotho,1987,57.18
+Iraq,2002,57.046
+Turkey,1972,57.005
+Iraq,1972,56.95
+Togo,1987,56.941
+Bahrain,1962,56.923
+Niger,2007,56.867
+Gabon,2002,56.761
+Cambodia,2002,56.752
+Dominican Republic,1967,56.751
+Gabon,2007,56.735
+Benin,2007,56.728
+El Salvador,1977,56.696
+"Congo, Rep.",1982,56.695
+Ecuador,1967,56.678
+Haiti,1997,56.671
+"Korea, Dem. Rep.",1962,56.656
+El Salvador,1982,56.604
+India,1982,56.596
+Gabon,1982,56.564
+Cambodia,1997,56.534
+West Bank and Gaza,1972,56.532
+Jordan,1972,56.528
+Sao Tome and Principe,1972,56.48
+Namibia,1977,56.437
+"Congo, Rep.",1992,56.433
+Philippines,1967,56.393
+Sudan,2002,56.369
+Indonesia,1982,56.159
+Pakistan,1982,56.158
+Kenya,1977,56.155
+Mauritania,1987,56.145
+Chile,1957,56.074
+Thailand,1962,56.061
+Myanmar,1977,56.059
+Guatemala,1977,56.029
+Botswana,1972,56.024
+Bangladesh,1992,56.018
+Guinea,2007,56.007
+Egypt,1982,56.006
+Lebanon,1952,55.928
+Gambia,1997,55.861
+El Salvador,1967,55.855
+Cambodia,1992,55.803
+Senegal,1987,55.769
+Vietnam,1977,55.764
+Malaysia,1962,55.737
+Morocco,1977,55.73
+Ghana,1987,55.729
+Nepal,1992,55.727
+Brazil,1962,55.665
+Zimbabwe,1972,55.635
+"Congo, Rep.",1977,55.625
+Tunisia,1972,55.602
+"Yemen, Rep.",1992,55.599
+Kuwait,1952,55.565
+Swaziland,1982,55.561
+Lesotho,1997,55.558
+South Africa,1977,55.527
+Mongolia,1977,55.491
+Togo,1982,55.471
+Peru,1972,55.448
+Sudan,1997,55.373
+"Congo, Rep.",2007,55.322
+"Korea, Rep.",1962,55.292
+Eritrea,2002,55.24
+Iran,1972,55.234
+Albania,1952,55.23
+Panama,1952,55.191
+Mexico,1957,55.19
+Nicaragua,1972,55.151
+Colombia,1957,55.118
+Reunion,1957,55.09
+Haiti,1992,55.089
+Venezuela,1952,55.088
+Lesotho,1982,55.078
+Cameroon,1987,54.985
+Madagascar,1997,54.978
+Comoros,1987,54.926
+"Congo, Rep.",1972,54.907
+Djibouti,2007,54.791
+Benin,1997,54.777
+Philippines,1962,54.757
+Chile,1952,54.745
+Cote d'Ivoire,1987,54.655
+Ecuador,1962,54.64
+Algeria,1972,54.518
+Niger,2002,54.496
+Mali,2007,54.467
+Iraq,1967,54.459
+Sao Tome and Principe,1967,54.425
+Kenya,1997,54.407
+Benin,2002,54.406
+Turkey,1967,54.336
+Cameroon,1992,54.314
+Swaziland,1997,54.289
+India,1977,54.208
+Kenya,2007,54.11
+"Korea, Dem. Rep.",1957,54.081
+Pakistan,1977,54.043
+Zimbabwe,1967,53.995
+Cote d'Ivoire,1982,53.983
+Benin,1992,53.919
+Cambodia,1987,53.914
+Saudi Arabia,1972,53.886
+Honduras,1972,53.884
+Namibia,1972,53.867
+Bolivia,1982,53.859
+Bahrain,1957,53.832
+Bosnia and Herzegovina,1952,53.82
+Mongolia,1972,53.754
+Ghana,1982,53.744
+Guatemala,1972,53.738
+South Africa,1972,53.696
+Guinea,2002,53.676
+Syria,1967,53.655
+Haiti,1987,53.636
+Thailand,1957,53.63
+Mauritania,1982,53.599
+Kenya,1972,53.559
+Sudan,1992,53.556
+Dominican Republic,1962,53.459
+Eritrea,1997,53.378
+Djibouti,2002,53.373
+South Africa,2002,53.365
+Egypt,1977,53.319
+Botswana,1967,53.298
+Brazil,1957,53.285
+Djibouti,1997,53.157
+Myanmar,1972,53.07
+"Congo, Rep.",2002,52.97
+"Congo, Rep.",1997,52.962
+Cameroon,1982,52.961
+Ethiopia,2007,52.947
+Comoros,1982,52.933
+"Yemen, Rep.",1987,52.922
+Namibia,2007,52.906
+Togo,1977,52.887
+Morocco,1972,52.862
+Bangladesh,1987,52.819
+Gabon,1977,52.79
+Libya,1972,52.773
+Reunion,1952,52.724
+Indonesia,1977,52.702
+"Korea, Rep.",1957,52.681
+Gambia,1992,52.644
+Botswana,1997,52.556
+Swaziland,1977,52.537
+Nepal,1987,52.537
+Tanzania,2007,52.517
+Iran,1967,52.469
+Senegal,1982,52.379
+Cote d'Ivoire,1977,52.374
+Zimbabwe,1962,52.358
+Benin,1987,52.337
+El Salvador,1962,52.307
+Burkina Faso,2007,52.295
+Madagascar,1992,52.214
+Lesotho,1977,52.208
+Cameroon,1997,52.199
+Oman,1972,52.143
+Malaysia,1957,52.102
+Turkey,1962,52.098
+Tunisia,1967,52.053
+Cote d'Ivoire,1992,52.044
+"Congo, Rep.",1967,52.04
+Pakistan,1972,51.929
+South Africa,1967,51.927
+Sao Tome and Principe,1962,51.893
+Nicaragua,1967,51.884
+Zambia,1982,51.821
+Mali,2002,51.818
+Ghana,1977,51.756
+Sudan,1987,51.744
+Chad,1992,51.724
+West Bank and Gaza,1967,51.631
+Jordan,1967,51.629
+Djibouti,1992,51.604
+Equatorial Guinea,2007,51.579
+Chad,1997,51.573
+Uganda,2007,51.542
+Tanzania,1987,51.535
+Botswana,1962,51.52
+Uganda,1987,51.509
+Namibia,2002,51.479
+Haiti,1982,51.461
+Iraq,1962,51.457
+Guinea,1997,51.455
+Peru,1967,51.445
+Algeria,1967,51.407
+Zambia,1977,51.386
+Ecuador,1957,51.356
+Philippines,1957,51.334
+Niger,1997,51.313
+Mongolia,1967,51.253
+Namibia,1967,51.159
+Egypt,1972,51.137
+Chad,1987,51.051
+Uganda,1972,51.016
+Kenya,2002,50.992
+Mauritius,1952,50.986
+Cambodia,1982,50.957
+Comoros,1977,50.939
+Bahrain,1952,50.939
+Honduras,1967,50.924
+Brazil,1952,50.917
+Benin,1982,50.904
+Mauritania,1977,50.852
+Thailand,1952,50.848
+Zambia,1987,50.821
+Mexico,1952,50.789
+Botswana,2007,50.728
+Ethiopia,2002,50.725
+Kenya,1967,50.654
+Chad,2007,50.651
+India,1972,50.651
+Burkina Faso,2002,50.65
+Colombia,1952,50.643
+Tanzania,1982,50.608
+China,1957,50.54896
+Chad,2002,50.525
+Central African Republic,1987,50.485
+Zimbabwe,1957,50.469
+Tanzania,1992,50.44
+Cameroon,2007,50.43
+Uganda,1977,50.35
+Sudan,1982,50.338
+Morocco,1967,50.335
+Burkina Faso,1997,50.324
+Syria,1962,50.305
+Burkina Faso,1992,50.26
+Vietnam,1972,50.254
+Libya,1967,50.227
+Zambia,1972,50.107
+"Korea, Dem. Rep.",1952,50.056
+Djibouti,1987,50.04
+Bolivia,1977,50.023
+Guatemala,1967,50.016
+Bangladesh,1982,50.009
+Eritrea,1992,49.991
+South Africa,1962,49.951
+Haiti,1977,49.923
+Tanzania,1977,49.919
+Mali,1997,49.903
+Saudi Arabia,1967,49.901
+Ghana,1972,49.875
+Cameroon,2002,49.856
+Uganda,1982,49.849
+Dominican Republic,1957,49.828
+Cote d'Ivoire,1972,49.801
+Pakistan,1967,49.8
+Lesotho,1972,49.767
+Togo,1972,49.759
+Tanzania,2002,49.651
+Botswana,1957,49.618
+Nepal,1982,49.594
+Burundi,2007,49.58
+Tunisia,1962,49.579
+Burkina Faso,1987,49.557
+Swaziland,1972,49.552
+Chad,1982,49.517
+Malawi,1992,49.42
+Ethiopia,1997,49.402
+Central African Republic,1992,49.396
+Myanmar,1967,49.379
+Cameroon,1977,49.355
+Madagascar,1987,49.35
+Equatorial Guinea,2002,49.348
+South Africa,2007,49.339
+Iran,1962,49.325
+Egypt,1967,49.293
+Gambia,1987,49.265
+Indonesia,1972,49.203
+Benin,1977,49.19
+"Yemen, Rep.",1982,49.113
+Peru,1962,49.096
+Madagascar,1982,48.969
+Sao Tome and Principe,1957,48.945
+Comoros,1972,48.944
+Senegal,1977,48.879
+Uganda,1992,48.825
+Djibouti,1982,48.812
+Gabon,1972,48.69
+Nicaragua,1962,48.632
+Guinea,1992,48.576
+El Salvador,1957,48.57
+Lesotho,1967,48.492
+Tanzania,1997,48.466
+Malaysia,1952,48.463
+Zimbabwe,1952,48.451
+Mauritania,1972,48.437
+Iraq,1957,48.437
+"Congo, Rep.",1962,48.435
+Mali,1992,48.388
+Namibia,1962,48.386
+Ecuador,1952,48.357
+Cote d'Ivoire,2007,48.328
+Algeria,1962,48.303
+Malawi,2007,48.303
+Central African Republic,1982,48.295
+Syria,1957,48.284
+Mongolia,1962,48.251
+Equatorial Guinea,1997,48.245
+Burundi,1987,48.211
+Somalia,2007,48.159
+West Bank and Gaza,1962,48.127
+Jordan,1962,48.126
+Burkina Faso,1982,48.122
+Ethiopia,1992,48.091
+Turkey,1957,48.079
+Ghana,1967,48.072
+Uganda,1967,48.051
+Haiti,1972,48.042
+Honduras,1962,48.041
+Cote d'Ivoire,1997,47.991
+South Africa,1957,47.985
+Kenya,1962,47.949
+Morocco,1962,47.924
+Vietnam,1967,47.838
+Uganda,2002,47.813
+Libya,1962,47.808
+"Congo, Dem. Rep.",1977,47.804
+Sudan,1977,47.8
+"Congo, Dem. Rep.",1982,47.784
+Zambia,1967,47.768
+Philippines,1952,47.752
+Lesotho,1962,47.747
+Pakistan,1962,47.67
+Botswana,1952,47.622
+Tanzania,1972,47.62
+Equatorial Guinea,1992,47.545
+Malawi,1997,47.495
+Nigeria,1992,47.472
+Burundi,1982,47.471
+Nigeria,1997,47.464
+Malawi,1987,47.457
+"Korea, Rep.",1952,47.453
+"Congo, Dem. Rep.",1987,47.412
+Niger,1992,47.391
+Chad,1977,47.383
+Burundi,2002,47.36
+Cote d'Ivoire,1967,47.35
+India,1967,47.193
+Iran,1957,47.181
+Tunisia,1957,47.1
+Cameroon,1972,47.049
+Benin,1972,47.014
+Egypt,1962,46.992
+Oman,1967,46.988
+Guatemala,1962,46.954
+Bangladesh,1977,46.923
+Nigeria,1987,46.886
+Madagascar,1977,46.881
+Nigeria,2007,46.859
+Cote d'Ivoire,2002,46.832
+Zimbabwe,1997,46.809
+Central African Republic,1977,46.775
+Togo,1967,46.769
+Nepal,1977,46.748
+Bolivia,1972,46.714
+Ethiopia,1987,46.684
+Botswana,2002,46.634
+Swaziland,1967,46.633
+Nigeria,2002,46.608
+Djibouti,1977,46.519
+Comoros,1967,46.472
+Sao Tome and Principe,1952,46.471
+"Congo, Dem. Rep.",2007,46.462
+Eritrea,1987,46.453
+Ghana,1962,46.452
+Guinea-Bissau,2007,46.388
+Mali,1987,46.364
+Mozambique,1997,46.344
+Mauritania,1967,46.289
+Peru,1957,46.263
+Haiti,1967,46.243
+Rwanda,2007,46.242
+Rwanda,1982,46.218
+Burkina Faso,1977,46.137
+Zambia,1992,46.1
+Central African Republic,1997,46.066
+Liberia,1987,46.027
+Zambia,1962,46.023
+"Congo, Dem. Rep.",1972,45.989
+Indonesia,1967,45.964
+Somalia,2002,45.936
+Dominican Republic,1952,45.928
+Saudi Arabia,1962,45.914
+Burundi,1977,45.91
+Syria,1952,45.883
+Nigeria,1982,45.826
+Senegal,1972,45.815
+Tanzania,1967,45.757
+Algeria,1957,45.685
+Liberia,2007,45.678
+West Bank and Gaza,1957,45.671
+Jordan,1957,45.669
+Equatorial Guinea,1987,45.664
+Malawi,1982,45.642
+Gambia,1982,45.58
+Chad,1972,45.569
+Pakistan,1957,45.557
+Guinea,1987,45.552
+"Congo, Dem. Rep.",1992,45.548
+Guinea-Bissau,2002,45.504
+Nicaragua,1957,45.432
+Morocco,1957,45.423
+Cambodia,1967,45.415
+Vietnam,1962,45.363
+Uganda,1962,45.344
+Burundi,1997,45.326
+Iraq,1952,45.32
+Libya,1957,45.289
+El Salvador,1952,45.262
+Bangladesh,1972,45.252
+Mongolia,1957,45.248
+Namibia,1957,45.226
+Myanmar,1962,45.108
+Sudan,1972,45.083
+"Congo, Rep.",1957,45.053
+Lesotho,1957,45.047
+Bolivia,1967,45.032
+Malawi,2002,45.009
+South Africa,1952,45.009
+Rwanda,1977,45
+Swaziland,1962,44.992
+"Congo, Dem. Rep.",2002,44.966
+Cote d'Ivoire,1962,44.93
+Ethiopia,1982,44.916
+Benin,1967,44.885
+Guinea-Bissau,1997,44.873
+Iran,1952,44.869
+Liberia,1982,44.852
+Madagascar,1972,44.851
+Cameroon,1967,44.799
+Ghana,1957,44.779
+Central African Republic,2007,44.741
+Burundi,1992,44.736
+Kenya,1957,44.686
+Honduras,1957,44.665
+Rwanda,1972,44.6
+Tunisia,1952,44.6
+Gabon,1967,44.598
+Lesotho,2002,44.593
+Uganda,1997,44.578
+Niger,1987,44.555
+Eritrea,1977,44.535
+Nigeria,1977,44.514
+Ethiopia,1977,44.51
+China,1962,44.50136
+Somalia,1987,44.501
+Comoros,1962,44.467
+Egypt,1957,44.444
+Djibouti,1972,44.366
+Mozambique,1992,44.284
+Mauritania,1962,44.248
+Tanzania,1962,44.246
+"Yemen, Rep.",1977,44.175
+Eritrea,1972,44.142
+Guatemala,1957,44.142
+Rwanda,1967,44.1
+Zambia,1957,44.077
+Burundi,1972,44.057
+"Congo, Dem. Rep.",1967,44.056
+Mozambique,2002,44.026
+Rwanda,1987,44.02
+China,1952,44
+Nepal,1972,43.971
+Togo,1962,43.922
+Mali,1982,43.916
+Peru,1952,43.902
+Eritrea,1982,43.89
+Swaziland,2002,43.869
+Afghanistan,2007,43.828
+Somalia,1997,43.795
+Malawi,1977,43.767
+Liberia,1977,43.764
+Liberia,2002,43.753
+Equatorial Guinea,1982,43.662
+India,1962,43.605
+Chad,1967,43.601
+Burkina Faso,1972,43.591
+Haiti,1962,43.59
+Turkey,1952,43.585
+Senegal,1967,43.563
+Burundi,1967,43.548
+Ethiopia,1972,43.515
+Zimbabwe,2007,43.487
+Central African Republic,1972,43.457
+Bangladesh,1967,43.453
+Pakistan,1952,43.436
+Bolivia,1962,43.428
+Swaziland,1957,43.424
+Cambodia,1962,43.415
+Rwanda,2002,43.413
+Central African Republic,2002,43.308
+Guinea-Bissau,1992,43.266
+Oman,1962,43.165
+West Bank and Gaza,1952,43.16
+Jordan,1952,43.158
+Ghana,1952,43.149
+Algeria,1952,43.077
+Rwanda,1962,43
+Tanzania,1957,42.974
+Somalia,1982,42.955
+Guinea,1982,42.891
+Vietnam,1957,42.887
+Madagascar,1967,42.881
+Morocco,1952,42.873
+Saudi Arabia,1957,42.868
+Mozambique,1987,42.861
+Sudan,1967,42.858
+Nigeria,1972,42.821
+Mozambique,1982,42.795
+Angola,2007,42.731
+Libya,1952,42.723
+Cameroon,1962,42.643
+Benin,1962,42.618
+Liberia,1972,42.614
+Niger,1982,42.598
+Lesotho,2007,42.592
+"Congo, Dem. Rep.",1997,42.587
+Uganda,1957,42.571
+Sierra Leone,2007,42.568
+Indonesia,1962,42.518
+Mozambique,1977,42.495
+Cote d'Ivoire,1957,42.469
+Comoros,1957,42.46
+Zambia,2007,42.384
+Mauritania,1957,42.338
+Nicaragua,1952,42.314
+Kenya,1952,42.27
+Mongolia,1952,42.244
+Liberia,1997,42.221
+Eritrea,1967,42.189
+Lesotho,1952,42.138
+Afghanistan,2002,42.129
+"Congo, Dem. Rep.",1962,42.122
+Ethiopia,1967,42.115
+"Congo, Rep.",1952,42.111
+Mozambique,2007,42.082
+Djibouti,1967,42.074
+Burundi,1962,42.045
+Zambia,1952,42.038
+Equatorial Guinea,1977,42.024
+Guatemala,1952,42.023
+Somalia,1977,41.974
+Honduras,1952,41.912
+Myanmar,1957,41.905
+Egypt,1952,41.893
+Bolivia,1957,41.89
+Gambia,1977,41.842
+Malawi,1972,41.766
+Afghanistan,1997,41.763
+Namibia,1952,41.725
+Chad,1962,41.716
+Mali,1977,41.714
+Afghanistan,1992,41.674
+Liberia,1967,41.536
+Rwanda,1957,41.5
+Central African Republic,1967,41.478
+Nepal,1967,41.472
+Senegal,1962,41.454
+Swaziland,1952,41.407
+Cambodia,1957,41.366
+Niger,1977,41.291
+Guinea-Bissau,1987,41.245
+Bangladesh,1962,41.216
+Tanzania,1952,41.215
+Togo,1957,41.208
+Nigeria,1967,41.04
+Sierra Leone,2002,41.012
+Angola,2002,41.003
+Somalia,1972,40.973
+Angola,1997,40.963
+Sudan,1962,40.87
+Madagascar,1962,40.848
+Afghanistan,1987,40.822
+Liberia,1992,40.802
+Guinea,1977,40.762
+Comoros,1952,40.715
+Burkina Faso,1967,40.697
+Haiti,1957,40.696
+"Congo, Dem. Rep.",1957,40.652
+Angola,1992,40.647
+Niger,1972,40.546
+Mauritania,1952,40.543
+Burundi,1957,40.533
+Equatorial Guinea,1972,40.516
+Liberia,1962,40.502
+Gabon,1962,40.489
+Cote d'Ivoire,1952,40.477
+Cameroon,1957,40.428
+Bolivia,1952,40.414
+Vietnam,1952,40.412
+Benin,1957,40.358
+Mozambique,1972,40.328
+Cambodia,1972,40.317
+India,1957,40.249
+Zambia,1997,40.238
+Eritrea,1962,40.158
+Niger,1967,40.118
+Oman,1957,40.08
+Ethiopia,1962,40.059
+Sierra Leone,1987,40.006
+Rwanda,1952,40
+Zimbabwe,2002,39.989
+Uganda,1952,39.978
+Mali,1972,39.977
+Angola,1982,39.942
+Indonesia,1957,39.918
+Angola,1987,39.906
+Sierra Leone,1997,39.897
+Chad,1957,39.881
+Saudi Arabia,1952,39.875
+Afghanistan,1982,39.854
+"Yemen, Rep.",1972,39.848
+Djibouti,1962,39.693
+Somalia,1992,39.658
+Sudan,1957,39.624
+Swaziland,2007,39.613
+Malawi,1967,39.487
+Niger,1962,39.487
+Liberia,1957,39.486
+Angola,1977,39.483
+Central African Republic,1962,39.475
+Cambodia,1952,39.417
+Nepal,1962,39.393
+Nigeria,1962,39.36
+Bangladesh,1957,39.348
+Senegal,1957,39.329
+Guinea-Bissau,1982,39.327
+Zambia,2002,39.193
+"Congo, Dem. Rep.",1952,39.143
+Burundi,1952,39.031
+Gabon,1957,38.999
+Equatorial Guinea,1967,38.987
+Somalia,1967,38.977
+Madagascar,1957,38.865
+Guinea,1972,38.842
+Sudan,1952,38.635
+Niger,1957,38.598
+Togo,1952,38.596
+Cameroon,1952,38.523
+Mali,1967,38.487
+Liberia,1952,38.48
+Sierra Leone,1982,38.445
+Afghanistan,1977,38.438
+Malawi,1962,38.41
+Sierra Leone,1992,38.333
+Gambia,1972,38.308
+Benin,1952,38.223
+Mozambique,1967,38.113
+Chad,1952,38.092
+Eritrea,1957,38.047
+Angola,1972,37.928
+Burkina Faso,1962,37.814
+Nigeria,1957,37.802
+Nepal,1957,37.686
+Haiti,1952,37.579
+Oman,1952,37.578
+Equatorial Guinea,1962,37.485
+Bangladesh,1952,37.484
+Indonesia,1952,37.468
+Guinea-Bissau,1977,37.465
+Central African Republic,1957,37.464
+Niger,1952,37.444
+India,1952,37.373
+Djibouti,1957,37.328
+Senegal,1952,37.278
+Malawi,1957,37.207
+Guinea,1967,37.197
+Gabon,1952,37.003
+"Yemen, Rep.",1967,36.984
+Somalia,1962,36.981
+Mali,1962,36.936
+Sierra Leone,1977,36.788
+Madagascar,1952,36.681
+Ethiopia,1957,36.667
+Guinea-Bissau,1972,36.486
+Nigeria,1952,36.324
+Myanmar,1952,36.319
+Malawi,1952,36.256
+Mozambique,1962,36.161
+Nepal,1952,36.157
+Afghanistan,1972,36.088
+Rwanda,1997,36.087
+Angola,1967,35.985
+Equatorial Guinea,1957,35.983
+Eritrea,1952,35.928
+Gambia,1967,35.857
+Guinea,1962,35.753
+Guinea-Bissau,1967,35.492
+Central African Republic,1952,35.463
+Sierra Leone,1972,35.4
+Mali,1957,35.307
+"Yemen, Rep.",1962,35.18
+Somalia,1957,34.977
+Burkina Faso,1957,34.906
+Djibouti,1952,34.812
+Guinea,1957,34.558
+Guinea-Bissau,1962,34.488
+Equatorial Guinea,1952,34.482
+Sierra Leone,1967,34.113
+Ethiopia,1952,34.078
+Afghanistan,1967,34.02
+Angola,1962,34
+"Yemen, Rep.",1957,33.97
+Gambia,1962,33.896
+Mozambique,1957,33.779
+Mali,1952,33.685
+Guinea,1952,33.609
+Guinea-Bissau,1957,33.489
+Somalia,1952,32.978
+Sierra Leone,1962,32.767
+"Yemen, Rep.",1952,32.548
+Guinea-Bissau,1952,32.5
+Gambia,1957,32.065
+Angola,1957,31.999
+Afghanistan,1962,31.997
+Burkina Faso,1952,31.975
+Sierra Leone,1957,31.57
+Mozambique,1952,31.286
+Cambodia,1977,31.22
+Afghanistan,1957,30.332
+Sierra Leone,1952,30.331
+Angola,1952,30.015
+Gambia,1952,30
+Afghanistan,1952,28.801
+Rwanda,1992,23.599

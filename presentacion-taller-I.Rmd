@@ -1,0 +1,536 @@
+---
+title: "Listas, Dataframes y dplyr"
+author: "Samuel Calderon"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Operaciones lógicas
+
+---
+
+Del mismo modo en que los operadores aritméticos nos permitían obtener un resultado aritmético (*aka*, numérico) en nuestros cálculos, existen otros operadores que nos permiten obtener resultados lógicos.
+
+### Operadores relacionales
+
+Los primeros de ellos son los relacionales, y ya los conocemos desde el colegio, pero es bueno saber cómo escribirlos en R. La siguiente tabla nos muestra para qué sirve cada uno de ellos.
+
+|Operador|Uso              |
+|-------:|:----------------|
+|`>`     |Mayor que        |
+|`<`     |Menor que        |
+|`==`    |Igual que        |
+|`!=`    |Diferente que    |
+|`>=`    |Mayor o igual que|
+|`<=`    |Menor o igual que|
+
+## Usando operadores relacionales
+
+Empecemos por definir una secuencia del 1 al 6 con la cual vamos a hacer nuestras comparaciones.
+
+```{r}
+secuencia <- 1:6
+```
+
+---
+
+Primero vamos a utilizar los operadores de igualdad y desigualdad. Tengamos en cuenta que al igual que con las operaciones aritméticas, al comparar una costante, esta se recicla. 
+
+```{r}
+secuencia
+```
+
+
+```{r}
+# igual que
+secuencia == 6
+```
+
+
+```{r}
+# diferente que
+secuencia != 6
+```
+
+Obtenemos los resultados de las comparaciones. En aquellos valores que cumplan la condición, obtenemos un valor `TRUE`. Vemos que sucede lo mismo cuando usamos los demás operadores relacionales.
+
+---
+
+```{r}
+secuencia
+```
+
+
+```{r}
+# mayor que
+secuencia > 4
+```
+
+
+```{r}
+# menor que
+secuencia < 4
+```
+
+
+```{r}
+# mayor o igual que
+secuencia >= 4
+```
+
+
+```{r}
+# menor o igual que
+secuencia <= 4
+```
+
+---
+
+Ten cuidado al comparar vectores *character* como *numericos* porque pueden devolver resultados inesperados. No olvides que operar con un `NA` siempre devolverá `NA`. 
+
+```{r}
+100 < "11"
+```
+
+
+```{r}
+1000 > NA
+```
+
+# Operadores lógicos
+
+---
+
+Para potenciar nuestras habilidades de comparación, podemos hacer uso de operadores lógicos. La siguiente tabla te muestra cuáles son:
+
+|Operador|Uso      |
+|-------:|:--------|
+|`&`     |Y lógico |
+|`|`     |O lógico |
+|`!`     |NO lógico|
+
+---
+
+Usaremos una secuencia un poco más larga para ver mejor cómo usarlos:
+
+```{r secuencia2}
+secuencia2 <- 1:8
+```
+
+---
+
+```{r}
+secuencia2
+```
+
+
+```{r}
+# Y lógico: el número debe ser mayor que tres Y menor que 6
+secuencia2 > 3 & secuencia2 < 6
+```
+
+
+```{r}
+# O lógico: el número debe ser menor que tres O mayor que 6
+secuencia2 < 3 | secuencia2 > 6
+```
+
+
+```{r}
+# NO lógico: cambia el valor de la operación
+! secuencia2 <= 6
+```
+
+# Listas
+
+---
+
+Los cuatro vectores que conocimos en la sesión 1 son los llamados vectores atómicos, porque pueden almacenar un tipo específico de información. Hemos conocido también los factores y datetimes, que permiten alterar el comportamiento de estos vectores atómicos. Ahora nos toca conocer las listas.
+
+## Función `list()`
+
+Las listas son objetos especiales, porque nos permiten almacenar cualquier tipo de información. Para crear una, usamos la función `list()`. Se pueden inspecionar sus elementos de la misma manera que con cualquier otro vector.
+
+```{r crear_lista}
+mi_vector_1 <- c(1L, "Hola mundo", 3.14159, TRUE)
+mi_lista_1 <- list(1L, "Hola mundo", 3.14159, TRUE)
+```
+
+---
+
+¿Cuál es el resultado de los siguientes bloques de código?
+
+```{r}
+typeof(mi_vector_1)
+```
+
+
+```{r}
+typeof(mi_lista_1)
+```
+
+---
+
+Las listas lucen diferente que un vector atómico
+
+```{r}
+mi_lista_1
+```
+
+Vemos que este objeto aceptó los cuatro tipos de vectores atómicos sin problema, y que al ser inspeccionado, cada elemento correspondía en sí mismo a un vector atómico.
+
+## Elementos con nombre
+
+Del mismo modo que podíamos combinar vectores atómicos con otros vectores atómicos, en las listas podemos agregar vectores creados previamente. En este caso, cada uno de ellos conserva su singularidad. Al crear la lista, podemos asignarle un nombre a cada elemento.
+
+```{r}
+vec_integer <- 1:10
+vec_logical <- c(TRUE, FALSE, TRUE, FALSE)
+vec_double <- vec_integer*10
+vec_character <- as.character(vec_double)
+```
+
+
+```{r}
+mi_lista_2 <- list(enteros = vec_integer,
+                   logicos = vec_logical,
+                   decimales = vec_double,
+                   texto = vec_character)
+```
+
+---
+
+
+```{r lista_elementos_con_nombre, exercise=TRUE}
+mi_lista_2
+```
+
+## Combinar listas
+
+Para combinar una lista con otra, basta con incluirlas dentro de una lista nueva. En el código de abajo, se creará una lista con dos elementos, cada uno de ellos sigue siendo una lista.
+
+
+```{r lista_combinada}
+mi_lista_combinada <- list(mi_lista_1, mi_lista_2)
+```
+
+---
+
+
+```{r}
+mi_lista_combinada
+```
+
+# Dataframes
+
+## ¿Qué es un data.frame?
+
+Un *data.frame* es una versión bi-dimensional de una lista, lo que ocasiona que se comporte de manera similar a una tabla. Debido a que esa estructura facilita mucho su comprensión de manera visual y almacenamiento, su uso es muy extendido en el análisis de datos. 
+
+Fuera de R, los programas más conocidos que también almacenan sus datos tabularmente son Excel, Google Sheets y SPSS. Es una de las razones por las que resulta muy sencillo trasladar el trabajo realizado en esos programas hacia R.
+
+Es muy común referirse a un data.frame como `df`, en forma abreviada.
+
+## Crear un data.frame
+
+El proceso para crearlos es muy similar al de una lista nombrada. En el siguiente código, estamos creando el objeto `df`, conformado por tres vectores de cinco elementos cada uno.
+
+---
+
+```{r df_crear}
+df <- data.frame(
+  columna1 = 1:5,
+  columna2 = c("uno", "dos", "tres", "cuatro", "cinco"),
+  columna3 = c("one", "two", "three", "four", "five")
+  )
+```
+
+
+```{r}
+df
+```
+
+---
+
+En un data.frame, cada vector se convierte en una columna, con cada uno de sus elementos convirtiéndose en una fila, en el orden en que aparecen. Además de eso, el número de fila nos aparece automáticamente como una columna sin nombre.
+
+## Obtener un data.frame a partir de una lista
+
+```{r df_from_list}
+notas <- list(
+  matematica = c(20, 15, 17, 19),
+  lenguaje = c(18, 12, 11, 19),
+  ciencias = c(19, 14, 15, 17)
+)
+```
+
+```{r}
+notas
+```
+
+---
+
+```{r}
+df_notas <- as.data.frame(notas)
+```
+
+
+```{r}
+df_notas
+```
+
+---
+
+Podemos identificar los data.frame porque poseen la clase "data.frame",
+
+```{r df_class}
+class(df_notas)
+```
+
+## Obtener un data.frame a partir de vectores
+
+Al igual que con una lista, puedo obtener los elementos (columnas) de mi data.frame a partir de vectores creados previamente. En este caso, la columna heredará el nombre del objeto a partir del cual es creado.
+
+```{r df_from_vector}
+alumnos <- c("Amanda", "Brenda", "Charlie", "Dario")
+sexo <- c("F", "F", "M", "M")
+```
+
+---
+
+```{r}
+df_alumnos <- data.frame(alumnos, sexo)
+```
+
+```{r}
+df_alumnos
+```
+
+# Ejercicio
+
+## Crea tu primer data.frame
+
+Ahora es tu turno. Crea un data.frame con las siguientes tres columnas:
+
+- nombre
+- apellido
+- cargo
+
+Cada fila debe representar el nombre de alguien famoso.
+
+Guardalo en tu Environment con el nombre "mi_primer_dataframe"
+
+## Ejemplo
+
+```{r, echo=FALSE}
+data.frame(
+    nombre = c("Tsunade", "Minato", "Hiruzen"),
+    apellido = c("Senju", "Namikaze", "Sarutobi"),
+    cargo = c("Quinto Hokage", "Cuarto Hokage", "Tercer Hokage")
+)
+```
+
+## head() y tail()
+
+Hasta el momento, hemos trabajado con data.frames pequeños. Normalmente, nuestros datos pueden llegar a tener una gran cantidad de filas y columnas. El data.frame `alfabeto` contiene dos columnas, cada una contiene las 26 letras del alfabeto (inglés) en mayúsculas y minúsculas, respectivamente.
+
+```{r cont_alfabeto}
+alfabeto <- data.frame(LETTERS, letters)
+```
+
+Al inspeccionar su contenido obtenemos:
+
+---
+
+```{r cont_ejm1}
+alfabeto
+```
+
+---
+
+Todos los elementos del data.frame aparecen en nuestra pantalla. Con un conjunto de datos de 26 filas esto aún es manejable, pero imagina que estás trabajando con miles o millones de datos, imprimir todos los elementos en tu pantalla no sólo es molesto sino también inútil.
+
+Felizmente, puedes hacer uso de la función `head()`. Por defecto, imprimirá las seis primeras filas del data.frame que le ingresemos, pero podemos especificar otro número.
+
+---
+
+```{r head}
+# Seis primeras filas por defecto
+head(alfabeto)
+```
+
+---
+
+
+```{r}
+# Especificando el número de filas requerido
+head(alfabeto, 8)
+```
+
+---
+
+Si lo queremos es ver las últimas filas del data.frame, podemos hacer uso de la función `tail()`. Nuevamente, por defecto imprime las seis últimas filas, pero se le puede especificar otra cantidad.
+
+---
+
+```{r tail}
+# Seis últimas filas
+tail(alfabeto)
+```
+
+---
+
+
+```{r}
+# Especificando el número de filas requerido
+tail(alfabeto, 3)
+```
+
+# Descanso de 15 minutos
+
+# Tibbles
+
+## ¿Qué son los tibbles?
+
+Así como los data.frames son listas que se comportan de manera especial, los *tibbles* son data.frames que se comportan de manera especial. Vamos a conocer de qué manera lo hacen, y por qué es preferible trabajar con ellos.
+
+Ten encuenta que para ello es necesario utilizar el paquete `tibble`.
+
+```{r tibble}
+library(tibble)
+```
+
+---
+
+Los tibble son objetos ampliamente utilizados en la actualidad y son parte fundamental del [*tidyverse*](https://www.tidyverse.org/), un conjunto de paquetes que comparten una filosofía en común, con el fin de hacer el análisis de datos más accesible y reproducible. 
+
+Esta filosofía es visiblemente respaldada por los desarrolladores de RStudio. Debido a esta popularidad , es bastante probable que cuando veas que alguien está hablando de un data.frame, en realidad se esté refiriendo a un tibble.
+
+## Crear un tibble a partir de un data.frame
+
+Convertir un data.frame existente en un tibble es bastante sencillo. Basta con colocar nuestro data.frame dentro de `as_tibble()`[^1].
+
+```{r tbl_notas}
+tbl_notas <- as_tibble(df_notas)
+```
+
+---
+
+```{r}
+tbl_notas
+```
+
+En los tibble, el tipo de columna aparece debajo del encabezado. Esto nos permite tener una idea rápida de la composición de los datos. 
+
+## Tibbles a partir de listas
+
+Es posible también crear tibbles a partir de listas. Recordemos que originalmente teníamos la lista `notas`.
+
+---
+
+```{r}
+notas
+```
+
+---
+
+Podemos usar `as_tibble()` directamente en una lista para crear un tibble, sin necesidad de que la lista se convierta primero en un data.frame.
+
+```{r tbl_notas_2}
+as_tibble(notas)
+```
+
+## Crear tibbles desde cero
+
+En realidad, no necesitamos crear ningún objeto antes de nuestro tibble. La función `tibble()` nos permite crearlo directamente, de manera similar a como creamos un data.frame. 
+
+---
+
+```{r tbl_tibble}
+tibble(
+  enteros = 1:10,
+  decimales = enteros/2 
+)
+```
+
+---
+
+Sin embargo, es posible crear un tibble usando una sintaxis diferente con la función `tribble()`. 
+
+```{r tribble}
+tribble(
+  ~colA, ~colB,
+  "a",   1,
+  "b",   2,
+  "c",   3
+)
+```
+
+## La clase tibble
+
+El atributo que ocasiona que un objeto en R se comporte de manera especial es la clase. Además de la clase "data.frame", los tibble contiene las clases "tbl_df" y "tbl".
+
+```{r tbl_class}
+class(tbl_notas)
+```
+
+---
+
+Cuando nuestro df es pequeño, ya hemos visto que nos indica el tipo de columna debajo de su encabezado. Si hemos prestado atención, también habremos podido ver que nos muestra sus dimensiones antes del encabezado. Esto es muy útil en los tibble, porque por defecto no imprimen el df completo, sino sólo las diez primeras filas.
+
+Recordemos el df `alfabeto`, contiene las 26 letras del alfabeto, en mayúsculas en su primera columna y en minúsculas en la segunda. Vamos a crear una versión tibble de este data.frame.
+
+```{r tbl_alfabeto}
+tbl_alfabeto <- as_tibble(alfabeto)
+```
+
+Comparemos cómo son impresos.
+
+---
+
+```{r tbl_print}
+# Impresión de data.frame
+alfabeto
+```
+
+---
+
+
+```{r}
+# Impresión de tibble
+tbl_alfabeto
+```
+
+A pesar de que no se imprime el tibble completo, nos da las señales suficientes para saber que contiene 26 filas y dos columnas. 
+
+---
+
+Otra diferencia se da en la inspección de las columnas. Como sabemos, los data.frame imprimen todo su contenido, incluyendo la cantidad total de columnas, en cambio los tibble sólo imprimen las columnas que caben en nuestra pantalla, dando un mensaje informativo al respecto. Veamos el ejemplo del dataset `flights`, contenido en el paquete `nycflights13`.
+
+```{r flights}
+library(nycflights13)
+```
+
+---
+
+```{r}
+flights
+```
+
+Vemos que es un tibble con 336776 filas y 19 columnas. Por comodidad, el tibble sólo imprimió las diez primeras filas, y las columnas que no alcanzaron en la pantalla están descritas debajo, con su nombre y su tipo. 
+
+# Ejercicio
+
+## Crea tu propio tibble
+
+Ahora es tu turno, recrea el siguiente tibble. Puedes hacerlo usando el método que quieras.
+
+```{r, echo=FALSE}
+tibble(
+  actor = c("Leonardo DiCaprio", "Brad Pitt", "Margot Robbie", "Emile Hirsch"),
+  papel = c("Rick Dalton", "Cliff Booth", "Sharon Tate", "Jay Sebring")
+)
+```

@@ -1,0 +1,294 @@
+---
+title: "Ejercicios con pipe"
+author: "Samuel Calderon"
+date: "10/6/2021"
+output: html_document
+---
+
+```{r}
+library(magrittr) # install.packages("magrittr")
+
+```
+
+```{r}
+# representar usando las funciones
+(((12 * 5) - 11)/ 7) + 3
+```
+
+add()
+subtract()
+multiply_by()
+divide_by()
+
+## Forma anidada
+
+```{r}
+add(divide_by(subtract(multiply_by(12, 5), 11), 7), 3)
+```
+
+## Objetos intermedios
+
+```{r}
+numero_inicial <- 12
+resultado1 <- multiply_by(numero_inicial, 5)
+resultado2 <- subtract(resultado1, 11)
+resultado3 <- divide_by(resultado2, 7)
+resultado_final <- add(resultado3, 3)
+resultado_final
+```
+
+```{r}
+numero <- 12
+numero <- multiply_by(numero, 5)
+numero <- subtract(numero, 11)
+numero <- divide_by(numero, 7)
+numero <- add(numero, 3)
+numero
+```
+
+## Usar pipes
+
+- Windows: Ctrl + Shift + M
+- Mac: Opt + Alt + M
+
+```{r}
+(((12 * 5) - 11)/ 7) + 3
+```
+
+```{r}
+numero <- 12
+numero <- multiply_by(numero, 5)
+numero <- subtract(numero, 11)
+numero <- divide_by(numero, 7)
+numero <- add(numero, 3)
+numero
+```
+
+
+
+```{r}
+12 %>% 
+  multiply_by(5) %>% 
+  subtract(11) %>% 
+  divide_by(7) %>% 
+  add(3)
+```
+
+## Ejercicio
+
+```{r}
+(((10 + 30) * 3) / 12) - 5
+```
+
+```{r}
+10 %>% 
+    add(30) %>% 
+    multiply_by(3) %>% 
+    divide_by(12) %>% 
+    subtract(5)
+```
+
+```{r}
+(((7 - 3) / -2) + 3) * 20
+```
+
+```{r}
+7 %>% 
+    subtract(3) %>% 
+    divide_by(-2) %>% 
+    add(3) %>% 
+    multiply_by(20)
+```
+
+```{r}
+library(dplyr)
+library(readxl)
+
+gapminder <- read_xlsx("data/gapminder.xlsx")
+```
+
+## Forma anidada
+
+```{r}
+arrange(ungroup(summarise(group_by(mutate(select(filter(gapminder, year %in% c(1987, 2007)), continent, year, gdpPercap, pop), PBI_nacional = pop * gdpPercap), continent, year), promedio = mean(PBI_nacional))), year, desc(promedio))
+```
+
+## Forma con objetos intermedios
+
+```{r}
+gapminder_modificado <- filter(gapminder, year %in% c(1987, 2007)) 
+
+gapminder_modificado <- select(gapminder_modificado, continent, year, gdpPercap, pop)
+
+gapminder_modificado <- mutate(gapminder_modificado, PBI_nacional = pop * gdpPercap)
+
+gapminder_modificado <- group_by(gapminder_modificado, continent, year)
+
+gapminder_modificado <- summarise(gapminder_modificado, promedio = mean(PBI_nacional))
+
+gapminder_modificado <- ungroup(gapminder_modificado)
+
+gapminder_modificado <- arrange(gapminder_modificado, year, desc(promedio))
+```
+
+## Forma encadenada con pipes
+
+
+```{r}
+gapminder %>% 
+  filter(year %in% c(1987, 2007)) %>%
+  select(continent, year, gdpPercap, pop) %>% 
+  mutate(PBI_nacional = pop * gdpPercap) %>% 
+  group_by(continent, year) %>% 
+  summarise(promedio = mean(PBI_nacional)) %>% 
+  ungroup() %>% 
+  arrange(year, desc(promedio))
+```
+
+
+## Ejercicio 1
+
+Utilizando gapminder y las funciones de dplyr, obtén el ranking del PBI nacional de Perú, México, Colombia y Chile en los años 1967, 1987 y 2007.
+
+Guíate de esta secuencia:
+
+*Esta parte se ha corregido respecto a las indicaciones originales*
+
+Usar gapminder
+Filtrar los datos de los cuatro países y los años seleccionados
+Seleccionar las variables pais, año, población y pbi per cápita
+Calcular el pbi total para cada observación
+Organizar por valor de año en forma ascendente y pbi total en orden descendente
+
+```{r}
+gapminder %>% 
+    filter(country %in% c("Peru", "Mexico", "Colombia", "Chile"),
+           year %in% c(1967, 1987, 2007)) %>% 
+    select(country, pop, gdpPercap, year) %>% 
+    mutate(pbi_total = pop * gdpPercap) %>% 
+    arrange(year, desc(pbi_total))
+```
+
+## Ejercicio 2
+
+¿Qué continentes tuvieron la mejor y peor expectativa de vida mediana en 1992?: La mejor fue Oceania con 76.945 y la peor fue Africa con 52.429
+
+```{r}
+gapminder %>% 
+    filter(year == 1992) %>% 
+    select(continent, lifeExp) %>% 
+    group_by(continent) %>% 
+    summarise(mediana = median(lifeExp)) %>% 
+    ungroup() %>% 
+    arrange(desc(mediana))
+```
+
+## Ejercicio 3
+
+## Forma 1
+
+¿Qué continente tuvo el mayor porcentaje de países con expectativa de vida superior a la mediana mundial en 2007?: Oceanía y Europa
+
+```{r}
+gapminder %>% 
+    filter(year == 2007) %>% 
+    mutate(mediana_mundial = median(lifeExp),
+           mayor_que_mediana = lifeExp > mediana_mundial) %>% 
+    group_by(continent) %>% 
+    summarise(n_paises = n(),
+              n_paises_mayor_que_mediana = sum(mayor_que_mediana)) %>% 
+    ungroup() %>% 
+    mutate(porcentaje_paises_mayores = n_paises_mayor_que_mediana/n_paises*100) %>% 
+    arrange(desc(porcentaje_paises_mayores))
+```
+
+### Forma 2
+
+```{r}
+gapminder %>% 
+    filter(year == 2007) %>% 
+    mutate(mayor_que_mediana = lifeExp > median(lifeExp)) %>% 
+    group_by(continent, mayor_que_mediana) %>% 
+    summarise(n = n()) %>% 
+    mutate(porcentaje = n/sum(n)*100) %>% 
+    ungroup() %>% 
+    filter(mayor_que_mediana)
+```
+
+
+
+## Ejercicios extra
+
+Para estos ejercicios es importante tener presente las funciones que nos permiten obtener valores de resumen típicos para nuestros datos.
+
+- `sum()`: suma
+- `mean()`: promedio
+- `mediana()`: mediana
+- `min()`: mínimo
+- `max()`: máximo
+
+Ejecuta código que te permita responder a las siguientes preguntas (se agrega cómo quedaría la tabla final para que se den una idea):
+
+@. ¿Qué continente tuvo el mejor PBI per cápita promedio en 1992?: Oceania
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+gapminder %>% 
+  filter(year == 1992) %>% 
+  group_by(continent) %>% 
+  summarise(pbi_percap_promedio = mean(gdpPercap)) %>% 
+  ungroup() %>% 
+  arrange(desc(pbi_percap_promedio))
+```
+
+@. ¿Qué continente tuvo el peor PBI per cápita mediano en 1952?: África
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+gapminder %>% 
+  filter(year == 1952) %>% 
+  group_by(continent) %>% 
+  summarise(pbi_percap_mediano = median(gdpPercap)) %>% 
+  ungroup() %>% 
+  arrange(pbi_percap_mediano)
+```
+
+@. ¿Qué continente tuvo el mejor PBI nacional promedio en 1992?: Americas
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+gapminder %>% 
+  filter(year == 1992) %>% 
+  mutate(pbi_nacional = pop * gdpPercap) %>% 
+  group_by(continent) %>% 
+  summarise(pbi_promedio = mean(pbi_nacional)) %>% 
+  ungroup() %>% 
+  arrange(desc(pbi_promedio))
+```
+
+
+@. ¿Cuál es la diferencia entre la expectativa de vida más alta y la más baja para 1952 y la de 2007?: 1952: 43.869 , 2007: 42.990	
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+gapminder %>% 
+  filter(year %in% c(1952, 2007)) %>% 
+  group_by(year) %>% 
+  summarise(lifeExp_mayor = max(lifeExp),
+            lifeExp_menor = min(lifeExp),
+            diferencia = lifeExp_mayor - lifeExp_menor)
+```
+
+@. ¿Cuál es la diferencia entre la expectativa de vida más alta para 1952 y la de 2007?: 9.933 años
+
+```{r,  echo=FALSE, warning=FALSE, message=FALSE}
+gapminder %>% 
+  filter(year %in% c(1952, 2007)) %>% 
+  group_by(year) %>% 
+  summarise(lifeExp_mayor = max(lifeExp)) %>% 
+  ungroup() %>% 
+  summarise(lifeExp_mayor_2007 = max(lifeExp_mayor),
+            lifeExp_mayor_1952 = min(lifeExp_mayor),
+            diferencia = lifeExp_mayor_2007 - lifeExp_mayor_1952)
+```
+
+
+
+
