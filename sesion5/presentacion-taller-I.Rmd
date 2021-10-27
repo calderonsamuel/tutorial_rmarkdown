@@ -407,7 +407,7 @@ Usando gapminder, la función `filter()` y `summarise()` determina el promedio d
 
 ---
 
-Existe una gran cantidad de datos de resumen que se pueden obtener en nuestro análisis, pero no siempre vamos a querer que los datos sean generales. En la siguiente sección aprenderas a resumir datos agrupados.
+Existe una gran cantidad de datos de resumen que se pueden obtener en nuestro análisis, pero no siempre vamos a querer que los datos sean generales. En la siguiente sección aprenderás a resumir datos agrupados.
 
 ---
 

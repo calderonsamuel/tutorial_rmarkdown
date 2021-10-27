@@ -183,7 +183,6 @@ En bloques de código, ejecuta el código necesario para identificar el tipo de 
 - `"50.0 mm"`
 - `1024L`
 
-# Continuamos ...
 
 ## Vectores con más de un elemento 
 
